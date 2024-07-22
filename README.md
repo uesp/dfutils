@@ -24,7 +24,7 @@ more information/details.
 	DFSkills - Modifies FALL.EXE to allow skills and attributes to exceed 100
 	DFSpells - Edits the ARENA2\SPELLS.STD file 
 	DFText - Edits the Arena2\TEXT.RSC file containing most game texts
-	DFThief - Edits a save game to become a member of the Thieves Guild or Dark Brotherhood after you have been expelled
+	DFThief - Edits a save game to join the Thieves Guild or Dark Brotherhood after being expelled
 	DFWagon - Changes the maximum weight limit of the wagon
 	FDagger - Permits running of the Andyfall mod without a CD.
 	
