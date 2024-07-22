@@ -1,0 +1,19 @@
+Your vision hazes and the world grows|
+ dim. Out of the gray, a woman's face|
+ appears. Medora!|
+ |
+ "%pcf. Your efforts to free me<
+ have not been in vain. I have discovered<
+ a powder that will soothe the ghost of<
+ my beloved Lysandus. However, it is in the<
+ hands of Gortwog, Warlord of the Orcs, in<
+ his steel citidel of Orsinium. Go to him<
+ in Orsinium and see if there is anything<
+ that can be done to persuade him to give<
+ it to you. Bring the powder to me in<
+ Direnni Tower once you have it."<
+ |
+ The vision clears. Sometimes you wish|
+ sorceresses would just send letters like|
+ other folks do.|
+ÿ

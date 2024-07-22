@@ -1,0 +1,1011 @@
+#
+# Items Section...Format:
+#    <group>, <subgroup>, <base cost>, <picture>, <name>
+#
+# The items' picture can be set to 0xffff if it is not known or if there
+# are multiple pictures for it. Pictures are defined in more detail later
+# on.
+#
+[items]
+     0
+     0,   0, 10,   0x7f2f, Indulcet
+     0,   1, 10,   0x7f2f, Sursam
+     0,   2, 10,   0x7f28, Quaesto Vil
+     0,   3, 10,   0x7f2f, Aegrotat
+     1,   0, 10,   0x6683, Glass Jar
+     1,   1, 10,   0x668b, Glass Bottle
+     1,   2, 10,   0x66ab, Decanter
+     1,   3, 10,   0x6d00, Clay Jar
+     1,   4, 10,   0x6692, Small Sack
+     1,   5, 10,   0x6691, Large Sack
+     1,   6, 10,   0x66aa, Quiver
+     1,   7, 10,   0x66ac, Backpack
+     1,   8, 10,   0x6695, Small Chest
+     1,   9, 10,   0x6a81, Wine Rack
+     1,  10, 10,   0x6698, Large Chest
+     2,   0, 100,  0xffff, Cuirass
+     2,   1, 50,   0xffff, Gauntlets w/Gold
+     2,   2, 80,   0xffff, Greaves
+     2,   3, 60,   0xffff, Left Pauldron
+     2,   4, 60,   0xffff, Right Pauldron
+     2,   5, 80,   0xffff, Helmet
+     2,   6, 50,   0xffff, Boots
+     2,   7, 10,   0xffff, Buckler
+     2,   8, 20,   0xffff, Round Shield
+     2,   9, 30,   0xffff, Kite Shield
+     2,  10, 50,   0xffff, Tower Shield
+     3,   0,  8,   0xffff, Dagger
+     3,   1,  3,   0xffff, Tanto
+     3,   2, 10,   0x7515, Staff
+     3,   3,  8,   0xffff, Shortsword
+     3,   4,  8,   0xffff, Wakazashi
+     3,   5, 10,   0xffff, Broadsword
+     3,   6, 12,   0xffff, Saber
+     3,   7, 15,   0xffff, Longsword
+     3,   8, 25,   0xffff, Katana
+     3,   9, 30,   0x7504, Claymore
+     3,  10, 50,   0x7507, Dai-Katana
+     3,  11, 10,   0xffff, Mace
+     3,  12, 15,   0x7508, Flail
+     3,  13, 20,   0x7519, Warhammer
+     3,  14, 20,   0xffff, Battle Axe
+     3,  15, 20,   0x7518, War Axe
+     3,  16, 10,   0x7510, Short Bow
+     3,  17, 20,   0x750b, Long Bow
+     3,  18, 10,   0x6790, Arrow
+     4,  -1, 10,   0xffff, Random Magic Item
+     5,   0, 10,   0xd80c, Masque of Clavicus
+     5,   1, 10,   0xd80d, Mehrune's Razor
+     5,   2, 10,   0xd80a, Mace of Molag Bal
+     5,   3, 10,   0xd808, Hircine Ring
+     5,   4, 10,   0xd813, Sanguine Rose
+     5,   5, 10,   0xd810, Oghma Infinium
+     5,   6, 10,   0xd819, Wabbajack
+     5,   7, 10,   0xd812, Ring of Namira
+     5,   8, 10,   0xd815, Skull of Corruption
+     5,   9, 10,   0xd802, Azura's Star
+     5,  10, 10,   0xd818, Volendrung
+     5,  11, 10,   0xd81a, Warlock's Ring
+     5,  12, 10,   0xd800, Auriel's Bow
+     5,  13, 10,   0xd80f, Necromancer's Amulet
+     5,  14, 10,   0xd803, Chrysamere
+     5,  15, 10,   0xd807, Lord's Mail
+     5,  16, 10,   0xd817, Staff of Magnus
+     5,  17, 10,   0xd811, Ring of Khajiit
+     5,  18, 10,   0xd809, Ebony Mail
+     5,  19, 10,   0xd801, Auriel's Shield
+     5,  20, 10,   0xd816, Spell Breaker
+     5,  21, 10,   0xd814, Skeleton's Key
+     5,  22, 10,   0xd805, Ebony Blade
+     6,   0, 10,   0xffff, Straps M/Buckle
+     6,   1, 10,   0xffff, Armbands M
+     6,   2, 10,   0xffff, Kimono M
+     6,   3, 10,   0xffff, Armbands M/Fancy
+     6,   4, 10,   0xffff, Sash M
+     6,   5, 10,   0xffff, Eodoric M
+     6,   6, 10,   0xffff, Shoes M
+     6,   7, 10,   0xffff, Boots M/Tall
+     6,   8, 10,   0xffff, Boots M
+     6,   9, 10,   0xffff, Sandals M
+     6,  10, 10,   0xffff, Pants M/Casual
+     6,  11, 10,   0xffff, Breeches
+     6,  12, 10,   0xffff, Skirt M/Short
+     6,  13, 10,   0xffff, Cloak M/Casual1
+     6,  14, 10,   0xffff, Cloak M/Formal
+     6,  15, 10,   0xffff, Khajiit Suit M
+     6,  16, 10,   0xffff, Dwynnen Surcoat M
+     6,  17, 10,   0xffff, Tunic M/Short
+     6,  18, 10,   0xffff, Tunic M/Formal
+     6,  19, 10,   0xffff, Toga M
+     6,  20, 10,   0xffff, Tunic M/Reversible
+     6,  21, 10,   0xffff, Loincloth M
+     6,  22, 10,   0xffff, Robes M/Plain/Hood
+     6,  23, 10,   0xffff, Robes M/Priest
+     6,  24, 10,   0xffff, Short Shirt M/Open
+     6,  25, 10,   0xffff, Short Shirt M/Belt
+     6,  26, 10,   0xffff, Long Shirt M/Open
+     6,  27, 10,   0xffff, Long Shirt M/Open/Belt
+     6,  28, 10,   0xffff, Short Shirt M/Closed
+     6,  29, 10,   0xffff, Short Shirt M/Closed/Belt
+     6,  30, 10,   0xffff, Long Shirt M/Closed
+     6,  31, 10,   0xffff, Long Shirt M/Closed/Belt
+     6,  32, 10,   0xffff, Open Tunic M
+     6,  33, 10,   0xffff, Wrap M
+     6,  34, 10,   0xffff, Long Skirt M
+     6,  35, 10,   0xffff, Anticlere Surcoat M
+     6,  36, 10,   0xffff, Challenger Straps M
+     6,  37, 10,   0xffff, Short Shirt M/Unchangeable
+     6,  38, 10,   0xffff, Long Shirt M/Unchangeable
+     6,  39, 10,   0xffff, Vest M
+     6,  40, 10,   0xffff, Champion Straps
+     7,   0, 10,   0xdb10, Book Ogmha Type
+     7,  -1, 10,   0x6882, Random Book
+     8,  -1, 10,   0xffff, Unknown
+     9,   0, 10,   0x6906, Torch
+     9,   1, 10,   0x640a, Lantern
+     9,   2, 10,   0x6980, Bandage
+     9,   3, 10,   0x6683, Oil
+     9,   4, 10,   0x6903, Candle
+     9,   5, 10,   0x6888, Parchment
+    10,   0, 10,   0x7f38, Prayer Beads
+    10,   1, 10,   0x7f38, Rare Symbol
+    10,   2, 10,   0x7f38, Common Symbol
+    10,   3, 10,   0x69af, Bell
+    10,   4, 10,   0x69b1, Holy Water
+    10,   5, 10,   0x69b2, Talisman
+    10,   6, 10,   0x69b2, Religious Item
+    10,   7, 10,   0x6505, Small Statue
+    10,   8, 10,   0x69b3, Icon
+    10,   9, 10,   0x69b4, Scarab
+    10,  10, 10,   0x6904, Holy Candle
+    10,  11, 10,   0x6785, Holy Dagger
+    10,  12, 10,   0x6880, Holy Tome
+    11,  -1, 10,   0x6888, Random Map
+    12,   0, 10,   0xffff, Bra
+    12,   1, 10,   0xffff, Bra Formal
+    12,   2, 10,   0xffff, Blouse Peasant
+    12,   3, 10,   0xffff, Eodoric F
+    12,   4, 10,   0xffff, Shoes F
+    12,   5, 10,   0xffff, Boots F/Tall
+    12,   6, 10,   0xffff, Boots F
+    12,   7, 10,   0xffff, Sandals F
+    12,   8, 10,   0xffff, Pants F/Casual
+    12,   9, 10,   0xffff, Cloak F/Casual
+    12,  10, 10,   0xffff, Cloak F/Formal
+    12,  11, 10,   0xffff, Khajiit Suit
+    12,  12, 10,   0xffff, Eodoric Formal
+    12,  13, 10,   0xffff, Gown Evening
+    12,  14, 10,   0xffff, Gown Day
+    12,  15, 10,   0xffff, Dress Casual
+    12,  16, 10,   0xffff, Dress Strapless
+    12,  17, 10,   0xffff, Loincloth F
+    12,  18, 10,   0xffff, Robes F/Plain
+    12,  19, 10,   0xffff, Robes Priestess
+    12,  20, 10,   0xffff, Short Shirt F/
+    12,  21, 10,   0xffff, Short Shirt F/Belt
+    12,  22, 10,   0xffff, Long Shirt F
+    12,  23, 10,   0xffff, Long Shirt F/Belt
+    12,  24, 10,   0xffff, Short Shirt F/Closed
+    12,  25, 10,   0xffff, Short Shirt F/Closed/Belt
+    12,  26, 10,   0xffff, Long Shirt F/Closed
+    12,  27, 10,   0xffff, Long Shirt F/Closed/Belt
+    12,  28, 10,   0xffff, Tunic F/Open
+    12,  29, 10,   0xffff, Wrap F
+    12,  30, 10,   0xffff, Skirt F/Long
+    12,  31, 10,   0xffff, Tights F
+    12,  32, 10,   0xffff, Short Shirt F/Unchangeable
+    12,  33, 10,   0xffff, Long Shirt F/Unchangeable
+    12,  34, 10,   0xffff, Vest F
+    13,  -1, 10,   0x69B9, Random Painting
+    14,   0, 10,   0x7F00, Ruby
+    14,   1, 100,  0x7F01, Emerald
+    14,   2, 500,  0x7F02, Saphire
+    14,   3, 1000, 0x7F03, Diamond
+    14,   4, 10,   0x7f04, Jade
+    14,   5, 10,   0x7f05, Turquoise
+    14,   6, 10,   0x7f07, Malachite
+    14,   7, 10,   0x7f08, Amber
+    15,   0, 10,   0x7f09, Twigs
+    15,   1, 10,   0x7f0a, Green Leaves
+    15,   2, 10,   0x7f0b, Red Flowers
+    15,   3, 10,   0x7f0c, Yellow Flowers
+    15,   4, 10,   0x7f0d, Root Tendrils
+    15,   5, 10,   0x7f0e, Root Bulb
+    15,   6, 10,   0x7f0f, Pine Branch
+    15,   7, 10,   0x7f10, Green Berries
+    15,   8, 10,   0x7f11, Red Berries
+    15,   9, 10,   0x7f12, Yellow Berries
+    15,  10, 10,   0x7f13, Clover
+    15,  11, 10,   0x7f1A, Red Rose
+    15,  12, 10,   0x7f1B, Yellow Rose
+    15,  13, 10,   0x7f1e, Red Poppy
+    15,  14, 10,   0x7f20, Yellow Poppy
+    16,   0, 10,   0x7f09, Twigs
+    16,   1, 10,   0x7f0a, Green Leaves
+    16,   2, 10,   0x7f0b, Red Flowers
+    16,   3, 10,   0x7f0c, Yellow Flowers
+    16,   4, 10,   0x7f0d, Root Tendrils
+    16,   5, 10,   0x7f0e, Root Bulb
+    16,   6, 10,   0x7f10, Green Berries
+    16,   7, 10,   0x7f11, Red Berries
+    16,   8, 10,   0x7f12, Yellow Berries
+    16,   9, 10,   0x7f1c, Black Rose
+    16,  10, 10,   0x7f1d, White Rose
+    16,  11, 10,   0x7f1f, Black Poppy
+    16,  12, 10,   0x7f21, White Poppy
+    16,  13, 10,   0x7f14, Ginkgo Leaves
+    16,  14, 10,   0x7f15, Bamboo
+    16,  15, 10,   0x7f16, Palm
+    16,  16, 10,   0x7f17, Aloe
+    16,  17, 10,   0x7f18, Fig
+    16,  18, 10,   0x7f19, Cactus
+    17,   0, 10,   0x6722, Werewolf's Blood
+    17,   1, 10,   0x7f25, Fairy Dragon's Scales
+    17,   2, 10,   0x7f2f, Wraith Essence
+    17,   3, 10,   0x7f2c, Ecroplasm
+    17,   4, 10,   0x7f2d, Ghoul's Tongue
+    17,   5, 10,   0x7f2e, Spider's Venom
+    17,   6, 10,   0x6721, Troll's Blood
+    17,   7, 10,   0x7f34, Snake Venom
+    17,   8, 10,   0x7f36, Gorgon Snake
+    17,   9, 10,   0x7f2f, Lich Dust
+    17,  10, 10,   0x6722, Giant's Blood
+    17,  11, 10,   0x7f32, Basilisk's Eye
+    17,  12, 10,   0x7f33, Daedra's Heart
+    17,  13, 10,   0x7f37, Saint's Hair
+    17,  14, 10,   0x6721, Orc's Blood
+    18,   0, 10,   0x7f30, Dragon's Scales
+    18,   1, 10,   0x7f26, Giant Scorpion Stinger
+    18,   2, 10,   0x7f27, Small Scorpion Stinger
+    18,   3, 10,   0x7f29, Mummy Wrappings
+    18,   4, 10,   0x7f35, Gryphon's Feather
+    19,   0, 10,   0x7f2a, Wereboar's Tusk
+    19,   1, 10,   0x7f37, Nymph Hair
+    19,   2, 10,   0x7f2b, Unicorn Horn
+    20,   0, 400,  0x7f38, Holy Relic
+    20,   1, 10,   0x7f39, Big Tooth
+    20,   2, 10,   0x7f3a, Medium Tooth
+    20,   3, 10,   0x7f3b, Small Tooth
+    20,   4, 10,   0x6681, Pure Water
+    20,   5, 10,   0x7f34, Rain Water
+    20,   6, 50,   0x7f34, Elixir Vitae
+    20,   7, 10,   0x7f34, Nectar
+    20,   8, 10,   0x7f34, Ichor
+    21,   0, 10,   0x7f3d, Mercury
+    21,   1, 10,   0x7f40, Tin
+    21,   2, 10,   0x7f42, Brass
+    21,   3, 10,   0x7f42, Lodestone
+    21,   4, 10,   0x7f43, Sulphur
+    21,   5, 10,   0x7f41, Lead
+    21,   6, 10,   0x7f3f, Iron
+    21,   7, 10,   0x7f42, Copper
+    21,   8, 10,   0x7f41, Silver
+    21,   9, 100,  0x7f3e, Gold
+    21,  10, 10,   0x7f41, Platinum
+    22,   0, 10,   0x7f46, Ivory
+    22,   1, 10,   0x7f06, Pearl
+    23,   0, 10,   0x6a81, Small Cart
+    23,   1, 10,   0x6480, Horse
+    23,   2, 10,   0x6a81, Rowboat
+    23,   3, 10,   0x6a81, Large Boat
+    23,   4, 10,   0x6a81, Small Ship
+    23,   5, 10,   0x6a81, Large Galley
+    24,   0, 10,   0x6888, Deed to Townhouse
+    24,   1, 10,   0x6888, Deed to House
+    24,   2, 10,   0x6888, Deed to Manor
+    25,   0, 10,   0x7f38, Amulet
+    25,   1, 10,   0x678d, Bracer
+    25,   2, 10,   0x6c04, Ring
+    25,   3, 10,   0x6c15, Bracelet
+    25,   4, 10,   0x6889, Mark
+    25,   5, 10,   0x69b0, Torc
+    25,   6, 10,   0x6609, Cloth Amulet
+    25,   7, 10,   0x6787, Wand
+    26,   0, 10,   0x6804, Telescope
+    26,   1, 10,   0x6803, Scales
+    26,   2, 10,   0x6800, Globe
+    26,   3, 10,   0x670a, Skeleton
+    26,   4, 10,   0x69b6, Totem
+    26,   5, 10,   0xbe01, Dead Body
+    26,   6, 10,   0x69b7, Mantella
+    26,   7, 10,   0x69b8, Finger
+    27,   0, 10,   0x6884, Spell Book
+    27,   1, 5000, 0x7f03, Soul Trap
+    27,   2, 0,    0x6888, Letter of Credit
+    27,   3, 50,   0x7f00, Ruby
+    27,   4, 0,    0x6888, Random Recipe
+    27,   5, 0,    0xbe01, Dead Body
+    27,   6, 0,    0x6888, Deed for House
+    27,   7, 0,    0x6888, Ship Deed
+    27,   8, 0,    0x6888, Random Map
+    28,   0, 0,    0x6c01, Gold Pieces
+
+[end]
+
+
+#
+# Picture Data, Format:
+#	<index>, <description>
+#
+# Use this for items you don't know the group/subgroup to or for items that
+# have several different pictures, such as various armour types or cloths
+# for different races.
+#
+[pictures]
+	0x7a83, Cuirass Leather
+	0x7a84, Cuirass Plat
+	0x7a85, Cuirass w/Gold
+	0x7a86, Cuirass Long
+	0x7a87, Cuirass Chain
+	0x7a88, Gauntlets Leather
+	0x7a89, Gauntlets w/Gold
+	0x7a8a, Greaves Leather
+	0x7a8c, Greaves Plate
+	0x7a8b, Greaves Long Leather
+	0x7a8d, Greaves Long
+	0x7a8e, Greaves w/Gold
+	0x7a8f, Greaves Long w/Gold
+	0x7a90, Greaves Long Chain
+	0x7a91, Left Pauldron Leather
+	0x7a92, Left Pauldron Plate
+	0x7a93, Left Pauldron Fancy
+	0x7a94, Left Pauldron w/Gold
+	0x7a95, Left Pauldron Chain
+	0x7a96, Right Pauldron Leather
+	0x7a97, Right Pauldron Plate
+	0x7a98, Right Pauldron Fancy
+	0x7a99, Right Pauldron w/Gold
+	0x7a9a, Right Pauldron Chain
+	0x7a9b, Helmet
+	0x7a9c, Helmet Short
+	0x7a9d, Helmet Medium
+	0x7a9e, Helmet Alternate
+	0x7a9f, Helmet w/Feathers
+	0x7aa0, Helmet w/Horns
+	0x7a80, Boots Leather
+	0x7a81, Boots Plate
+	0x7a82, Boots w/Gold
+	0x7aa1, Buckler
+	0x7aa2, Round Shield
+	0x7aa3, Kite Shield
+	0x7aa4, Tower Shield
+	0x7505, Dagger (Left)
+	0x7506, Dagger (Right)
+	0x7516, Tanto (Left)
+	0x7517, Tanto (Right)
+	0x7513, Shortsword (Left)
+	0x7514, Shortsword (Right)
+	0x751a, Wakazashi (Left)
+	0x751b, Wakazashi (Right)
+	0x7502, Broadsword (Left)
+	0x7503, Broadsword (Right)
+	0x7511, Saber (Left)
+	0x7512, Saber (Right)
+	0x750c, Longsword (Left)
+	0x750d, Longsword (Right)
+	0x7509, Katana (Left)
+	0x7507, Katana (Right)
+	0x750e, Mace (Left)
+	0x750f, Mace (Right)
+	0x7500, Battle Axe (Left)
+	0x7501, Battle Axe (Right)
+	0x6500, Large statue
+	0x640b, Pillow
+	0x6905, Candelabra
+	0x6a8f, Shubbery
+	0x6a92, Flowers
+	0x69b5, Altar
+	0x6a02, Font
+
+	0x7580, Bra
+	0x7581, Bra Strapless
+	0x7582, Bra Bikini
+	0x7583, Bra Formal
+	0x7584, Bra Spiked
+	0x7585, Bra Copper
+	0x7586, Bra Fancy
+	0x7587, Bra Formal
+	0x7588, Blouse Peasant
+	0x7589, Eodoric
+	0x758a, Shoes
+	0x758b, Boots Tall
+	0x758c, Boots
+	0x758d, Sandals High
+	0x7592, Boots High/Casual
+	0x758f, Sandals
+	0x7590, Pants Casual
+	0x7591, Pants Long
+	0x7592, Pants Short1
+	0x7593, Pants Short2
+	0x7594, Pants Short3
+	0x7595, Cloak Casual1
+	0x7596, Cloak Casual2
+	0x7597, Cloak Hood/Casual1
+	0x7598, Cloak Hood/Casual2
+	0x7599, Cloak Casual3
+	0x759a, Cloak Casual4
+	0x759b, Cloak Hood/Casual3
+	0x759c, Cloak Casual/Bottom?
+	0x759d, Cloak Formal1
+	0x759e, Cloak Formal2
+	0x759f, Cloak Formal3
+	0x75a0, Cloak Hood/Formal
+	0x75a1, Khajiit Suit
+	0x75a2, Eodoric Formal1
+	0x75a3, Eodoric Formal2
+	0x75a4, Eodoric Formal/Bra
+	0x75a5, Gown Evening
+	0x75a6, Gown Fancy
+	0x75a7, Gown Day
+	0x75a8, Gown Formal
+	0x75a9, Dress Casual
+	0x75aa, Dress Strapless
+	0x75ab, Dress Narrow
+	0x75ac, Loincloth
+	0x75ad, Loincloth Small
+	0x75ae, Loincloth Long
+	0x75af, Robes Plain
+	0x75b0, Robes Plain/Hood
+	0x75b1, Robes Priestess
+	0x75b2, Short Shirt
+	0x75b3, Short Shirt Long
+	0x75b4, Short Shirt Tunic
+	0x75b5, Short Shirt Tunic/Long
+	0x7581, Short Shirt Closed
+	0x75b7, Short Shirt Belt
+	0x75b8, Short Shirt Belt/Long
+	0x75b9, Short Shirt Belt/Tunic
+	0x75ba, Short Shirt Belt/Tunic/Long
+	0x75bb, Short Shirt Sash
+	0x75bc, Short Shirt Sash/Long
+	0x75bd, Short Shirt Sash/Tunic
+	0x75be, Short Shirt Sash/Tunic/Long
+	0x75bf, Long Shirt
+	0x75c0, Long Shirt Long
+	0x75c1, Long Shirt Tunic
+	0x75c2, Long Shirt Tunic/Long
+	0x75c3, Long Shirt Closed
+	0x75c4, Long Shirt Belt
+	0x75c5, Long Shirt Belt/Long
+	0x75c6, Long Shirt Belt/Tunic
+	0x75c7, Long Shirt Belt/Tunic/Long
+	0x75c8, Long Shirt Sash
+	0x75c9, Long Shirt Sash/Long
+	0x75ca, Long Shirt Sash/Tunic
+	0x75cb, Long Shirt Sash/Tunic/Long
+	0x75cc, Short Shirt Closed
+	0x75cd, Short Shirt Cl/Tunic
+	0x75ce, Short Shirt Cl/Tunic/Long
+	0x75cf, Short Shirt Cl/Long
+	0x75d0, Short Shirt Cl/Belt
+	0x75d1, Short Shirt Cl/Belt/Long
+	0x75d2, Short Shirt Cl/Belt/Tunic
+	0x75d3, Short Shirt Cl/Belt/Tunic/Long
+	0x75d4, Short Shirt Cl/Sash
+	0x75d5, Short Shirt Cl/Sash/Long
+	0x75d6, Short Shirt Cl/Sash/Tunic
+	0x75d7, Short Shirt Cl/Sash/Tunic/Long
+	0x75d8, Long Shirt Cl
+	0x75d9, Long Shirt Cl/Long
+	0x75da, Long Shirt Cl/Tunic
+	0x75db, Long Shirt Cl/Tunic/Long
+	0x75dc, Long Shirt Cl/Belt
+	0x75dd, Long Shirt Cl/Belt/Long
+	0x75de, Long Shirt Cl/Belt/Tunic
+	0x75df, Long Shirt Cl/Belt/Tunic/Long
+	0x75e0, Long Shirt Cl/Sash
+	0x75e1, Long Shirt Cl/Sash/Long
+	0x75e2, Long Shirt Cl/Sash/Tunic
+	0x75e3, Long Shirt Cl/Sash/Tunic/Long
+	0x75e4, Tunic Open
+	0x75e5, Wrap
+	0x75e6, Skirt Long
+	0x75e7, Skirt Long/Narrow
+	0x75e8, Tights
+	0x75e9, Pants Leather
+	0x75ea, Short Shirt Unchangeable
+	0x75eb, Short Shirt Skinny/Unchangeable
+	0x75ec, Long Shirt Unchangeable
+	0x75ed, Vest
+	0x75ef, Vest Red
+
+	0x7780, Straps Buckle
+	0x7781, Strap
+	0x7782, Straps Button
+	0x7783, Right Pauldron Alternate?
+	0x7784, Armbands
+	0x7785, Kimono
+	0x7786, Armbands Fancy
+	0x7787, Sash
+	0x7789, Eodoric
+	0x778a, Shoes
+	0x778b, Boots Tall
+	0x778c, Boots
+	0x778d, Sandals High
+	0x778e, Boots High
+	0x778f, Sandals
+	0x7790, Pants Casual
+	0x7791, Pants Long
+	0x7792, Breeches
+	0x7793, Short
+	0x7794, Skirt Short
+	0x7795, Cloak Casual1
+	0x7796, Cloak Casual2
+	0x7797, Cloak Casual/Hood1
+	0x7798, Cloak Casual/Hood2
+	0x7799, Cloak Casual3
+	0x779a, Cloak Casual/Bottom1?
+	0x779b, Cloak Casual/Hood
+	0x779c, Cloak Casual/Bottom2?
+	0x779d, Cloak Fancy
+	0x779e, Cloak Formal
+	0x779f, Cloak Formal/Bottom?
+	0x77a0, Formal Cloak Shoulder
+	0x77a1, Khajiit Suit
+	0x77a2, Dwynnen Surcoat
+	0x77a3, Tunic Short
+	0x77a4, Tunic Short1
+	0x77a5, Tunic Short2
+	0x77a6, Tunic Short3
+	0x77a7, Tunic Formal
+	0x77a8, Sweater Checked
+	0x77a9, Toga
+	0x77aa, Tunic Reversible
+	0x77ab, Tunic Belt
+	0x77ac, Loincloth
+	0x77ad, Lioncloth Tied
+	0x77ae, Lioncloth Small
+	0x77af, Robes Plain/Hood
+	0x77b0, Robes Plain
+	0x77b1, Robes Priest
+	0x77b2, Short Shirt Open
+	0x77b3, Short Shirt Open/Long
+	0x77b4, Short Shirt Open/Tunic/Open
+	0x77b5, Short Shirt Open/Tunic/Long
+	0x77b6, Short Shirt Closed
+	0x77b7, Short Shirt Belt
+	0x77b8, Short Shirt Belt/Long
+	0x77b9, Short Shirt Belt/Tunic
+	0x77ba, Short Shirt Belt/Tunic/Long
+	0x77bb, Short Shirt Sash
+	0x77bc, Short Shirt Sash/Long
+	0x77bd, Short Shirt Sash/Tunic
+	0x77be, Short Shirt Sash/Tunic/Long
+	0x77bf, Long Shirt Open
+	0x77c0, Long Shirt Open/Long
+	0x77c1, Long Shirt Open/Tunic
+	0x77c2, Long Shirt Open/Tunic/Long
+	0x77c3, Long Shirt Closed
+	0x77c4, Long Shirt Open/Belt
+	0x77c5, Long Shirt Open/Belt/Long
+	0x77c6, Long Shirt Open/Belt/Tunic
+	0x77c7, Long Shirt Open/Belt/Tunic/Long
+	0x77c8, Long Shirt Open/Sash
+	0x77c9, Long Shirt Open/Sash/Long
+	0x77ca, Long Shirt Open/Sash/Tunic
+	0x77cb, Long Shirt Open/Sash/Tunic/Long
+	0x77cc, Short Shirt Closed
+	0x77cd, Short Shirt Closed/Long
+	0x77ce, Short Shirt Closed/Tunic
+	0x77cf, Short Shirt Closed/Tunic/Long
+	0x77d0, Short Shirt Closed/Belt
+	0x77d1, Short Shirt Closed/Belt/Long
+	0x77d2, Short Shirt Closed/Belt/Tunic
+	0x77d3, Short Shirt Closed/Belt/Tunic/Long
+	0x77d4, Short Shirt Closed/Sash
+	0x77d5, Short Shirt Closed/Sash/Long
+	0x77d6, Short Shirt Closed/Sash/Tunic
+	0x77d7, Short Shirt Closed/Sash/Tunic/Long
+	0x77d8, Long Shirt Closed
+	0x77d9, Long Shirt Closed/Long
+	0x77da, Long Shirt Closed/Tunic
+	0x77db, Long Shirt Closed/Tunic/Long
+	0x77dc, Long Shirt Closed/Belt
+	0x77dd, Long Shirt Closed/Belt/Long
+	0x77de, Long Shirt Closed/Belt/Tunic
+	0x77df, Long Shirt Closed/Belt/Tunic/Long
+	0x77e0, Long Shirt Closed/Sash
+	0x77e1, Long Shirt Closed/Sash/Long
+	0x77e2, Long Shirt Closed/Sash/Tunic
+	0x77e3, Long Shirt Closed/Sash/Tunic/Long
+	0x77e4, Open Tunic
+	0x77e5, Wrap
+	0x77e6, Long Skirt
+	0x77e7, Short Skirt
+	0x77e8, Anticlere Surcoat
+	0x77e9, Challenger Straps
+	0x77ea, Short Shirt Unchangeable
+	0x77eb, Short Shirt Belt/Unchangeable
+	0x77ec, Long Shirt Unchangeable
+	0x77ed, Vest
+	0x77ee, Champion Straps
+[end]
+
+
+#
+# Holds information about the item enchantments
+#
+# 	Format:  <group>, <subgroup>, <cost>, <description>
+#
+# For the subgroup, use a value of -1 to indicate any subgroup number
+# is valid.
+#
+[enchantments]
+	 0x00, 0x04, 3300,  Cast Used: Levitate
+	 0x00, 0x05, 2500,  Cast Used: Light
+	 0x00, 0x06, 5400,  Cast Used: Invisibility
+	 0x00, 0x07, 4800,  Cast Used: Wizard's Fire
+	 0x00, 0x08, 3800,  Cast Used: Shock
+	 0x00, 0x09, 4800,  Cast Used: Strength Leech
+	 0x00, 0x0A, 16500, Cast Used: Free Action
+	 0x00, 0x0B, 15600, Cast Used: Resist Cold
+	 0x00, 0x0C, 15600, Cast Used: Resist Fire
+	 0x00, 0x0D, 15600, Cast Used: Resist Shock
+	 0x00, 0x0E, 4700,  Cast Used: Fireball
+	 0x00, 0x0F, 10200, Cast Used: Cure Poison
+	 0x00, 0x10, 9900,  Cast Used: Ice Bolt
+	 0x00, 0x11, 10400, Cast Used: Shield
+	 0x00, 0x12, 9000,  Cast Used: Open
+	 0x00, 0x13, 17400, Cast Used: Wizard Lock
+	 0x00, 0x14, 14200, Cast Used: Ice Storm
+	 0x00, 0x16, 19800, Cast Used: Spell Shield
+	 0x00, 0x17, 15300, Cast Used: Silence
+	 0x00, 0x18, 9200,  Cast Used: Troll's Blood
+	 0x00, 0x19, 8400,  Cast Used: Fire Storm
+	 0x00, 0x1A, 16500, Cast Used: Resist Poison
+	 0x00, 0x1B, 13000, Cast Used: Spell Drain
+	 0x00, 0x1C, 22400, Cast Used: Far Silence
+	 0x00, 0x1D, 10200, Cast Used: Toxic Cloud
+	 0x00, 0x1E, 19300, Cast Used: Shalidor's Mirror
+	 0x00, 0x1F, 7600,  Cast Used: Lightning
+	 0x00, 0x20, 17500, Cast Used: God's Fire
+	 0x00, 0x21, 10200, Cast Used: Wildfire
+	 0x00, 0x22, 16100, Cast Used: Wizard Rend
+	 0x00, 0x23, 21400, Cast Used: Medusa's Gaze
+	 0x00, 0x24, 30300, Cast Used: Force Bolt
+	 0x00, 0x25, 2400,  Cast Used: Slowfalling
+	 0x00, 0x27, 12300, Cast Used: Spell Resistance
+	 0x00, 0x28, 1300,  Cast Used: Stamina
+	 0x00, 0x29, 1700,  Cast Used: Water Walking
+	 0x00, 0x2A, 1700,  Cast Used: Water Breathing
+	 0x00, 0x2C, 2100,  Cast Used: Chameleon
+	 0x00, 0x2D, 1500,  Cast Used: Shadow Form
+	 0x00, 0x2E, 17200, Cast Used: Spell Reflection
+	 0x00, 0x2F, 20000, Cast Used: Spell Absorb?
+	 0x00, 0x31, 15900, Cast Used: Tongues
+	 0x00, 0x32, 16200, Cast Used: Paralysis
+	 0x00, 0x34, 13800, Cast Used: Vampiric Touch
+	 0x00, 0x35, 7800,  Cast Used: Hand of Sleep
+	 0x00, 0x36, 9300,  Cast Used: Magicka Leech
+	 0x00, 0x37, 42300, Cast Used: Sphere of Negation
+	 0x00, 0x38, 18300, Cast Used: Hand of Decay
+	 0x00, 0x3C, 9300,  Cast Used: Balyna's Antidote
+	 0x00, 0x40, 3600,  Cast Used: Heal
+	 0x00, 0x43, 12600, Cast Used: Energy Leech
+	 0x00, 0x52, 10200, Cast Used: Orc Strength
+	 0x00, 0x53, 12000, Cast Used: Wisdom
+	 0x00, 0x54, 12000, Cast Used: Iron Will
+	 0x00, 0x55, 12000, Cast Used: Nimbleness
+	 0x00, 0x56, 12000, Cast Used: Feet of Notorgo
+	 0x00, 0x57, 12000, Cast Used: Fortitude
+	 0x00, 0x58, 12000, Cast Used: Charisma
+	 0x00, 0x59, 12000, Cast Used: Jack of Trades
+	 0x00, 0x5E, 4800,  Cast Used: Recall
+	 0x01, 0x04, 3300,  Cast Held: Levitate
+	 0x01, 0x05, 2500,  Cast Held: Light
+	 0x01, 0x06, 5400,  Cast Held: Invisibility
+	 0x01, 0x07, 4800,  Cast Held: Wizard's Fire
+	 0x01, 0x08, 3800,  Cast Held: Shock
+	 0x01, 0x09, 4800,  Cast Held: Strength Leech
+	 0x01, 0x0A, 16500, Cast Held: Free Action
+	 0x01, 0x0B, 15600, Cast Held: Resist Cold
+	 0x01, 0x0C, 15600, Cast Held: Resist Fire
+	 0x01, 0x0D, 15600, Cast Held: Resist Shock
+	 0x01, 0x0E, 4700,  Cast Held: Fireball
+	 0x01, 0x0F, 10200, Cast Held: Cure Poison
+	 0x01, 0x10, 9900,  Cast Held: Ice Bolt
+	 0x01, 0x11, 10400, Cast Held: Shield
+	 0x01, 0x13, 17400, Cast Held: Wizard Lock
+	 0x01, 0x12, 9000,  Cast Held: Open
+	 0x01, 0x14, 14200, Cast Held: Ice Storm
+	 0x01, 0x16, 19800, Cast Held: Spell Shield
+	 0x01, 0x17, 15300, Cast Held: Silence
+	 0x01, 0x18, 9200,  Cast Held: Troll's Blood
+	 0x01, 0x19, 8400,  Cast Held: Fire Storm
+	 0x01, 0x1A, 16500, Cast Held: Resist Poison
+	 0x01, 0x1B, 13000, Cast Held: Spell Drain
+	 0x01, 0x1C, 22400, Cast Held: Far Silence
+	 0x01, 0x1D, 10200, Cast Held: Toxic Cloud
+	 0x01, 0x1E, 19300, Cast Held: Shalidor's Mirror
+	 0x01, 0x1F, 7600,  Cast Held: Lightning
+	 0x01, 0x20, 17500, Cast Held: God's Fire
+	 0x01, 0x21, 10200, Cast Held: Wildfire
+	 0x01, 0x22, 16100, Cast Held: Wizard Rend
+	 0x01, 0x23, 21400, Cast Held: Medusa's Gaze
+	 0x01, 0x24, 30300, Cast Held: Force Bolt
+	 0x01, 0x25, 2400,  Cast Held: Slowfalling
+	 0x01, 0x27, 12300, Cast Held: Spell Resistance
+	 0x01, 0x28, 1300,  Cast Held: Stamina
+	 0x01, 0x29, 1700,  Cast Held: Water Walking
+	 0x01, 0x2A, 1700,  Cast Held: Water Breathing
+	 0x01, 0x2C, 2100,  Cast Held: Chameleon
+	 0x01, 0x2D, 1500,  Cast Held: Shadow Form
+	 0x01, 0x2E, 17200, Cast Held: Spell Reflection
+	 0x01, 0x2F, 20000, Cast Used: Spell Absorb?
+	 0x01, 0x31, 15900, Cast Held: Tongues
+	 0x01, 0x32, 16200, Cast Held: Paralysis
+	 0x01, 0x34, 13800, Cast Held: Vampiric Touch
+	 0x01, 0x35, 7800,  Cast Held: Hand of Sleep
+	 0x01, 0x36, 9300,  Cast Held: Magicka Leech
+	 0x01, 0x37, 42300, Cast Held: Sphere of Negation
+	 0x01, 0x38, 18300, Cast Held: Hand of Decay
+	 0x01, 0x3C, 9300,  Cast Held: Balyna's Antidote
+	 0x01, 0x40, 3600,  Cast Held: Heal
+	 0x01, 0x43, 12600, Cast Held: Energy Leech
+	 0x01, 0x52, 10200, Cast Held: Orc Strength
+	 0x01, 0x53, 12000, Cast Held: Wisdom
+	 0x01, 0x54, 12000, Cast Held: Iron Will
+	 0x01, 0x55, 12000, Cast Held: Nimbleness
+	 0x01, 0x56, 12000, Cast Held: Feet of Notorgo
+	 0x01, 0x57, 12000, Cast Held: Fortitude
+	 0x01, 0x58, 12000, Cast Held: Charisma
+	 0x01, 0x59, 12000, Cast Held: Jack of Trades
+	 0x01, 0x5E, 4800,  Cast Held: Recall
+	 0x02, 0x04, 3300,  Cast Strikes: Levitate
+	 0x02, 0x05, 2500,  Cast Strikes: Light
+	 0x02, 0x06, 5400,  Cast Strikes: Invisibility
+	 0x02, 0x07, 4800,  Cast Strikes: Wizard's Fire
+	 0x02, 0x08, 3800,  Cast Strikes: Shock
+	 0x02, 0x09, 4800,  Cast Strikes: Strength Leech
+	 0x02, 0x0A, 16500, Cast Strikes: Free Action
+	 0x02, 0x0B, 15600, Cast Strikes: Resist Cold
+	 0x02, 0x0C, 15600, Cast Strikes: Resist Fire
+	 0x02, 0x0D, 15600, Cast Strikes: Resist Shock
+	 0x02, 0x0E, 4700,  Cast Strikes: Fireball
+	 0x02, 0x0F, 10200, Cast Strikes: Cure Poison
+	 0x02, 0x10, 9900,  Cast Strikes: Ice Bolt
+	 0x02, 0x11, 10400, Cast Strikes: Shield
+	 0x02, 0x13, 17400, Cast Strikes: Wizard Lock
+	 0x02, 0x12, 9000,  Cast Strikes: Open
+	 0x02, 0x14, 14200, Cast Strikes: Ice Storm
+	 0x02, 0x16, 19800, Cast Strikes: Spell Shield
+	 0x02, 0x17, 15300, Cast Strikes: Silence
+	 0x02, 0x18, 9200,  Cast Strikes: Troll's Blood
+	 0x02, 0x19, 8400,  Cast Strikes: Fire Storm
+	 0x02, 0x1A, 16500, Cast Strikes: Resist Poison
+	 0x02, 0x1B, 13000, Cast Strikes: Spell Drain
+	 0x02, 0x1C, 22400, Cast Strikes: Far Silence
+	 0x02, 0x1D, 10200, Cast Strikes: Toxic Cloud
+	 0x02, 0x1E, 19300, Cast Strikes: Shalidor's Mirror
+	 0x02, 0x1F, 7600,  Cast Strikes: Lightning
+	 0x02, 0x20, 17500, Cast Strikes: God's Fire
+	 0x02, 0x21, 10200, Cast Strikes: Wildfire
+	 0x02, 0x22, 16100, Cast Strikes: Wizard Rend
+	 0x02, 0x23, 21400, Cast Strikes: Medusa's Gaze
+	 0x02, 0x24, 30300, Cast Strikes: Force Bolt
+	 0x02, 0x25, 2400,  Cast Strikes: Slowfalling
+	 0x02, 0x27, 12300, Cast Strikes: Spell Resistance
+	 0x02, 0x28, 1300,  Cast Strikes: Stamina
+	 0x02, 0x29, 1700,  Cast Strikes: Water Walking
+	 0x02, 0x2A, 1700,  Cast Strikes: Water Breathing
+	 0x02, 0x2C, 2100,  Cast Strikes: Chameleon
+	 0x02, 0x2D, 1500,  Cast Strikes: Shadow Form
+	 0x02, 0x2E, 17200, Cast Strikes: Spell Reflection
+	 0x02, 0x2F, 20000, Cast Used: Spell Absorb?
+	 0x02, 0x31, 15900, Cast Strikes: Tongues
+	 0x02, 0x32, 16200, Cast Strikes: Paralysis
+	 0x02, 0x34, 13800, Cast Strikes: Vampiric Touch
+	 0x02, 0x35, 7800,  Cast Strikes: Hand of Sleep
+	 0x02, 0x36, 9300,  Cast Strikes: Magicka Leech
+	 0x02, 0x37, 42300, Cast Strikes: Sphere of Negation
+	 0x02, 0x38, 18300, Cast Strikes: Hand of Decay
+	 0x02, 0x3C, 9300,  Cast Strikes: Balyna's Antidote
+	 0x02, 0x40, 3600,  Cast Strikes: Heal
+	 0x02, 0x43, 12600, Cast Strikes: Energy Leech
+	 0x02, 0x52, 10200, Cast Strikes: Orc Strength
+	 0x02, 0x53, 12000, Cast Strikes: Wisdom
+	 0x02, 0x54, 12000, Cast Strikes: Iron Will
+	 0x02, 0x55, 12000, Cast Strikes: Nimbleness
+	 0x02, 0x56, 12000, Cast Strikes: Feet of Notorgo
+	 0x02, 0x57, 12000, Cast Strikes: Fortitude
+	 0x02, 0x58, 12000, Cast Strikes: Charisma
+	 0x02, 0x59, 12000, Cast Strikes: Jack of Trades
+	 0x02, 0x5E, 4800,  Cast Strikes: Recall
+	 0x03, 0x00, 5000,  Extra Spell Points - Winter
+	 0x03, 0x01, 5000,  Extra Spell Points - Spring
+	 0x03, 0x02, 5000,  Extra Spell Points - Summer
+	 0x03, 0x03, 5000,  Extra Spell Points - Fall
+	 0x03, 0x04, 2000,  Extra Spell Points - New Moon
+	 0x03, 0x05, 2000,  Extra Spell Points - Half Moon
+	 0x03, 0x06, 2000,  Extra Spell Points - Full Moon
+	 0x03, 0x07, 7000,  Extra Spell Points - Near Undead
+	 0x03, 0x08, 9000,  Extra Spell Points - Near Daedra
+	 0x03, 0x09, 9000,  Extra Spell Points - Near Humans
+	 0x03, 0x0A, 10000, Extra Spell Points - Near Animals
+	 0x04, 0x00, 8000,  Potent vs Undead
+	 0x04, 0x01, 9000,  Potent vs Daedra
+	 0x04, 0x02, 10000, Potent vs Humanoids
+	 0x04, 0x03, 12000, Potent vs Animals
+	 0x05, 0x00, 40000, Regen Health - All the Time
+	 0x05, 0x01, 30000, Regen Health - Sunlight
+	 0x05, 0x02, 30000, Regen Health - Darkness
+	 0x06, 0x00, 20000, Vampiric - At Range
+	 0x06, 0x01, 10000, Vampiric - When Strikes
+	 0x07, 0x00,  4000, Increased Weight +25%
+	 0x07, 0x01,  6000, Increased Weight +50%
+	 0x08, -1,    9000, Repair Objects
+	 0x09, -1,   15000, Absorbs Spells
+	 0x0A, 0x00,  9000, Enhances Skill - Medical
+	 0x0A, 0x01,  9000, Enhances Skill - Etiquette
+	 0x0A, 0x02,  9000, Enhances Skill - Streetwise
+	 0x0A, 0x03,  9000, Enhances Skill - Jumping
+	 0x0A, 0x04,  9000, Enhances Skill - Orcish
+	 0x0A, 0x05,  9000, Enhances Skill - Harpy
+	 0x0A, 0x06,  9000, Enhances Skill - Giantish
+	 0x0A, 0x07,  9000, Enhances Skill - Dragonish
+	 0x0A, 0x08,  9000, Enhances Skill - Nymph
+	 0x0A, 0x09,  9000, Enhances Skill - Daedric
+	 0x0A, 0x0a,  9000, Enhances Skill - Spriggan
+	 0x0A, 0x0b,  9000, Enhances Skill - Centaur
+	 0x0A, 0x0c,  9000, Enhances Skill - Impish
+	 0x0A, 0x0d,  9000, Enhances Skill - Lockpicking
+	 0x0A, 0x0e,  9000, Enhances Skill - Mercantile
+	 0x0A, 0x0f,  9000, Enhances Skill - PickPocket
+	 0x0A, 0x10,  9000, Enhances Skill - Stealth
+	 0x0A, 0x11,  9000, Enhances Skill - Swimming
+	 0x0A, 0x12,  9000, Enhances Skill - Climbing
+	 0x0A, 0x13,  9000, Enhances Skill - Backstabbing
+	 0x0A, 0x14,  9000, Enhances Skill - Dodging
+	 0x0A, 0x15,  9000, Enhances Skill - Running
+	 0x0A, 0x16,  9000, Enhances Skill - Destruction
+	 0x0A, 0x17,  9000, Enhances Skill - Restoration
+	 0x0A, 0x18,  9000, Enhances Skill - Illusion
+	 0x0A, 0x19,  9000, Enhances Skill - Alteration
+	 0x0A, 0x1a,  9000, Enhances Skill - Thaumaturgy
+	 0x0A, 0x1b,  9000, Enhances Skill - Mysticism
+	 0x0A, 0x1c,  9000, Enhances Skill - Short Blade
+	 0x0A, 0x1d,  9000, Enhances Skill - Long Blade
+	 0x0A, 0x1e,  9000, Enhances Skill - Hand-to-Hand
+	 0x0A, 0x1f,  9000, Enhances Skill - Axe
+	 0x0A, 0x20,  9000, Enhances Skill - Blunt Weapon
+	 0x0A, 0x21,  9000, Enhances Skill - Archery
+	 0x0A, 0x22,  9000, Enhances Skill - Critical Strike
+	 0x0B, -1,    1000, Feather Weight
+	 0x0C, -1,    7000, Strengthens Armor
+	 0x0D, 0x00, 5000,  Improves Hearing
+	 0x0D, 0x01, 6000,  Improves Athleticism
+	 0x0D, 0x02, 6000,  Improves Adrenaline Rush
+	 0x0E, 0x00, 10000, Good Rep w/ Commoners
+	 0x0E, 0x01, 10000, Good Rep w/ Merchants
+	 0x0E, 0x02, 10000, Good Rep w/ Scholars
+	 0x0E, 0x03, 10000, Good Rep w/ Nobility
+	 0x0E, 0x04, 10000, Good Rep w/ Underworld
+	 0x0E, 0x05, 50000, Good Rep w/ All
+	 0x0F, 33, 250000,  Soul Bound: Ancient Lich
+	 0x0F, 30, 100000,  Soul Bound: Ancient Vampire
+	 0x0F,  8,   8000 , Soul Bound: Centaur
+	 0x0F, 31, 800000,  Soul Bound: Daedra Lord
+	 0x0F, 29, 155000,  Soul Bound: Daedra Seducer
+	 0x0F, 27, 105000,  Soul Bound: Daedroth
+	 0x0F, 40, 505000,  Soul Bound: Dragonling
+	 0x0F, 39,  15000 , Soul Bound: Dreugh
+	 0x0F, 36,  35000,  Soul Bound: Earth Atronach
+	 0x0F, 35,  35000,  Soul Bound: Fire Atronach
+	 0x0F, 26,  55000,  Soul Bound: Fire Daedra
+	 0x0F, 37,  35000,  Soul Bound: Flesh Atronach
+	 0x0F, 25,  55000,  Soul Bound: Frost Daedra
+	 0x0F, 22,   8000 , Soul Bound: Gargoyle
+	 0x0F, 16,   6000 , Soul Bound: Giant
+	 0x0F,  3,   5000 , Soul Bound: Giant Bat
+	 0x0F,  0,   5000 , Soul Bound: Giant Rat
+	 0x0F, 20,   5000 , Soul Bound: Giant Scorpion
+	 0x0F,  6,   5000 , Soul Bound: Giant Spider
+	 0x0F, 18,  35000,  Soul Bound: Ghost
+	 0x0F,  4,   5000 , Soul Bound: Grizzley Bear
+	 0x0F, 13,   8000 , Soul Bound: Harpy
+	 0x0F, 38,  35000,  Soul Bound: Ice Atronach
+	 0x0F,  1,   6000 , Soul Bound: Imp
+	 0x0F, 34,  15000 , Soul Bound: Lamia
+	 0x0F, 32, 105000,  Soul Bound: Lich
+	 0x0F, 19,  15000 , Soul Bound: Mummy
+	 0x0F, 10,  15000 , Soul Bound: Nymph
+	 0x0F,  7,   6000 , Soul Bound: Orc
+	 0x0F, 12,   6000 , Soul Bound: Orc Sergeant
+	 0x0F, 21,   8000 , Soul Bound: Orc Shaman
+	 0x0F, 24,   6000 , Soul Bound: Orc Warlord
+	 0x0F, 15,   5000 , Soul Bound: Skeletal Warrior
+	 0x0F, 11,   5000 , Soul Bound: Slaughterfish
+	 0x0F,  2,   6000 , Soul Bound: Spriggan
+	 0x0F,  5,   5000 , Soul Bound: Tiger
+	 0x0F, 14,   6000 , Soul Bound: Wereboar
+	 0x0F,  9,   6000 , Soul Bound: Werewolf
+	 0x0F, 23,  35000,  Soul Bound: Wraith
+	 0x0F, 28,  75000,  Soul Bound: Vampire
+	 0x0F, 11,   5000 , Soul Bound: Zombie
+	   16,  0,      0,  Item Deterioates - All the Time
+	   16,  1,      0,  Item Deterioates - In Sunlight
+	   16,  2,      0,  Item Deterioates - Holy Places
+	   17,  1,      0,  User Takes Dmg - in Sunlight
+	   17,  1,      0,  User Takes Dmg - Holy Places
+	   20,  0,      0,  Low Damage vs Undead
+	   20,  1,      0,  Low Damage vs Deadra
+	   20,  2,      0,  Low Damage vs Humans
+	   20,  3,      0,  Low Damage vs Animals
+	   21,  0,      0,  Health Leech - When Used
+	   21,  1,      0,  Health Leech - Unless Used Daily
+	   21,  2,      0,  Health Leech - Unless Used Weekly
+	   22,  0,      0,  Bad Reactions - Humans
+	   22,  1,	0,  Bad Reactions - Animals
+	   22,  2,	0,  Bad Reactions - Daedra
+	   23, -1,      0,  Extra Weight
+	   24, -1,      0,  Weakens Armor
+	   25,  0,      0,  Bad Rep - Commoners
+	   25,  1,      0,  Bad Rep - Merchants
+	   25,  2,      0,  Bad Rep - Scholars
+	   25,  3,      0,  Bad Rep - Nobility
+	   25,  4,      0,  Bad Rep - Underworld
+	   25,  5,      0,  Bad Rep - All
+	   26,  0, 100000,  Increase Persaonalilty?
+	   26,  1, 100000,  Save vs Magic or Die
+	   26,  2, 100000,  Drain Spell Points/Strength
+	   26,  3, 100000,  Change into Lycanthrope
+	   26,  4, 100000,  Summon Daedroth
+	   26,  5, 100000,  Masque of Clavicus
+	   26,  6, 100000,  Receive 30 Bonus Points
+	   26,  7, 100000,  Attacker Receives Own Damage ??
+	   26,  8, 100000,  Clone Target
+	   26,  9, 100000,  Reusable Soul Gem ???
+	   26, 21, 100000,  Open any lock ???
+	0xFFFF,  0,  10000, Masque of Clavicus
+	0xFFFF,  1,  10000, Mehrune's Razor
+	0xFFFF,  2,  10000, Mace of Molag Bol ???
+	0xFFFF,  3,  10000, Hircine Ring ???
+	0xFFFF,  4,  10000, Sanguine Rose ???
+	0xFFFF,  5,  10000, Ogmha Infinitum
+	0xFFFF,  6,  10000, Wabbajack ???
+	0xFFFF,  7,  10000, Ring of Namira
+	0xFFFF,  8,  10000, Skull of Corruption ???
+	0xFFFF,  9,  10000, Azura's Star
+	0xFFFF, 10,  10000, Volendrung
+	0xFFFF, 11,  10000, Warlocks Ring ???
+	0xFFFF, 12,  10000, Auriel's Bow ???
+	0xFFFF, 13,  10000, Necromancer's Amulet
+	0xFFFF, 14,  10000, Chrysamere
+	0xFFFF, 15,  10000, Lords Mail ???
+	0xFFFF, 16,  10000, Staff of Magnus
+	0xFFFF, 17,  10000, Ring of Khajiit ???
+	0xFFFF, 18,  10000, Ebony Mail
+	0xFFFF, 19,  10000, Auriels Shield ???
+	0xFFFF, 20,  10000, Spell Breaker
+	0xFFFF, 21,  10000, Skeleton's Key
+	0xFFFF, 22,  10000, Ebony Blade
+[end]
+
+
+#
+# Monster related data. Format,
+#	<index>, <soul cost>, <name>
+#
+[monsters]
+	 33, 250000, Ancient Lich
+	 30, 100000, Ancient Vampire
+	  8,   8000, Centaur
+	 31, 800000, Daedra Lord
+	 29, 155000, Daedra Seducer
+	 27, 105000, Daedroth, or Lesser Daedra
+	 40, 505000, Dragonling
+	 39,  15000, Dreugh
+	 36,  35000, Earth Atronach
+	 35,  35000, Fire Atronach
+	 26,  55000, Fire Daedra
+	 37,  35000, Flesh Atronach
+	 25,  55000, Frost Daedra
+	 22,   8000, Gargoyle
+	 16,   6000, Giant
+	  3,   5000, Giant Bat
+	  0,   5000, Giant Rat
+	 20,   5000, Giant Scorpion
+	  6,   5000, Giant Spider
+	 18,  35000, Ghost
+	  4,   5000, Grizzley Bear
+	 13,   8000, Harpy
+	 38,  35000, Ice Atronach
+	  1,   6000, Imp
+	 34,  15000, Lamia
+	 32, 105000, Lich
+	 19,  15000, Mummy
+	 10,  15000, Nymph
+	  7,   6000, Orc
+	 12,   6000, Orc Sergeant
+	 21,   8000, Orc Shaman
+	 24,   6000, Orc Warlord
+	 15,   5000, Skeletal Warrior
+	 11,   5000, Slaughterfish
+	  2,   6000, Spriggan
+	  5,   5000, Tiger
+	 14,   6000, Wereboar
+	  9,   6000, Werewolf
+	 23,  35000, Wraith
+	 28,  75000, Vampire
+	 11,   5000, Zombie
+[end]

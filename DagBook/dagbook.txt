@@ -1,0 +1,123 @@
+	       DESCRIPTION OF THE DAGGERFALL BOOK FILE FORMAT
+=============================================================================
+   Written By Dave Humphrey 				 12 December 1997
+	      aj589@freenet.carleton.ca
+
+
+This file describes as much as is known about the book files used in the
+Daggerfall CRPG game created by Bethesda.  The book files exist in the
+directory ARENA2\BOOKS\ in the main DAGGER directory and have names such
+as 'BOK00100.TXT', 'BOK00002.TXT', etc... All of the information contained
+in here was found from looking at all the different book files.  As such,
+all known possible values for a field will be stated where appropiate.
+
+
+Overall Format
+=================================================
+The general format of a book file can be split into four different parts,
+explained as follows.
+
+        [ ..... 64 Bytes, Title of Book ..... ]
+        [ .... 160 Bytes, Author of Book .... ]
+        [ ..... Variable Length Header ...... ]
+        [ . Variable Start/Length Book Text . ]
+
+The first two fields, the title and book author appear to be the only fixed
+length fields beginning the file.  Everything else after this depends on the
+length of the header.
+
+
+Header Format
+=================================================
+The header isn't that well known at the moment, but I'll attempt to describe
+what is known.  The first portion of the header is always 12 bytes long and
+has the following format.
+
+         
+
+     [ .. Bytes 224..225 .. ] (int)
+           Unknown quantity that has a few possible values
+		0x03E8: Most files have this value
+		0x012C, 0x0190, 0x000A, 0x1388, 0x01F4, 0x2710
+     [ .. Bytes 226..227 .. ] (int)
+           Always 0x0000
+     [ .. Bytes 228..229 .. ] (int)
+           Unknown quantity that is a value from 1 to 4. Probably some sort
+           of book type field?
+     [ .. Bytes 22A..22B .. ] (int)
+	   Always 0x04D2 except for book #100 where it is 0x04D3. Note that
+           0x04D2 = 1234 in decimal which is a rather peculiar number.
+     [ .. Bytes 22C..22D .. ] (int)
+           Always 0x0929 except for book #100 where it is 0x092A.  Note that
+           0x0929 = 2345 in decimal which again is a  rather strange number.
+     [ .. Bytes 22E..22F .. ] (int)
+           The number of page offsets which follow.
+
+The important bytes to remember are the last too which will be required in
+order to determine where exactly the book text starts.  What follows in the
+file now are a number of long integer (4 byte) values.  The exact number is
+determined by the value of the last two bytes described above.  The offsets
+each point to the top of a page in the book.  This is most likely used for
+changing pages of a book in the game.  The first offset will point to the
+very start of the book text which also corressponds to the first byte after
+the offset list ends.  So, the header looks essentially like this...
+
+           ...... Author ....... ]
+     { Start of Header }          
+          [ 10 bytes Unknown Header Information ]
+          [ 2 Bytes, Number of Offsets ]
+          [ Offset List, (4 * Number of Offsets) Bytes Long ]
+     { End of Header }
+          [ ...... Book Text .......
+
+
+Book Text Format
+=================================================
+The text of the book is not in normal ASCII format so it needs some
+explaining.  There are a number of non-printable characters which have
+a specific task...
+
+     [ Character 0x00 ]
+        This character is the equivilent of a Carriage Return, indicating
+	that a new line should be started.
+     [ Character 0x01 (ASCII 1) ]
+	Not sure what this is, but it appears to only exist before the
+	0xFB character described below.  It might have something to do
+	with text display but I'm not sure.
+     [ Character 0xF6 (ASCII 246) ]
+	This character indicates the end of a page in the book.
+     [ Character 0xF9 (ASCII 249) ]
+	This selects which font is to be used depending on what the next
+	character afterwards is.
+		0x02: Display the fancy text (for titles)
+		0x04: Display the regular text
+     [ Character 0xFB (ASCII 251) ]
+	I'm not to sure what this one does.  It is always followed by two
+	more characters.  The next one is always a 0x08 or a 0x10 (thats
+	8 and 16 in decimal).  The one after that is always a 0. This
+	doesn't appear to have any effect on the text display.
+     [ Character 0xFD (ASCII 253) ]
+	Indicates that the next line printed should be horizontally centered
+	on the screen.  Used mostly for titles, authors, etc...
+
+
+Besides the regular printable characters, these are the only ones to exist
+in any of the books.  The exception is the book BOK10000.TXT which appears
+to be written in german or something and has all kinds of wierd things
+happening in it.  For this reason I decided to ignore it since it didn't
+fit the format of all the other book files.  For testing purposes I used
+the above information to create a simple program to output the book files
+to the screen in text mode.  The output appears to be very close, if not
+identical, to the output produced in Daggerfall itself.  The exception
+occurs for certain lines where the line feed character 0x00 appears to be
+missing.  This causes really long lines (> 80 characters) to be displayed.
+I would assume that the Daggerfall windowing code can automatically handle
+and wrap long lines with no line feeds since similar things happen in the
+quest text files.  There actually appears to be evidence that DF cannot
+properly handle long text lines as someone pointed out to me, since there
+are cases where text flows past the end of the window.
+
+That's about all there is too it.  If there's any mistakes, or you find out
+one of the unknown bytes, just e-mail me to let me know....Enjoy.
+
+

@@ -1,0 +1,156 @@
+#
+# CLASSED.RC
+#
+# This file contains the parameters for all of the GUI objects on the main
+# window (like width, height, titles, colors, etc...).
+#
+CONTROL exit_button
+	width = 12
+	height = 3
+	text = "Exit"
+	user_click = OnExit
+	open_in = main_window, 66, 21
+END CONTROL
+#
+CONTROL about_button
+	width = 12
+	height = 1
+	text = "About"
+	user_click = OnAbout
+	open_in = main_window, 66, 19
+END CONTROL
+#
+CONTROL install_button
+	width = 8
+	height = 1
+	text = "==>"
+	user_click = OnInstall
+	open_in = main_window, 36, 6
+END CONTROL
+#
+CONTROL uninstall_button
+	width = 8
+	height = 1
+	text = "<=="
+	user_click = OnUninstall
+	open_in = main_window, 36, 9
+END CONTROL
+#
+CONTROL uninstall_all_button
+	width = 8
+	height = 1
+	text = "<=All="
+	user_click = OnUninstallAll
+	open_in = main_window, 36, 12
+END CONTROL
+#
+CONTROL uninstalled_label
+	text = "Available Classes"
+	text_color = LIGHTGREEN
+	back_color = BLUE
+	open_in = main_window, 3, 2
+END CONTROL
+#
+CONTROL uninstalled_list
+	max_length = 32
+	list_height = 12
+	high_text_color = BLACK
+	high_back_color = LIGHTGRAY
+	user_change = OnUninstalledChange
+	open_in = main_window, 3, 4
+END CONTROL
+#
+CONTROL installed_label
+	text = "Installed Classes"
+	text_color = LIGHTGREEN
+	back_color = BLUE
+	open_in = main_window, 46, 2
+END CONTROL
+#
+CONTROL installed_list
+	max_length = 32
+	list_height = 12
+	high_text_color = BLACK
+	high_back_color = LIGHTGRAY
+	user_change = OnInstalledChange
+	open_in = main_window, 46, 4
+END CONTROL
+#
+CONTROL desc_label
+	text = "Class Description"
+	text_color = LIGHTGREEN
+	back_color = BLUE
+	open_in = main_window, 3, 18
+END CONTROL
+#
+CONTROL desc_textbox
+	enabled = FALSE
+	text_color = LIGHTGRAY
+	back_color = BLACK
+	open_in = main_window, 2, 19
+END CONTROL
+#
+CONTROL main_window
+	x = 1
+	y = 1
+	width = 80
+	height = 25
+	title = "ClassEd v0.0"
+END CONTROL
+#
+CONTROL about_ok_button
+	width = 8
+	height = 3
+	text = "Ok"
+	user_click = OnAboutOk
+	open_in = about_window, 20, 8
+END CONTROL
+#
+CONTROL about_name_label
+	text = "Application: ClassEd"
+	open_in = about_window, 3, 2
+	text_color = RED
+	back_color = LIGHTGRAY
+END CONTROL
+#
+CONTROL about_version_label
+	text = "Version: 0.1b"
+	open_in = about_window, 30, 2
+	text_color = BLACK
+	back_color = LIGHTGRAY
+END CONTROL
+#
+CONTROL about_date_label
+	text = "Date: 25 Jan 1999"
+	open_in = about_window, 3, 3
+	text_color = BLACK
+	back_color = LIGHTGRAY
+END CONTROL
+#
+CONTROL about_author_label
+	text = "By: Dave Humphrey"
+	open_in = about_window, 30, 3
+	text_color = BLACK
+	back_color = LIGHTGRAY
+END CONTROL
+#
+CONTROL about_desc_label
+	text = "ClassEd is a simple class installation utility for use with some neat unofficial Daggerfall add-on pack."
+	width = 40
+	height = 6
+	open_in = about_window, 3, 5
+	text_color = BLACK
+	back_color = LIGHTGRAY
+END CONTROL
+#
+CONTROL about_window
+	x = 15
+	y = 5
+	width = 50
+	height = 12
+	back_color = LIGHTGRAY
+	title = "About ClassEd"
+END CONTROL
+#
+
+

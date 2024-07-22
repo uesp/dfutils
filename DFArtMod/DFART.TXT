@@ -1,0 +1,137 @@
+		 DFArtMod and DFAComp v0.5 BETA Documentation
+
+			 - Written By Dave Humphrey -
+			  aj589@freenet.carleton.ca
+				 31 May 1998
+
+
+   INTRODUCTION
+========================================
+The two programs, DFArtMod and DFAComp, allow Daggerfall 'developers' to
+create unique items and artifacts and allow regular Daggerfall users to use
+these artifacts easily in the game.  At the moment adding artifacts to the
+game is indeed a 'black art' as these programs are sure to contain lots of
+bugs.  I have successfully added artifacts to the game myself but I cannot
+guaruntee 100% success just yet.  Comments, bugs, errors, etc... are all
+very welcome at the above e-mail address.
+
+
+   QUICK GUIDE TO ARTIFACT CREATION
+========================================
+     - Run DFAComp to create your artifacts and your description of them.
+       Make sure to use unique indices for them.
+     - Use the 'Check' button to ensure everything is ok.
+     - Save the artifacts to an AMD file.
+     - Create a quest using your new artifact(s).  The item code for your
+       new artifact will be group 5, sub-group equal to the artifact index.
+     - Copy the AMD file to the Daggerfall directory.
+     - Backup the files MAGIC.DEF and TEXT.RSC (important).
+     - Use DFArtMod to extract the AMD file into the MAGIC.DEF and TEXT.RSC
+       file:  dfartmod file.amd
+     - Load up Daggerfall, get your new quest, and get your artifact.
+
+
+
+   CREATING THE ARTIFACTS (DFAComp)
+========================================
+The program DFAComp is used by those wishing to create a unique artifact for
+the game.  There are two steps in doing so: creating the magic item, and
+creating the descriptive text.  For the moment I'll assume you're at least
+slightly familiar with editting or hacking Daggerfall files.  The user
+interface should work fine, although there are a few minor bugs which I still
+haven't fixed yet.
+
+The magic item screen in DFAComp allows you to change the enchantments of the
+item, its name and type among other things.  All the known enchantments are
+there to choose from, although certain ones may not work effectively (such
+as casting heal when held for example).  The item type chooses the general
+type and the appearance of the item.  I've always choosen regular item types
+such as armour and weapons.  Choosing an existing artifact as a type or a
+non-usable item (like ingrediants) may not work or have 'interesting' effects.
+I've also noticed that although you specify the material type, on some items
+the material color isn't properly displayed.  It will still be that material,
+but merely look like regular steel.  The artifact index is very important and
+is disscussed later on.
+
+To go along with each new artifact must be a descriptive text, otherwise the
+user will get an error message when getting 'info' on the artifact. Don't use
+too long a line (somewhat shorter than the size of the text window) or it
+will not display properly.  Make sure the text index matches the artifact
+index.  The text index can be changed by double clicking on the text index
+in the list.
+
+The 'Check' button at the bottom of the screen is important.  It allows you
+to make sure your current set of artifacts is safe.  It makes sure you
+haven't used any invalid artifact indices and that there are matching text
+and artifact entries.
+
+When saving, use the AMD format (which should be automatically used anyways)
+in order to identify the files as Artifact MoDules.
+
+
+   THE ARTIFACT INDEX
+========================================
+The artifact index is probably the most important value and much can be said
+about it.  The index is a unique number which identifies the artifact as well
+as its descriptive text.  The current set of artifacts in Daggerfall use the
+indices from 0 to 22 so those are obviously off limits.  Also, you should not
+use any artifact index which someone else has already used or is planning to
+use, otherwise someone who wishes to install both artifact packs will be
+messed up since some artifacts will overwrite others.  At the moment, I'm
+not sure what the limit on the index is.  It is either 100, 127, or 255 so
+attempt to keep index numbers less than 100 for the moment (this leaves 78
+new user artifacts to be defined which should be plenty).
+
+
+   USING THE ARTIFACT (QUESTS)
+========================================
+Now that you've created your wonderful artifact, how do you use it in the
+game.  To acquire your artifact you must create a quest for it.  A simple
+method is to take an existing artifact quest and merely change the item
+code.  The item code for your artifact will be group 5 with the subgroup
+being your artifact index (ie, from 23 on up).  I won't go into detail about
+how to edit quests since there are several documents already out there. There
+are also several good quest editors to do this (WinQEdit and DMPQuest for
+example).  If at all possible, try to change the quest as much as possible
+to make things more interesting.  Its easy to change all the texts in the
+quests yet still have the same quest type.  Also try to make your quests
+available in various guilds, ones that don't normally have artifact quests
+(like temples).
+
+
+   INSTALLING THE ARTIFACTS (DFArtMod)
+========================================
+All the artifacts and texts in a saved AMD file can be installed by using
+the DFARTMOD file. Merely use the syntax
+
+		DFArtMod file.amd
+
+while in the Daggerfall directory. This will put all the artifacts into
+the MAGIC.DEF file and all the texts in the TEXT.RSC file. The various
+options for the program are as follows:
+
+		/? ...... Display help screen
+		/v ...... View info on AMD file, do not extract.
+		/c ...... Check AMD for errors and conflicts.
+		/y ...... Answer Yes to all prompts
+
+Its probably a _very_ good idea to create backups of the files that are
+modified.  As I said, although I've used it without problems doesn't mean
+that there aren't any.  If you wish, you could release a BAT file along with
+your AMD file to automatically install and backup things, ie:
+
+		@echo off
+		copy arena2\magic.def arena2\magic.102
+		copy arena2\text.rsc  arena2\text.102
+		echo Files have been backed up with the 102 extension.
+		DFArtMod /y myfile.amd
+		echo MyFile artifacts have been installed...enjoy.
+		@echo on
+
+Please note that unless you haven't patched the game, you cannot merely copy
+TEXT.RSC from the CD-ROM.  You'll have to reinstall your patch.  I'm not
+sure about MAGIC.DEF.
+
+
+
+

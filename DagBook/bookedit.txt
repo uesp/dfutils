@@ -1,0 +1,295 @@
+	DAGGERFALL BOOK EDITOR - BOOKEDIT v 0.30 - REFERENCE DOCUMENT
+============================================================================
+    Written by Dave Humphrey                            20 December 1997
+    aj589@freenet.carleton.ca                     www.honesty.com/jackel
+
+
+This document is intended to describe the program BOOKEDIT in as much detail
+as possible.  This includes proper use of the various features of the program
+and instructions on how to successfully create or edit book files for
+Daggerfall.  This allows custom books to be created and used in the actual
+game, one of the many custom editting utilities for the game.
+
+
+   TABLE OF CONTENTS
+=================================================
+        Introduction
+        Features
+        Requirements
+        Installation
+        Using BookEdit
+		The Menus
+		Status Bar
+                Editting Text
+	Editting Book Texts
+	Version Improvements
+	Known Bugs - Limitations - Etc...
+	Source Code
+        Legal Stuff
+
+
+   INTRODUCTION
+=================================================
+Not too long ago someone posted a note on the Daggerfall mailing list asking
+about the format of the Daggerfall book files (found in the ARENA2\BOOKS
+directory).  A few days later I had some spare time and managed to figure out
+most of the book format.  After posting the findings a few people inquired
+about a book editor.  After asking around a bit I discovered that I was
+nominated to write it, and BOOKEDIT was born.  Due to more reuse of
+previously written code the first version (0.10) took me less than a day.
+In version 0.30 I introduced a slightly better editor with more functions
+such as copy and paste.
+
+If you ever notice any bugs/crashes with the program please let me know so
+I can fix them.  Similarily with any ideas you might have to improve the
+program for future versions.
+
+
+   FEATURES
+=================================================
+	- Load/Save any of the Daggerfall Book files and edit them in a
+	  simple text editor.
+	- Load or Save plain text files is also supported.
+	- Editor also has limited ability to copy, cut, and paste text.
+	- Color coded edit window makes special text codes plainly stand out
+
+   REQUIREMENTS
+=================================================
+Since this is a regular DOS application, the requirements are very bare.
+	- DOS v3.0 or greater
+        - Mouse, any mouse should work fine
+        - 286 or greater
+
+
+   INSTALLATION
+=================================================
+- Simply unzip or copy the file into the DAGGER directory on whatever drive
+  it exists on.  BOOKEDIT automatically assumes it is in the DAGGER
+  directory but you can place it anywhere you wish.
+
+   USING BOOKEDIT
+=================================================
+The program should be very straight forward but I'll go through everything
+one step at a time.  When you load up the program you'll be presented with
+a simple text editor.  At the very top of the screen are a number of menu
+options, 'File', 'Edit', and 'Help'.  Clicking these will display the
+contents of the appropiate menu.  The whole other part of the screen is the
+area where the text file will be displayed when one is created/loaded. The
+very bottom of the screen is a small status area, and the right side of
+the screen contains a scroll bar for scrolling up and down the document.
+
+     THE MENUS
+The file menu contains a number of options related to file management such
+as loading and saving, etc...
+
+        New
+          This clears any text in the editor. You aren't prompted if the text
+          hasn't been saved so use with caution.
+        Load Book
+        Save Book
+          These two options allow one to load or save a Daggerfall Book file.
+          You are presented with a file dialogue window allowing you to
+	  select a file, change directories/drives, enter wildcards, etc...
+	  When loading a book the program will prompt you if you haven't
+	  saved the current text if it has been modified.
+	Load Text
+	Save Text
+	  This allows you to load and save plain text files.  Useful if you
+	  don't particularily like this text editor, you can save book files
+	  as pure text, edit them as plain text in some other editor, and
+	  then reload the text file.  Similarily with Load Text as in Load
+	  Book, the program will prompt you if the current text has not been
+	  saved since the last change.
+	Exit
+	  Exits the program.  A prompt is displayed to make sure you want to
+	  exit if the current text has been modified and not saved.
+
+The edit menu contains several options currently.
+
+	Cut
+	  Takes whatever text is currently selected and moves it too the
+	  clipboard.
+	Copy
+	  Takes whatever text is currently selected and copies it too the
+	  clipboard.
+	Paste
+	  Inserts the text currently in the clipboard and pastes it at the
+	  current cursor position.
+	Change Title
+	  Edit the Title of the current book.  This value is use when you
+	  click on a book in your inventory to see what it is.
+	Change Author
+	  Same as the previous option except for the book's author.
+	Font Fancy
+	Font Normal
+	  Inserts the appropiate string for changing the text font. Useful
+	  if you don't remeber the exact string or can't be bothered to type
+	  it all in manually.
+	Center Char
+	Page Break
+	  Some more shortcuts in order to make editting DF books easier.
+	  Center char will add the centering character '|' at the begginning
+	  of the current line, if there isn't one there already.  Page Break
+	  will insert a new line at the current position and add a '~'
+	  character.
+
+The help menu displays a simple help screen with various keys and status
+information.
+
+
+     STATUS BAR
+The text status bar can be found at the very bottom of the screen and looks
+something like...
+
+	      ====  10: 4 * ==   temp.txt ======
+
+The first two numbers represent the line and character number of the current
+cursor position (ie, line 10, character 4).  The first line and character
+would be 1:1.  The asterick '*' is present whenever the current text has
+been modified and not saved.  The last item is the current filename of the
+document.
+
+
+     EDITTING TEXT
+Editting text in BookEdit is just like in most other text editors. Use the
+various cursor keys and the mouse to scroll through the document. Use the
+DEL and BackSpace keys to delete, etc...  You can also scroll through the
+text using the scroll bar at the right edge of the screen. Lines of text
+up to 78 characters are supported, anything longer will be wrapped
+automatically.  To select text simply use the left mouse button to drag a
+selection, or hold the SHIFT key down and use the cursor keys to move around
+the document.
+
+     VARIOUS KEYS
+There are a number of keyboard shortcuts to various tasks...
+	Shift+Ins - Paste Clipboard Text
+	Ctrl+Y - Delete the Current Line
+	Ctrl+F - Insert Fancy Font String
+	Ctrl+N - Insert Normal Font String
+	Ctrl+C - Copy Selected Text to Clipboard
+	Ctrl+X - Cut Selected Text to Clipboard
+	Alt+F - File Menu
+	Alt+E - Edit Menu
+	Alt+Q - Quit Program
+	Alt+H or F1 - Help Screen
+        F2 - Save Book
+        F3 - Load Book
+
+
+   EDITTING BOOK TEXTS
+=================================================
+There are a number of special text codes that one needs to be aware about
+to successfully edit or create Daggerfall book texts.
+
+     Page Breaks
+       Page breaks are required in the text in order to seperate the
+       different pages so that Daggerfall can scroll through them properly.
+       There can be at most 23 lines of text between successive page breaks,
+       otherwise the text will overflow the Daggerfall window.  Page breaks
+       are represented in the editor by the '~' tilde character which is
+       displayed in a violet color.  Page breaks should be contained on
+       seperate lines by themselves, although they should work just about
+       anywhere.  There is a current limit of 100 pages.
+     Font Selection
+       There are two different fonts available for use in the book text. The
+       normal font used for most of the text, and the fancy font used for the
+       book title.  The font is represented in the edit window by the
+       strings '{FancyFont}' and '{NormFont}' displayed in a yellow colour.
+       To change the font type in one of the font strings.  All text after
+       this point will be displayed in the selected font until the next
+       font selected string.
+     Centered Lines
+       It is possible to center text lines in the Daggerfall window by using
+       the centering character '|'.  If this is the first character in a line
+       the string will be displayed as centered in Daggerfall.  Useful for
+       titles, author name, etc...
+     Undefined Characters
+       There are a number of undefined characters in the existing Daggerfall
+       book files.  These are represented by special character codes preceded
+       by the '#' character and displayed in red and white.  The function of
+       these characters are not yet known and can probably be deleted at will.
+       For example, the text code '#4A' indicates that the character 0x4A in
+       hexadecimal (or 74 in decimal) will be written to the file.  Any hex
+       code from 00 to FF is supported.  Most users shouldn't worry about
+       these codes until such time that they are understood and fully supported
+       by the program.
+
+A few other things to keep in mind. Don't forget to put page breaks at least
+every 23 lines.  Also don't create lines that are too long. Most book texts
+that came with the game have lines no longer than 60 characters which should
+leave plenty of room on the margins.
+I have successfully created a trial book from scratch and have had
+it displayed in Daggerfall with no problems.
+
+
+   VERSION IMPROVEMENTS
+=================================================
+  Ver 0.10 - Released 16 December 1997
+	- First released version
+
+  Ver 0.30 - Released 21 December 1997
+	- Fixed bug with the menu system which would corrupt the heap on
+	  occasion
+	- Rewrote the editor code so that more features can be easily
+	  implemented
+	- Add the ability to copy, cut, and paste text to/from a clipboard.
+	  These functions are still primitive but appear to work fine.
+	- Status line with line/char position, filename, and file modified
+	  status added to bottom of window
+	- Scroll bar added to right side of window
+	- More features in the edit menu to make editting book texts
+	  easier.
+	- Program will test book files to see if they are the correct format
+	  when loading.
+	- Better error handling to notify user what happened.
+
+
+   KNOWN BUGS - LIMITATIONS - ETC...
+=================================================
+  - The development of this program was very quick so I'm sure I've managed
+    to overlook a slew of bugs.  Just make sure you e-mail me when you find
+    any (aj589@freenet.carleton.ca).
+  - I haven't run across any memory problems in this program so you shouldn't
+    have to worry about running out of memory or anything.
+  - While you can change drives the support for error handling the floppy
+    drives is limited at best.
+  - Limited to 100 pages of text which can be easily expanded if this
+    proves too little.
+  - Size of pages is limited to 64kb although the entire document can be
+    larger as long as there is enough conventional memory.
+  - The code for cutting/copying/pasting appears to work well but due to the
+    complexity of it there may be unforseen problems I didn't think of
+    during debugging.  If you get any wierd behavior when using these just
+    let me know.
+
+
+   SOURCE CODE
+=================================================
+Included in the ZIP file are the code files DAGBUTIL.CPP and DAGBUTIL.H.
+These are only included for any interested programmers and can be deleted.
+The files contains the class DAGBOOK_TYPE for loading and saving the DF
+book format.  Of course there was much more code used to create the program
+but its not included to reduce to size (about 7000 lines in total).  I
+thought that these two files might be useful for anyone else wanting to make
+a book editor so they wouldn't have to spend time creating and testing the
+input/output routines as well as the format checker in version 0.30. All
+other source code is freely available upon request.
+
+
+   LEGAL STUFF
+=================================================
+This program and related source code is public domain and can be
+copied and distributed at will.  If you decide to use any of the
+source code for any commerical or non-commercial purposes, I do
+ask that you give credit where it is due.  I would also consider
+it courtesy to tell me where are for what its being used for (for
+gloating purposes only...;).
+
+I cannot be held responsible for any damage incurred through the
+use of this program.  Through-out the many hours of debugging/
+testing I've never had anything happen more severe than a mild
+freeze up (most often due to my incompetance by attempting to
+delete a NULL pointer or something). If you due notice any bug
+or crash, please let me know so I can fix it..Thanks.
+
+

@@ -1,0 +1,92 @@
+			    DFItem - Documentation
+		   Written by Dave Humphrey - 24 March 1998
+	     aj589@freenet.carleton.ca     www.honesty.com/jackel/
+
+
+   INTRODUCTION
+=======================================
+Welcome to DFItem, a simply DOS utility allowing one to edit any and all
+items contained in the Daggerfall save games.  I first created the program
+for my own 'needs' to edit the savegame files.  I wanted to be able to sell
+magical items at a proper cost, not the greatly reduced cost given in any
+store.  From known information about the SAVETREE.DAT file and through
+hacking I was quickly able to determine the format and create this simple
+program.  Seeing that there was only one program, DFHack, that could edit
+items in any way, I decided to release this since it included a few
+additional features....Enjoy.
+
+
+
+   INSTALLING
+=======================================
+DFItem must be installed in the root directory of Daggerfall, usually
+something like C:\DAGGER\ etc... If you do not install it there it will not
+be able to find the savegame directories and will complain.  All that is
+needed to run the program is the DFITEM.EXE file, and, of course, some
+Daggerfall save games.
+
+
+   USING DFItem
+=======================================
+DFItem has a simple user interface which you should find very easy to use.
+To load a game merely click on the 'Load' button to display a list of
+available savegames.  Select the one you wish to load all the items from
+that file.  It is entirely possible to run out of memory if you have too
+many items in the savegame.  You may now edit the various fields such as
+item name, cost, uses, type etc...  Please note that it is entirely possible
+to enter an invalid number in some fields that might cause 'undocumented'
+behavior in Daggerfall.  At any rate, making backups of the file SAVETREE.DAT
+before editting is always a good idea.  In order to save your changes make
+sure you press the 'Save' button before you load another game or exit.
+
+There are a number of buttons other than the obvious 'Load' and 'Exit' which
+may need explaining.  The 'Next' and 'Prev' buttons move ahead to the next
+item in the list, as do the PgUp and PgDn keys.  The '+Mag' and '-Mag'
+buttons move to the next magical item found, if any, as do the Up and Down
+cursor keys (useful if you wish to edit the enchantments of some of your
+magical toys). The three 'Find' related buttons help you look for a
+particular item by name and type.  Enter the string to search for by pressing
+the 'Find Item' key.  Now, use the 'Find Next' and 'Find Prev' buttons to
+find all the items matching your query.  The 'Fix' button, or ALT-F, fixes
+the item to a condition of New.
+
+
+The 'Sell' button, also ALT-S, displays a window prompting you if you wish
+to sell the item for the calculated cost.  The calculated cost is based on
+the base item price, plus the material modifier, plus the enchantments.
+Currently, the base item price for most items is incorrect, defaulting to 10
+gold (so most non-magical items may have an incorrect calculated cost).  The
+selling price is based on 1/2 the calculated cost modified slightly by your
+characters personality. Selling an item will turn it into a Letter of Credit
+of the appropiate amount. If you sell a large number of items you may wish to
+visit a bank shortly thereafter to deposit them.
+
+
+   ENCOUNTERING BUGS
+=======================================
+I've edited, saved, and tested many savegames with Daggerfall v2.13 with
+absolutely no problems.  It should work fine with earlier version but since
+I haven't tried it, I cannot guaruntee that it will.  If you do find a bug
+or have any problems, please contact me at aj589@freenet.carleton.ca
+
+
+    TECHNICAL STUFF
+=======================================
+Not going to include any of the format/structure information since it is
+rather long and complex and has been written nicely by others. As usual, the
+source code of the program is freely available...just email me a request.
+
+
+
+    LEGAL STUFF
+=======================================
+I am in no way connected or related to Bethesda.  This is a third party
+software and can not be guarunteed to work 100% correctly or not mangle
+savegames etc... I cannot be held responsible for any damage incurred
+through its use.
+
+This program and its source code is public domain and can be freely copied
+and distributed at will.  If you do use any of the source I would consider
+it polite to be given credit where it is due.
+
+

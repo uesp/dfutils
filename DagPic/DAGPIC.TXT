@@ -1,0 +1,276 @@
+DAGPIC v0.30  Copyright (c) 1996 - Dave Humphrey - aj589@freenet.carleton.ca
+=====================================================
+DAGPIC is a utility I created to initially view the IMG files in the 
+Daggerfall ARENA2 directory and save them as PCX image files, viewable by
+many utilities such as Paintbrush in Windows.  DAGPIC can now also view CIF
+image files which contain multiple images (such as character portraits) and
+the ability to convert PCX files to IMG/CIF files allowing for custom 
+graphics in Daggerfall.
+
+
+CONTENTS in THIS FILE
+=====================================================
+	Included Files
+	Installation Walk-Through
+	Configuartion File Information
+	Program Usage Notes
+	Program Format
+	Program Examples
+	Version Updates
+	Credits
+	Programing Notes
+	Contacts, Connections, and Sites
+	Standard Legal Disclaimer
+
+
+INCLUDED FILES
+=====================================================
+	DAGPIC.TXT - This file...very important to read this first!
+	DAGPIC.FAQ - Answer to commonly asked questions
+	DAGPIC.EXE - Main file...you need this
+	DAGPIC.CFG - Config file, contains path information
+      SMALTHIN.FNT - Font file, needed for graphics
+	DAGPIC.CPP - C++ source code for your amusement
+	ALLPIC.BAT - Batch file which allows viewing of multiple image files
+		     at a time.
+
+
+INSTALLATION WALK-THROUGH
+=====================================================
+INSTALLATION METHOD 1:
+	The easiest, and in my opinion, the best method of installing DAGPIC
+is to create a DAGPIC directory in the main Daggerfall directory and unzip
+DAGPIC.ZIP into this new directory.
+	Ex:  mkdir c:\dagger\dagpic
+	     pkunzip dagpic.zip c:\dagger\dagpic
+
+DAGPIC is automatically configured for this setup which prevents more files
+from occuping the ARENA2 directory (well over 1,000 files can be found in
+this directory, depending on the install size).  You can store all backups
+and PCX files in the DAGPIC directory for easy file maintenance.  The actual
+name of the directory DAGPIC resides in is not important (i.e., installing
+into \dagger\dpic or \dagger\pic etc... has no effect).
+
+
+INSTALLATION METHOD 2:
+	DAGPIC can also be installed in any other directory, although the
+configuration file DAGPIC.CFG will need to be modified slightly to give
+the program the location of nessecary files.  See CONFIGURATION FILE INFO
+below for more information on editting this file.
+
+
+CONFIGURATION FILE INFO
+=====================================================
+DAGPIC.CFG is a file which DAGPIC.EXE looks for upon startup.  This file
+tells the program where to look for IMG/CIF, PCX, palettes, and backup
+files.  It is currently setup assuming that DAGPIC is in the \DAGGER\DAGPIC
+directory, IMG/CIF and PAL files are in the ARENA2 directory and all
+PCX and backups are to be found and stored in the DAGPIC directory.  If 
+DAGPIC.CFG is not found, the program looks for all files in the current 
+directory.  More information can be found in the CFG file.  DAGPIC will not
+create a directory if one specifed doesn't exist.
+
+
+PROGRAM USAGE NOTES
+=====================================================
+- BACKUP, BACKUP BACKUP! Very important when 'hacking' with files.
+  DAGPIC does ask to backup any files it modifies and you can retreive
+  new files from the CD, but it doesn't hurt (I'm in no-way connected
+  with Bethesda so I'm simply guessing at file formats).
+- I'm guessing this program probably contains a few bugs as I didn't 
+  extensively test it.  Please e-mail me any problems/bugs/questions.
+- I have tested it with all IMG files in the ARENA2 directory with
+  success (ie, no crashes) although it cannot display every image.
+  At the moment it won't display images larger than 320x200 mostly
+  because there are a bunch of image files which don't appear to 
+  follow the basic IMG structure and crash the program. 
+- I have tested it on several CIF files.  It doesn't seem to work to
+  well on the weapon CIF's (due to size?) but was primarily intended for
+  the face CIF's anyways.  You _can_ successfully replace character
+  potraits (Hint: Look at the FACE0?I0.CIF files and find which 
+  face is your.  Save this face, edit it, and then import it back
+  into the file in the same position).  
+- Although you can append a PCX to the end of a CIF file, it appears as 
+  though Daggerfall only takes the first ten face images in the FACE0?I0.CIF
+  files...too bad.
+- Pressing ESC on at any question will exit the program.
+- Most images will look fine using the default palette, MAP.PAL
+  You can play around with the palettes and images as you see fit.
+- When writing a PCX file it will now check if it already exists
+  and will notify you.  You may overwrite or create a backup.
+- Not all IMG files may convert to PCX's successfully.  Since the switch 
+  to PCX files (from BMP's) the conversion routines are better understood
+  and much more stable.  If you do encounter a conversion bug, notify me.
+- When importing PCX's to IMG/CIFs, keep the image sizes the same when
+  possible.  DAGPIC does take into account changes in image size but
+  the question is, will Daggerfall (it probably will, just a warning in
+  case you get crashes after editting).
+- Make sure the editting program doesn't change the image palette on you.
+  If the image palette changes, your nice picture won't look at all the
+  same once imported into Daggerfall (I know Corel PhotoPaint v3.0 doesn't
+  change the palette, while v4.0 does, Paintbrush shouldn't?).
+- I _think_ the first 4 bytes of DF image data is related to the X/Y
+  offset of the picture.  You can play around with this if your face is
+  not centered in your character portrait.
+
+
+PROGRAM FORMAT
+=====================================================
+DAGPIC v0.30 Copyright (c) 1996-1997 - Dave Humphrey
+Displays Daggerfall IMG/CIF files to the screen and converts them to/from PCX.
+  DAGPIC filename /B:PCX_filename [options]
+     filename..........The IMG/CIF file
+     /B:PCX_filename...The PCX image file
+
+  OPTIONS:
+      [/S[:#]].......Save PCX as IMG/CIF file. Optional number is for
+		     saving in position # in CIF file (Default = 1)
+		     If '/S:e' is used, PCX is appended to end of CIF file
+      [/D]...........Pause before displaying image
+      [/P:palette]...Uses the specified palette file
+      [/N]...........Don't display image, no output to screen
+      /?.............Displays help screen
+
+  EXAMPLES:
+      Save IMG/CIF to PCX....'dagpic file.img /B:file1.pcx'
+      Save PCX to IMG........'dagpic file.img /B:file1.pcx /S'
+      Save PCX to CIF........'dagpic file.cif /B:file1.pcx /S:1'
+
+  Run DAGPIC with no command line parameters for prompting. Default palette
+  is MAP.PAL. Bugs/comments etc... are welcome and can be E-Mailed to:
+  aj589@freenet.carleton.ca
+
+
+ALLPIC filenames [options]
+
+  ALLPIC allows the viewing of many IMG files at a time thus saving you time
+  from typing all those wierd filenames found in the ARENA2 directory.  The
+  program will automatically prompt you if you wish to display each image.
+  Accepts same options as DAGPIC.  If you are running ALLPIC from a
+  directory other than ARENA2, you will need to specify the location of the
+  ARENA2 directory.
+	Ex: allpic c:\dagger\arena2\*.img
+
+
+
+PROGRAM EXAMPLES
+=====================================================
+  DAGPIC body.img
+	Displays the body.img file
+
+  DAGPIC body.img /P:fmap_pal.col
+	Displays the body.img file using the palette fmap_pal.col
+
+  DAGPIC body.img /B:body1.pcx
+	Displays the body.img file and saves the PCX body1.pcx
+
+  DAGPIC face00i0.cif /B:face.pcx
+	Displays all images in face00i0.cif and saves each to a different
+	PCX file (face1.pcx, face2.pcx, ...)
+
+  DAGPIC bank00i0.img /b:newback.pcx /s
+	Converts the PCX newback.pcx to the file bank00i0.img.
+
+  DAGPIC face00i0.cif /b:newface1.pcx /s:5
+	Replaces face #5 in face00i0.cif with newface1.pcx.
+
+
+  ALLPIC *.img /P:map.pal
+	Display all the .IMG files in current directory using the
+	MAP.PAL palette
+
+  ALLPIC c:\dagger\arena2\t*.img /B /N
+	Convert all files T*.IMG in the ARENA2 directory to PCX's without
+	displaying them
+
+  ALLPIC *.img /N
+	Does absolutely nothing except waste time...play Daggerfall instead
+
+
+VERSION UPDATES
+=====================================================
+   v0.30 (Released 9 April 1997)
+	- Can load and display some TEXTURE files.  Can't display all of them
+	  so use at your own discretion.
+	- Made it so the display toggle works properly. Can now convert
+	  images normally without displaying them (is faster this way)
+	- Made the command line parameters optional.  Can now specify
+	  everything with prompts.  Easier for those not used to DOS
+	- Increased graphic mode screen resolution to 360x240 so that printed
+	  text doesn't overlap with large images
+	- Ability to load special IMG files 64000 and 64768 bytes in size
+	  which don't conform to standard format
+	- Properly loads COL palette files now
+	- Increased maximum image size a bit
+	- Determined that weapon CIF's have some sort of unknown encoding
+	  method which has defied my attempts to hack it.
+
+
+   v0.21 (Released 3 December 1996)
+	- Added the ability to save PCX to end of CIF file (/S:e)
+	- Restructured and rewrote some of DAGPIC.TXT to better explain
+	  things...hopefully.
+	- Rewrote the DAGPIC help screen better showing syntax and examples
+	- Added DAGPIC.FAQ to help remove some confusion about the command
+	  line parameters...hopefully.
+
+   v0.20 (Released 28 November 1996)
+	- Displays Image Size and Position in CIF files
+	- Changed from importing/exporting BMP's to using PCX's
+	- Displays multiple image files (CIF)
+	- Will not overwrite files unless specified
+	- Ability to convert PCX to IMG/CIF files
+	- Create optional backup of files overwritten by program
+	- Added the Config file 
+
+  v0.0 (Released Early November 1996)
+	- 1st version, basic display of IMG files and conversion to BMP's
+
+
+CREDITS
+=====================================================
+I couldn't have completed this project without help from several outside
+sources.
+	XLIB v6.12 - Mode X Library for Turbo C
+		A very nice library containing mostly Turbo ASM source code
+		for everything you might possibly want to do in the Mode X
+		graphic modes.  Makes my coding a lot quicker.
+	Someone - (I lost your e-mail address - sorry :(
+		Contributed information and code on the 64000b and 64768b
+		IMG file formats.  Thanks.
+
+
+
+PROGRAMMING NOTES
+=====================================================
+- The code is free to distribute/hack/change etc... I've tried to
+  document it properly but read at your own risk.
+- I cannot take responsibility for the graphics part of the program.
+  Those go to the wonderful creators of XLIB v6.12, a mode X ASM/C
+  library.  This can be found on many ftp sites.
+- Also, the base of the PCX conversion routines comes from source code
+  from Teach Yourself Game Programming in 21 Days.  It did need some
+  improvements though, as I found out, but the current conversion routines
+  should be quite accurate.
+- You can also use the 13H VGA mode for graphics although you'll have
+  to make some minor changes in the graphical output.
+
+
+CONTACTS, CONNECTIONS, and SITES
+=====================================================
+I, the creator of DAGPIC, Dave Humphrey may be E-Mailed at 
+	aj589@freenet.carleton.ca
+
+while future versions of DAGPIC may always be first found at the web site
+	http://www.newforce.ca/~jackel/esp/files/
+
+
+STANDARD LEGAL DISCLAIMER
+=====================================================
+I, Dave Humphrey, cannot be held responsible for any damage of software or
+hardware incured by the use of this program.
+
+The entire contents of the file DAGPIC.ZIP (listed above) is free domain
+software and can be copied, exchanged, duplicated, transmitted, etc...
+at will.
+

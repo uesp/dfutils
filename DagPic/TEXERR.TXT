@@ -1,0 +1,295 @@
+  FOUND THT = 0x6900 (26880),  0x44EA (17642)
+  FOUND THT = 0x4400 (17408),  0x46EA (18154)
+  FOUND THT = 0x4400 (17408),  0x48EA (18666)
+  FOUND THT = 0x2800 (10240),  0x4AEA (19178)
+  FOUND THT = 0x4400 (17408),  0x8D5A (36186)
+  FOUND THT = 0x6A00 (27136),  0x8F5A (36698)
+  FOUND THT = 0x4400 (17408),  0x915A (37210)
+  FOUND THT = 0x4400 (17408),  0x935A (37722)
+  FOUND THT = 0x4400 (17408),  0xD5CA (54730)
+  FOUND THT = 0x4400 (17408),  0xD7CA (55242)
+  FOUND THT = 0x4400 (17408),  0xD9CA (55754)
+  FOUND THT = 0x4400 (17408),  0xDBCA (56266)
+  FOUND THT = 0x4400 (17408),  0x1E3A ( 7738)
+  FOUND THT = 0x4400 (17408),  0x203A ( 8250)
+  FOUND THT = 0x4900 (18688),  0x223A ( 8762)
+  FOUND THT = 0x4700 (18176),  0x243A ( 9274)
+  FOUND THT = 0x4A00 (18944),  0x66AA (26282)
+  FOUND THT = 0x4A00 (18944),  0x68AA (26794)
+  FOUND THT = 0x4A00 (18944),  0x6AAA (27306)
+  FOUND THT = 0x6A00 (27136),  0x6CAA (27818)
+  FOUND THT = 0x6A00 (27136),  0xAF1A (44826)
+  FOUND THT = 0x6A00 (27136),  0xB11A (45338)
+  FOUND THT = 0x4400 (17408),  0xB31A (45850)
+  FOUND THT = 0x4A00 (18944),  0xB51A (46362)
+  FOUND THT = 0x4400 (17408),  0xF78A (63370)
+  FOUND THT = 0x4400 (17408),  0xF98A (63882)
+  FOUND THT = 0x4400 (17408),  0xFB8A (64394)
+  FOUND THT = 0x2800 (10240),  0xFD8A (64906)
+  FOUND THT = 0x4400 (17408),  0x3FFA (16378)
+  FOUND THT = 0x7C00 (31744),  0x41FA (16890)
+  FOUND THT = 0x6A00 (27136),  0x43FA (17402)
+  FOUND THT = 0x6A00 (27136),  0x45FA (17914)
+  FOUND THT = 0x2800 (10240),  0x886A (34922)
+  FOUND THT = 0x4B00 (19200),  0x8A6A (35434)
+  FOUND THT = 0x6A00 (27136),  0x8C6A (35946)
+  FOUND THT = 0x6A00 (27136),  0x8E6A (36458)
+  FOUND THT = 0x6A00 (27136),  0xD0DA (53466)
+  FOUND THT = 0x4400 (17408),  0xD2DA (53978)
+  FOUND THT = 0x4400 (17408),  0xD4DA (54490)
+  FOUND THT = 0x4400 (17408),  0xD6DA (55002)
+  FOUND THT = 0x4400 (17408),  0x194A ( 6474)
+  FOUND THT = 0x4A00 (18944),  0x1B4A ( 6986)
+  FOUND THT = 0x4400 (17408),  0x1D4A ( 7498)
+  FOUND THT = 0x2800 (10240),  0x1F4A ( 8010)
+  FOUND THT = 0x4A00 (18944),  0x61BA (25018)
+  FOUND THT = 0x4400 (17408),  0x63BA (25530)
+  FOUND THT = 0x4A00 (18944),  0x65BA (26042)
+  FOUND THT = 0x4B00 (19200),  0x67BA (26554)
+  FOUND THT = 0x6A00 (27136),  0xAA2A (43562)
+  FOUND THT = 0x4B00 (19200),  0xAC2A (44074)
+  FOUND THT = 0x6A00 (27136),  0xAE2A (44586)
+  FOUND THT = 0x4400 (17408),  0xB02A (45098)
+  FOUND THT = 0x4400 (17408),  0xF29A (62106)
+  FOUND THT = 0x4700 (18176),  0xF49A (62618)
+  FOUND THT = 0x4800 (18432),  0xF69A (63130)
+  FOUND THT = 0x4800 (18432),  0xF89A (63642)
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =   66,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  132,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =    0
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =  198,   y_offset =  132
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+Reading Texture Picture Header:
+   x_offset =    0,   y_offset =   66
+      width =  256,     height =   64
+
+
+Image Group 0: 0 1 2 3 
+Image Group 1: 4 5 6 7 
+Image Group 2: 8 9 10 11 
+Image Group 3: 12 13 14 15 
+Image Group 4: 16 17 18 19 
+Image Group 5: 20 21 22 23 
+Image Group 6: 24 25 26 27 
+Image Group 7: 28 29 30 31 
+Image Group 8: 32 33 34 35 
+Image Group 9: 36 37 38 39 
+Image Group 10: 40 41 42 43 
+Image Group 11: 44 45 46 47 
+Image Group 12: 48 49 50 51 
+Image Group 13: 52 53 54 55 

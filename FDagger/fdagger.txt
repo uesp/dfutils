@@ -1,0 +1,38 @@
+                                  FDagger
+                        Dave Humphrey - 13 August 1998
+                          aj589@freenet.carleton.ca
+
+FDagger is a simple program that allows one to use Andyfall without having
+the Daggerfall CD in the drive.  Here's how to do it.
+
+        - Do the regular stuff for running without a CD (see below if you
+          don't know how).
+        - Copy the original DAGGER.EXE file somewhere safe.
+        - Rename FDAGGER.EXE as DAGGER.EXE
+        - Run Andyfall and everything should work normally.
+
+
+    Running without a CD Guide
+   ============================
+                - Copy _all_ the files in the \DAGGER\ARENA2 directory on the
+                  CD into your ARENA2 directory on your hard disk with the
+                  exception of PACKED.DAT.  If you already have the huge
+                  installation you just need to copy all the .VID files over.
+                - Unless you were careful not to overwrite any files on your
+                  hard drive, you'll have to reinstall the latest patch.
+                - Your finished with the CD so you take it out..for good...:) 
+                - Open the file Z.CFG in your main Daggerfall directory in
+                  any text editor.  At the line where it says 'pathcd',
+                  change this to match your ARENA2 path on your hard drive
+                  (it should match the 'path' parameter).
+                - If you want, or need, virtual memory you have to add the
+                  following line to your AUTOEXEC.BAT file:
+                        set DOS4GVM=@dagger.vmc
+
+
+Technical Note: All program does is do the system call 'FALL.EXE z.cfg'.
+        The entire program in C is just:
+
+                void main (void) {
+                  system ("FALL.EXE z.cfg");
+                 }

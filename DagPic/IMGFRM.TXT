@@ -1,0 +1,202 @@
+		TES Chapter 2: DAGGERFALL - IMAGE FILE FORMATS
+		 IMG, CIF, PAL, COL, and Texture File Formats
+
+		     by Dave Humphrey - 5 January 1998
+			  aj589@freenet.carleton.ca
+
+This file was initially distributed with DAGPIC, a DOS program which uses the
+file format descriptions found below.  This file may be distributed at will.
+
+
+
+IMG FILE FORMATS
+=================================================
+The format of the IMG files found in Daggerfall's ARENA2 directory were quite
+simple to determine.
+
+     IMG File Format
+	Bytes 0-1: Unknown, possibly x_offset? (integer)   }
+	      2-3: Unknown, possibly y_offset? (integer)   }
+	      4-5: Image width in pixels (integer)         }  IMAGE
+	      6-7: Image height in pixels (integer)        }  HEADER
+	      8-9: 00 00? (integer)                        }
+	    10-11: Image Size (integer)                    }
+
+	    12-(12 + Image Size): Image data		   }  IMAGE DATA
+
+     C-language Description
+	typedef struct {
+	  int x_offset, y_offset;
+	  int width, height;
+	  int image_size;
+	  char far *data;
+	 } IMG_TYPE;
+
+Unfortunately, there are at least two known exceptions to the above 'rule'.
+IMG files which are exactly 64000 bytes in length are assumed to be 320x200
+images and as such have no header information.  The file contains only the
+image data.
+
+Similarily, IMG files which are exactly 64768 bytes in length are similiary
+assumed to be 320x200 in size and, in addition, have a custom palette
+attached to the end of the file.
+
+There are still several IMG files whose format doesn't belong to any of the
+above.
+
+
+
+CIF FILE FORMATS
+=================================================
+CIF files initially look just like the IMG files, except a closer examination
+reveals that they are much larger than they needed to be.  This lead to the
+finding that most CIF files simply contain several IMG files, one after the
+other.
+
+    CIF File Format
+	IMAGE #1 HEADER
+	IMAGE #1 DATA
+	IMAGE #2 HEADER
+	IMAGE #2 DATA
+	  etc...
+
+    C-Language Description
+	IMG_TYPE cif_images[100];
+
+One method of determining how many images a CIF file is too check how much of
+a file is left after reading an image.  If none (or little) is left we know
+that there isn't another image.  While experimenting/debugging with the
+FACE*.CIF files, I found that appending an image to the end of a CIF has no
+effect.  The FACE*.CIF files each contain 10 face images and I thought it
+would be nice to be able to add more faces to the end of the CIF rather than
+replacing existing faces.  Alas, it seems, at least for the FACE*.CIF files,
+that only the first ten are loaded.
+
+Unfortunately, once again, there are exceptions to the general CIF format.
+The only one I know of and have investigated are the WEAP*.CIF files, all the
+images for the weapons seen when you equip and attack.  The first image in a
+weapon CIF is the normal weapon seen when you aren't swinging.  This image
+conforms to the known format.  The next images are much different.  They
+contain a different header and seem to be some sort of RLE encoded data, the
+exact nature of which has defied my probing.
+
+     Weapon CIF File Format
+	IMAGE #1 HEADER
+	IMAGE #1 DATA
+
+	RLE IMAGE #1 HEADER
+	RLE IMAGE #1 DATA
+	RLE IMAGE #2 HEADER
+	RLE IMAGE #2 DATA
+	etc...
+
+     RLE CIF Format (mostly unknown at present)
+	integer x_offset?            			}
+	integer y_offset?                               }
+	integer width                                   }  RLE IMAGE
+	integer height                                  }   HEADER
+	00 00						}
+	67 bytes unknown                                }
+
+	RLE Image Data (unknown size)                   }  RLE IMAGE DATA
+
+
+
+
+TEXTURE FILE FORMATS
+=================================================
+I don't think this format description is complete but I think its pretty 
+close.  Texture files are all files in the ARENA2 game directory that
+match the form "TEXTURE.???" where ??? is a number.
+
+   TEXTURE Format
+	Bytes 0-1: Number of Pictures in File
+	Bytes 2-25: Texture header string.  This is a text string which
+		describes the texture.
+
+What now follows is many texture group headers.  You read the group headers
+until you reach the offset given in the 1st group header.  The only true and
+understood value in the group header is the offset.  The offset value is from
+the start of the texture file and points to a texture header.
+
+  Group Header:	
+	Bytes 0-1: Type1 (integer)
+	  Many texture files have this value as 0x0000
+	Bytes 2-5: Offset to texture header (long integer)
+	Bytes 6-7: Type2 (integer)
+	  Many texture files have this value as 0x0000
+	Bytes 7-18: Extra header (contains unknown data)
+	  Most texture files have all 0x00 NUL characters but a few don't.
+
+It gets pretty complicated here but I'll try to explain.  The different
+textures in one file are contained in groups for some reason.  The group headers
+may point to texture headers in groups of either 1, or 4 (the only know values
+at the moment).  For instance, the group header offsets in a texture file may be
+
+	Offset 1: 400
+	Offset 2: 428
+	Offset 3: 1000
+	Offset 4: 1500
+	Offset 5: 1028
+	Offset 6: 456
+	Offset 7: 1056
+	Offset 8: 1094
+	Offset 9: 494
+
+In this case the offsets 1, 2, 6, and 9 are one group, offsets, 3, 5, 7, and 8 are
+another with offset 4 being a single one.  The grouping affects how the texture image
+data is loaded.
+
+   Group with only 1 Object:
+	Texture data is found after the texture header in normal consectutive format.
+
+   Group with 4 Objects:	
+  	Texture data for is found after the last texture header.  Data for the 4 textures
+	is mixed as follows.  The texture height in this type of group is always 4x the
+	real value for some reason.
+		{row 1 of texture #1}
+		{row 1 of texture #2}
+		{row 1 of texture #3}
+	 	{row 1 of texture #4}
+		{row 2 of texture #1}
+		{row 2 of texture #2}
+			etc....
+
+So, in order to properly load and display the textures, the texture grouping must be 
+found.  Since the grouping isn't linear a search must be done to match groupings.
+Each group offset points to a texture header.
+	
+   Texture Header:	
+	Bytes 0-1: X_Offset? (integer)
+	Bytes 2-3: Y_Offset? (integer)
+	Bytes 4-5: Width (integer)
+	Bytes 6-7: Height (integer)
+	Bytes 8-9: Extra (integer)
+	Bytes 10-11: Image Size Including Header (integer)
+	Bytes 12-27: Extra header, unknown (16 bytes)
+	  Takes on a large variety of values.
+
+
+The actual texture data isn't encoded in any special format, just read it directly.
+
+
+
+PAL FILE FORMATS
+=================================================
+The PAL palette files were trivial to intepret since the size of the files
+were all 768 bytes (768 = 256 * 3).  A PAL file simply contains the Red,
+Green, and Blue components of each colour in that order for each of the 256
+colours in the pallette.  Like regular VGA palette, colour components values
+ranging from 0-63 (0x00 to 0x3F).
+
+
+
+COL FILE FORMATS
+=================================================
+The COL palette files are similar to PAL files although they are 8 bytes
+larger.  COL files appear to contain an 8 byte header which can simply be
+ignored at the moment.
+
+
+
+

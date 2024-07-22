@@ -1,0 +1,18 @@
+#
+# Do not Edit! File read and overwritten by CLASSED.EXE...
+#
+class=Oriental Knight
+	desc=This is a test.
+	desc=Another test.
+	desc=Yet another...
+	installed=-1
+end_class
+class=Shadow Thief
+	desc=A shadow thief class.
+	desc=Yet another...
+	installed=-1
+end_class
+class=Mage Class
+	desc=This is an example of an installed class.
+	installed=0
+end_class

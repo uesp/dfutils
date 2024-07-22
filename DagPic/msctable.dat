@@ -1,0 +1,24 @@
+; Semi-Colons indicate comment lines
+; MSCTABLE.DAT - pictures for buttons etc...
+pic 0
+name dagmouse.pbm
+label mouse
+end
+pic 1
+name darrow1.pbm
+label downarrowbar
+end
+pic 2
+name uarrow1.pbm
+label uparrowbar
+end
+pic 3
+name middle1.pbm
+label middlebar
+end
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+			          
+					  DFThief v0.1b - 30 November 2000
+                      by Dave Humphrey, uesp@m0use.net
+																				
+
+  INTRODUCTION
+---------------------------------------
+DFThief is a DOS command line program which can edit your Daggerfall save games,
+allowing you to become a member of the Thieves Guild or Dark Brotherhood after
+you have been expelled, by regular means or vampirism.  It is currently in the
+testing phase.
+
+
+  INSTALLATION
+---------------------------------------
+To install, merely copy the file DFTHIEF.EXE into your Daggerfall directory.
+There are minimal computer requirements so if you can run Daggerfall, you can
+run DFThief.
+
+
+  USE
+---------------------------------------
+The program will only work if you were once a member of the Thieves Guild or
+Dark Brotherhood and have since been expelled.  This can be from loss of 
+repuation over time, not completing quests, or by contracting vampirism. You
+should first use the program REP to ensure your reputation with the guild 
+is positive, otherwise you may not be invited.  Next, simply run DFThief as
+the following examples illustrate:
+
+	DFThief # /t
+	DFThief # /d
+
+These edit the save game # (0-5) and set the thief/dark brotherhood flags,
+hopefully allowing you to receive an invitation to join that guild.  More
+command line options can be seen by type "DFThief /?".  Do not set both 
+the Thieves Guild and DB flags at the same time as you may only receive
+one invitation.  Instead, set one flag, complete the invitation quest, and
+then set the other. 
+
+
+  BACKUPS
+---------------------------------------
+A backup of your savegame will be created when you run DFThief, although you 
+may wish to create a complete backup of your savegame for a later restore if
+the program does something unexpected.
+
+
+  LEGAL DISCLAIMER
+--------------------------------------- 
+The program is supplied as is and cannot be guarunteed not to do damage to
+the Daggerfall save games.  Please notify the author about any strange 
+behaviour related to the programs use.
+
+The program is an unofficial product, and is in no way related to Bethesda 
+Softworks who own the copyright to Daggerfall, and other Elder Scrolls products.
+
+
+
+  

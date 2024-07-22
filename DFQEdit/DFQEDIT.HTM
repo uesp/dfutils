@@ -1,0 +1,959 @@
+<HTML>
+<HEAD>
+<TITLE>DFQEdit v0.30 Beta - Users Manual</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H2>DFQEDIT v0.30 Beta - Daggerfall Quest Editor</H2>
+<H3>USERS MANUAL</H3>
+<EM><FONT SIZE=2>Copyright &copy; 1996-97 - by Dave Humphrey</FONT></EM>
+</CENTER>
+<P>
+<HR>
+DFQEdit is the start of hopefully a full TES: Daggerfall quest editor.  Right
+now it can only modify the QRC quest files which contain all the texts needed
+for a quest.  It can't accurately determine the type of each text, although
+it tries to, since the format of the text type is not well understood at the
+moment.  It is being released as a Beta program since I have only been able
+to test it on a limited number of quest files and am not sure if it can load
+all quest files (although it should).  I have tested some QRC files altered
+with DFQEdit in Daggerfall and it appears as though it works correctly, but
+there's simply too many variables to say for sure.  Bugs, comments, and 
+suggestions are gladly accepted at <A HREF="mailto:aj589@freenet.carleton.ca">aj589@freenet.carleton.ca</A>
+<HR>
+
+<H3>Contents</H3>
+<OL>
+<LI><A HREF="#features"><STRONG>Features</STRONG></A>
+<LI><A HREF="#install"><STRONG>Installation Guide</STRONG></A>
+<LI><A HREF="#dfqeditman"><STRONG>DFQEdit - USERS MANUAL</STRONG></A>
+	<OL>
+	<LI><A HREF="#qmanstart"><STRONG>Startup</STRONG></A>
+	<LI><A HREF="#qmanload"><STRONG>Loading a QRC</STRONG></A>
+	<LI><A HREF="#qmansave"><STRONG>Saving a QRC</STRONG></A>
+	<LI><A HREF="#qmanqbn"><STRONG>Edit QBN/QRC</STRONG></A>
+	<LI><A HREF="#qmannew"><STRONG>New Quest</STRONG></A>
+	<LI><A HREF="#qmanabout"><STRONG>About DFQEdit</STRONG></A>
+	<LI><A HREF="#qmanexit"><STRONG>Exiting DFQEdit</STRONG></A>
+	<LI><A HREF="#qmanedit"><STRONG>Editing a QRC</STRONG></A>
+	<LI><A HREF="#qbnedit"><STRONG>Editing a QBN</STRONG></A>
+	</OL>
+<LI><A HREF="#textman"><STRONG>Text Editor - Users Manual</STRONG></A>
+<LI><A HREF="#editnotes"><STRONG>A Few Notes about Editing Quest Text</STRONG></A>
+<LI><A HREF="#sites"><STRONG>Sites</STRONG></A>
+<LI><A HREF="#error"><STRONG>Errors - What to do in Case of</STRONG></A>
+<LI><A HREF="#bugs"><STRONG>Known Bugs</STRONG></A>
+<LI><A HREF="#credits"><STRONG>Credits</STRONG></A>
+<LI><A HREF="#include"><STRONG>Included Files</STRONG></A>
+<LI><A HREF="#versions"><STRONG>Version Changes</STRONG></A>
+<LI><A HREF="#program"><STRONG>Programming Notes</STRONG></A>
+<LI><A HREF="#legal"><STRONG>Legal Stuff</STRONG></A>
+<LI><A HREF="#appa"><STRONG>APPENDIX A - Listing of %string Variables</STRONG></A>
+<LI><A HREF="#appb"><STRONG>APPENDIX B - Listing of _string_ Variables</STRONG></A>
+<LI><A HREF="#appc"><STRONG>APPENDIX C - Listing of =string_ Variables</STRONG></A>
+<LI><A HREF="#appc"><STRONG>APPENDIX D - Included Data File (*.DAT)</STRONG></A>
+</OL>
+<P>
+<HR>
+
+<A NAME="features"> </A>
+<H3>FEATURES</H3>
+<OL>
+<LI>Load QRC files and change quest texts to your liking. Can change
+    some of the quest parameters to some extent.
+<LI>Displays all known quest type parameters such as guild, minimum
+	  rank, and character status.
+<LI>Edit the quest texts in a simple built-in editor which displays
+	  special quest variables and codes in different colors.
+<LI>Change the various quest parameters which automatically builds most
+	  of the quest filename for you.
+<LI>Edit the item and npc sections of the QBN file to some extent.
+<LI>Can't really create quests from sratch yet, but it's getting there.
+</OL>
+<P>
+<HR>
+
+<A NAME="install"> </A>
+<H3>INSTALLATION GUIDE</H3>
+<STRONG>DFQEdit</STRONG> should be installed in it's own directory to help organize files and
+directories better.  I reccomend a directory in the <EM>DAGGER</EM> directory such
+as <EM>\DAGGER\DFQEDIT\</EM> but it is up to you.  <STRONG>DFQEdit</STRONG> initially looks for all files
+in the current directory upon startup, but directories and drives can be 
+specified when loading/saving files (elimating the need for a CFG file for
+now).  
+<P>
+<HR>
+
+<A NAME="dfqeditman"></A>
+<H3>DFQEdit - USERS MANUAL</H3>
+Editting quest files (all .QBN and .QRC files in the ARENA2 directory) is not a simple task,
+even with an editing tool such as <STRONG>DFQEdit</STRONG>.  If something is not done quite right it is possible that 
+<EM>Daggerfall</EM> will crash when it attempts to use the modified quest.  The best 
+method, in my opinion, is to copy quest files I wish to modify into the <STRONG>DFQEdit</STRONG>
+dir and then copy them back into the <EM>ARENA2</EM> dir when finished.  Thus, I can 
+be sure the quest won't be used until I want it to.  Also, backups of modified
+quests should be create in case an 'Un-documented <STRONG>DFQEdit</STRONG> Feature' (read bug) 
+ruins that quest file you took days to rewrite (remember, it's currently only 
+a Beta version and is not thoroughly tested).
+<P>
+<STRONG>DFQEdit</STRONG> requires that both the QRC and QBN files of a quest are present
+in the same directory.  If you save a new QRC file <STRONG>DFQEdit</STRONG> will
+automatically save the QBN file, notifying you if the quest files already exist.
+Quest file names are also very important as they give information such as which guild, minimum rank etc...
+In general, the only characters in the quest name which can be safely changed
+are the last two which are simply a quest index number to differentiate files.
+<STRONG>DFQEdit</STRONG> will automatically generate the quest file name, except for the last 
+two characters which can be specified when you save.
+<P><BR>
+	<A NAME="qmanstart"></A>
+<STRONG>START-UP</STRONG><BR>
+	When you first start <STRONG>DFQEdit</STRONG> you should be presented with a colorful
+text screen in 80x50 resolution (a standard VGA text mode which permits twice
+as much information to be displayed at a time than the normal 80x25 mode).
+The top center of the screen displays the current quest loaded, which at 
+startup should be none, the new quest filename (in red).   The new quest 
+filename is automatically built based on the quest parameters below on the 
+page.  Thus you can save quest with the right name so that <EM>Daggerfall</EM> can
+correctly read the file.  
+<P>
+Below this are several lines of quest information telling you various 
+information about the current quest.  If you click on the little green arrows 
+you will get a listing of possible values.  Changing these values will modify 
+the new quest filename at the top of the screen.  
+<P>
+The next section below this is a listing of quest texts.  Currently 
+up to 32 different texts can be shown at a time, hopefully many more than 
+you'll ever need (all quests I've seen have had less than 20 different texts).  
+The quest text description, which is not currently 100% accurate, can be 
+clicked to edit that text.  To the right of the description is a value 
+'Yes/No'.  This represents if that text section has any text in it currently.
+The number in brackets to the left of the quest text description represents
+the hexadecimal text type loaded from the QRC file.  It is only useful if
+you are into determing more of the format for quest files.
+<P>
+At the bottom of the <STRONG>DFQEdit</STRONG> screen are the buttons Load QRC, Save QRC, 
+New QRC, and Exit which should be self-explanatory and are described in more
+detail below.  
+<P><BR>
+	<A NAME="qmanload"></A>
+<STRONG>LOADING a QRC FILE</STRONG><BR>
+To load a QRC file click the LOAD button at the bottom of the screen
+(eventually text shortcut keys will be assigned to everything).  A new window
+will appear on the screen listing files, directories and drives.  When <STRONG>DFQEdit</STRONG>
+is first started, this list is the current directory but on subsequent saves
+and loads it will remember where you left it.  Use the mouse, TAB, and cursor
+keys to select a directory or QRC file.  Wildcards are accepted in the file 
+name box (default is *.QRC).  When a QRC file a wish to edit is found, press
+the ENTER key or click the OK button, otherwise ESC or CANCEL will exit the
+window. The QRC file should now be loaded.  The main <STRONG>DFQEdit</STRONG> screen will be 
+changed to the new file.  Unless you are particularily lucky however, many
+of the quest texts will be labled as 'Unknown'.  This is because the type of
+quest seems to affect how the texts are labelled in the QRC file and the 
+quest type in the QBN file is not understood.  Likewise, the quest type box
+at the top of the screen will probably not be correct at the moment either.
+I have programmed it to find the closest matched quest type but only a handful
+of types are programmed into <STRONG>DFQEdit</STRONG> at the moment (did I mention the quest type in the
+QBN file isn't understood?).  No worries though, you can still edit 'Unknown'
+text types although you'll have edit the text to see what it contains.
+<P><BR>
+	<A NAME="qmansave"></A>
+<STRONG>SAVING a QRC FILE</STRONG><BR>
+Saving a QRC file is much the same as loading.  Simply click the SAVE
+button and enter a new or existing filename.  If the file already exists you
+will be asked if you wish to overwrite or not.  If you save to a new QRC file
+you will need to copy the appropiate QBN file to the new name as well, since
+both <EM>Daggerfall</EM> and <STRONG>DFQEdit</STRONG> require both QRC and QBN files for loading quests.
+The new quest filename based on current quest parameters will be the default
+filename.  All that's needed is to add a two digit index and save.
+<P><BR>
+	<A NAME="qmanqbn"></A>
+<STRONG>EDIT QBN/QRC</STRONG><BR>
+	This is a new button as of version 0.30b.  It allows you to change
+the editting mode from QBN to QRC and vice-versa.  See the sections 'Editting
+a QRC' and 'Editting and QBN' for more information on each screen.
+<P><BR>
+	<A NAME="qmannew"></A>
+<STRONG>NEW QUEST</STRONG><BR>
+This simply clears the contents of the window.  Will be more useful
+when you can create quests from scratch.
+<P><BR>
+	<A NAME="qmanabout"></A>
+<STRONG>ABOUT DFQEdit</STRONG><BR>
+This button displays a window listing information about <STRONG>DFQEdit</STRONG> and the
+current environment.
+<P><BR>
+	<A NAME="qmanexit"></A>
+<STRONG>EXITING DFQEdit</STRONG><BR>
+	You can quit <STRONG>DFQEdit</STRONG> by either pressing the EXIT button or by the ESC
+key when in the main <STRONG>DFQEdit</STRONG> window.  You will be asked if you trully want to
+exit but it won't currently tell you of unsaved files.
+<P><BR>
+	<A NAME="qmanedit"></A>
+<STRONG>EDITTING a QRC TEXT</STRONG><BR>
+To edit a qrc text simply click on the text description (even if it
+says 'Unknown').  This will bring up another window with allowing you to
+Edit, Delete, or Cancel.  Deleting the text will clear it from memory and the
+text section will be omitted if you save the file.  This might cause problems
+in <EM>Daggerfall</EM> if it needs that text for the quest (deleting the quest 
+description and then saving is asking for disastor).  If edit is selected you
+will be brought to the text editor which looks much like the DOS edit program,
+although much simpler (see the TEXT EDITOR MANUAL below for more information).
+Here you can edit text, load new text, or save text for later.  When you load
+or save text, you are loading normal text files, nothing related to the QRC
+file.  Special quest variables and codes are displayed in different colors.
+Help can be found by pressing F1 or ALT-H and the file menu can be activated
+by mouse or ALT-F.  The text editor's code appears to be quite solid and I
+have yet to have it crash, although loading too large a file or binary files
+might cause undefined behaviour.  When you quit the text editor, any changes
+in the text are automatically recorded although you still need to save the
+QRC file.  If you delete all text by the 'NEW' command, <STRONG>DFQEdit</STRONG> assumes you
+don't want the text section and 'turns it off'.
+<P><BR>
+	<A NAME="#qbnedit"></A>
+<STRONG>EDITING A QBN</STRONG><BR>
+	First of I'd like to say that editting the QBN section of a quest
+file is not for everyone at the moment.  We don't currently completely under-
+stand the QBN file format but I've included what sections we do mostly know,
+the Item and NPCs.  When in the QBN Edit mode you will notice several buttons
+on the left-hand side of the screen.  These are the various QBN sections
+which can be currently editted.  Right now these include only Items and NPCs.
+The outlined box in the center of the screen represents the current object
+data.  At the top of the box is a line giving the current object number with
+current number loaded and the maximum allowed to be loaded.  The object number
+can be changed with the 'Prev' and 'Next' buttons at the bottom of the screen
+(the 'Add' button is currently disabled at the moment).
+<P>
+	The values you can edit will appear as list boxes or text fields.
+Simply click on the arrow to display lists and click on text fields to edit
+their contents.  The values in light-blue below these are the numerical
+values of the fields.  This is useful in recording a value the fields show
+as 'Unknown'.  If you can identify such a value, please let me know.
+<P>
+	Sometimes, if a particular field is not currently well understood,
+the actual numerical value of the field is displayed.  This value is always
+a decimal, or base 10, value.  The title of the field should also contain one
+of the words, char, int or long to identify the length and allowed values of
+the field as follows.
+<PRE>
+		char	0-255
+		int     0-65,536
+		long    0-4,294,967,295
+</PRE>
+If you input a value greater than the allowed limit it will 'wrap'.  For
+example entering '256' in a char field will result in the value of 0 being
+displayed and saved.  The values are always unsigned so inputting a negative
+value will also result in 'wrapping'.  For example entering -1 in a char
+field results in the value 255 being displayed.
+<P>
+	The input text fields also accept hexadecimal, octal, and binary
+input as well as decimal as follows
+<PRE>
+	Binary (base 2)	  Ends with a b, ie: 10001b, 001100101111b, etc...
+	Octal (base 8)	  Start number with a 0, ie: 056, 01462, etc...
+	Hexadecimal (16)  Starts with a 0x, ie: 0xFA45, 0x45, etc...
+</PRE>
+Entering an invalid value in a certain base (such as 0xT6, 12356b, etc...)
+will result in a 0 being displayed.  Please note that even though you may
+input the number in another base, the value is still displayed as a decimal.
+<P><BR>
+<STRONG>QBN EDITING: ITEMS</STRONG><BR>
+	The item sections is completely free for one to edit, although we are
+not completely sure what all the values do yet.  The item types and the item
+fields should be self-evident.  Usually one should use the 'Item' or 'Gold'
+values in the item type field as the 'Artifact' and 'Unknown' values are not
+well understood.  The item list is loaded from the file ITEMS.DAT in the
+DFQEdit directory and can be editted to add more items if you're sure you
+follow the correct format (don't get fancy).  If you can identify the value
+of an unknown item, please let me know as there are currently many I'm
+missing.
+<P>
+	The item message type usually relates to the message variable used in
+the QRC texts.  Sometimes, however, the number is not related to such a
+variable, usually when the item represents a letter.  If you click on the
+'Find Msg' button the program searches through all current QRC texts for any
+texts which have this message variable.  It shows a list of matches which
+you can then edit/view.
+<P>
+	The Message ID #1 field is not well understood but we believe it to
+represent the text message displayed when the PC receives the item.  This is
+only if the ID is non-zero.  Click the 'View Msg' button to view the message
+if there is one.
+<P>
+	The Letter MSG ID field represents the message id displayed when the
+PC uses an item, such as for a letter.  A zero value here implies no message.
+Click the 'View Msg' button to view the message if there is one.
+<P><BR>
+<STRONG>QBN EDITING: NPC's</STRONG><BR>
+The NPC section is still scetchy at best but it's values are useful
+for hacking purposes.  All but 5 bytes of the NPC field can be edited (the
+value1 and value2 fields cannot yet since their purpose is unknown).
+<BR>
+The gender field is a guess at best since it usually contains one of
+4 values (but mostly one of 3 values).
+<BR>
+The gender message type is similar to the item message type described
+above.  Click the 'Find Msg' Button to search QRC texts for a match to this
+variable.  It usually relates the NPC to a variable name in the QRC texts.
+The two message id fields are also currently unknown at this time.  Click the
+'View Msg' buttons to view the messages if the value is non-zero.
+<P><BR>
+<STRONG>QBN EDITTING: LOCATION</STRONG><BR>
+	The location section is still very unknown at the moment so we'll
+concentrate on only the location numbers for now.
+<P>
+	The general location value places the location of the quest either in
+the current town (like the kill the rats type quests) or the more common
+Outside Town type (for dungeons, other towns, etc...).  There is a third
+option which may indicate the quest takes place in the current house/dungeon
+but this is not verified.
+<P>
+	The location type places the quest in a random home, a random dungeon,
+or a specific place.  The specific locations are not yet known at the moment
+but most of them occur in the main quest files (S*.QBN)
+<P>
+	There are many unknown fields here, of which I haven't the foggiest
+idea what they do...yet.  Feel free to test them out if you're brave enough.
+<P>
+	Like most sections, the location field also has a message type value.
+<P><BR>
+<STRONG>QBN EDITTING: MONSTERS</STRONG><BR>
+	The monster section is a small one, with only three editable fields
+which are relatively well understood.
+<P>
+	The monster index field selects exactly which monster is to appear.
+A monster can be a non-human monster (rats, orcs, daedra etc...) or a human
+one (barbarians, assassins, thieves, etc...).  The human monsters are not
+well documented at the moment but feel free to try them out (and let me know
+what they are).
+<P>
+	There is one unknown field with a few limited values.  Most of the
+time the value is '1' here.  It may govern the number of monsters appearing
+but that is merely a guess.
+<P>
+	Again, this section has a message type value associated with it.
+<P>
+<HR>
+
+<A NAME="textman"></A>
+<H3>TEXT EDITOR - USERS MANUAL</H3>
+The built in text editor in <STRONG>DFQEdit</STRONG> is a simpler one, much like the
+EDIT program found in DOS.  The mouse can be used to move around the screen
+and activate the File and Help menus. Keyboard commands can be found below.
+<PRE>
+	ALT+F / Mouse - Activate File Menu         
+	ALT+Q - Quit Text Editor
+	F1 / ALT+H - This help Screen
+	F2 - Save Text to TXT file (not to QRC!)
+	F3 - Load TXT file                         
+	CTRL+Y - Delete Current Line
+</PRE>
+Special quest variables and codes are displayed in different colors and are
+explained in the edit help screen (F1 or ALT+H).  The text editor's code 
+appears to be quite solid and I have yet to have it crash, although loading 
+to large a file or binary files might cause undefined behaviour.  The header
+at the top of the screen also displays what type of text you are editing
+(although this is currently quite inaccurate...have I mentioned the quest
+type in the QBN file is not known?).
+<P>
+The text editor assumes that TAB's in loaded text files are 5 spaces.
+It saves TABS as spaces and currently doesn't accept the key TAB as input.  
+The editor has many shortcoming in combining lines with deleted or added 
+text since lines are currently limited to 78 characters or less (you can't
+scroll left or right).
+<P><BR>
+<HR>
+
+<A NAME="editnotes"></A>
+<H3>A FEW NOTES about EDITING QUEST TEXT</H3>
+Editing quest text is relatively straight forward, just like in any
+text editor, but there are a few things you should be aware of listed below.
+<UL>
+<LI>The end-of-line characters '|' and '&lt;' are important.  Whenever one
+     of these characters is found, a new line is started.  If you truly
+     _have_ to use one of these characters as normal text....you can't.
+     I chose these as they seemed the more obscure and lesser used. If these
+     characters aren't found at the end of a line, the '&lt;' is assumed to
+     be there.
+<LI>Be aware of the line length.  Don't use too long of lines as these must
+     be displayed in <EM>Daggerfall</EM>.  The average line length is about 40 
+     characters, or about half the width of the screen.  Also remember that
+     various variables can be very long so make lines with variables on them
+     appropiately shorter. Examples: The '_house_' variable is only 7
+     characters long, but it can represent a string like 'Hearthborne 
+     Residence' or 'The Resolution of Zenithar' which must fit on the current
+     line.  <EM>Daggerfall</EM> may or may not wrap text, although I do know it fits
+     the quest box to the text.
+<LI>In general, the %string variables can be used in any quest text, but
+     other variables (such as the _string_ and =string_ ones) depend on the
+     quest type.  In general, if you don't find a variable in the original
+     text, assume that it can't be added.  If you do added a variable not
+     supported by the quest type you will simply get a 'BLANK' (which I'm
+     sure we've _all_ seen at one time or another).  A partial listing of
+     variables can be found in the appendices at the end of this document.
+</UL>
+<P><BR>
+<HR>
+
+<A NAME="error"></A>
+<H3>ERRORS - WHAT TO DO IN CASE OF</H3>
+I programmed <STRONG>DFQEdit</STRONG> to exit and notify the user when an error occurs.
+If <STRONG>DFQEdit</STRONG> exits suddenly with the message 'BUG:...' you should record the
+displayed information along with what you were doing at the time of the crash
+(what files were you editing) along with a brief description of your system
+(OS, memory, type, etc...).  You than may e-mail aj589@freenet.carleton.ca
+with the resultant bug report.  Likewise, if the program crashes but doesn't
+give a BUG message, record what you can and send it in.  These types of
+crashes are more serious as there is no detection for them in the program.
+Remember, only if I receive proper bug reports can I fix them.
+<P>
+In the <STRONG>DFQEdit</STRONG>'s about window (and in the exit messages) there is a
+line giving the far heap's status.  Now, without going into too much
+technical stuff, the heap is related to the memory available to the program
+for loading files and for variables (i.e., very important).  The status of
+the heap _should_ return OK at all times.  If the heap is corrupted it may
+result in crashes and data loss in <STRONG>DFQEdit</STRONG> (the heap is corrupted usually by
+some bug in the program or some option which was overlooked).  If, when
+exiting or checking the About window, the heap status returns corrupted you
+should immediately exit the program, reboot and send in a bug report.  The
+reboot is probably not nessecary, but better to be safe (during debugging I
+used to get a corrupt heap every 5 minutes and only rarely did the system
+lock-up after exiting the program).  If you wish to save the current quest,
+do so in a different file name as it may or may not be corrupted.  If the
+program crashes (or other wierd stuff) when you load it, the save file is
+corrupt and should be deleted.
+<P>
+Occasionally <STRONG>DFQEdit</STRONG> will not be able to free up all the memory
+allocated while it was running.  This is a less serious bug but still should
+be reported.  Include the difference between initial and final memory.
+<P><BR>
+<HR>
+
+<A NAME="bugs"></A>
+<H3>KNOWN BUGS</H3>
+<UL>
+<LI>Paths and filename lengths must be less than 80 characters.  Any more
+    than this and the program will notify you.  This shouldn't be a problem
+    for most people, however if you find this objectionable talk to me.
+    It shouldn't crash the program, however you won't be able to load/save
+    any filenames in those long paths.
+<LI>There may be problems related to accessing disks in the floppy drives
+    (or more specifically, floppy drives with no disks in them) I rewrote
+    the DOS error handler to better handle it and it appears to work...but
+    no promises.
+<LI>Occasionally not all memory will be freed on an exit.  Usually this only
+    happens after loading and editting several quest files.  This isn't a
+    serious bug and I believe I can blame most of it on the compiler used
+    since I have this problem in all of my large programs and have never
+    been able to track it down.  It occurs when I delete some allocated
+    memory yet the freed memory does not become available to the program.
+    In other programs I can correct this by altering the order of variable
+    allocation and deletion, something I shouldn't have to do. Anyways, if
+    any programmer out there has any ideas let me know...please.
+</UL>
+<P><BR>
+<HR>
+
+<A NAME="credits"></A>
+<H3>CREDITS</H3>
+A number of people have contributed invaluable information concerning
+the format of quest files.  Many thanks go to the following...
+<PRE>
+	 Peggy S Hanks (df4@juno.com)
+	 Lord Phoenix (gozer@esoterica.pt)
+</PRE>
+<P>
+This prgram also uses 3rd party keyboard and mouse routines which have
+saved me much time from writing and debugging them myself.
+<PRE>
+	INT9 (IRQ1) keyboard handler #9 by Patch (hamell@cs.pdx.edu)
+	MOUSE Routines by Michael Chen  (mchen@groucho.cs.psu.edu)
+</PRE>
+<P><BR>
+<HR>
+
+
+<A NAME="sites"></A>
+<H3>SITES</H3>
+To contact the creator of <STRONG>DFQEdit</STRONG> E-Mail <A HREF="mailto:aj589@freenet.carleton.ca"><STRONG>Dave Humphrey at aj589@freenet.carleton.ca</STRONG></A>
+<P>
+For latest version updates of DFQEdit, <A HREF="http://www.honesty.com/jackel/dagger/files"><STRONG>The ESP: Daggerfall Files</STRONG></A>
+<P>
+For the Quest Editing Guide, <A HREF="http://www.honesty.ca/jackel/dagger/dagqfaq.txt"><STRONG>The ESP: Quest Editing Guide</STRONG></A>
+<P>
+If there's any other sites you think should be included here, feel free to suggest them.
+<P><BR>
+<HR>
+
+<A NAME="include"></A>
+<H3>INCLUDED FILES</H3>
+<PRE>
+	DFQEDIT.EXE ... Main Executable
+	GUILDS.DAT .... Contains listing of guilds/factions
+	MSG.DAT ....... Contains listing of variable names
+	ITEMS.DAT ..... Contains listing of items and their codes
+	MOBS.DAT ...... Listing of known human and non-human monsters
+	SEC41.DAT
+	SEC42.DAT
+	SEC43.DAT ..... Listing of values for the three unknown fields of
+			QBN section 4
+	SEC71.DAT ..... Listing of values for the unknown field of QBN
+			section 7
+	LOC.DAT ....... Listing of known locations
+	DFQEDIT.TXT ... Program documentation (this file)
+	DFQFAQ.TXT .... Quest hacking guide
+
+	Source Code ... Is not included in archive due to size, but is
+			freely available if you want it.
+</PRE>
+<P><BR>
+<HR>
+
+
+<A NAME="versions"></A>
+<H3>VERSION CHANGES</H3>
+<STRONG>v0.30 Beta - Current Version</STRONG>
+<UL>
+<LI>Released 20 April 1997
+<LI>Fixed a NULL pointer bug in the editor which caused crashes
+<LI>Fixed several memory allocation errors which caused crashes
+<LI>The mouse pointer disappears/appears when it's supposed to when
+	  saving/loading files in the editor.
+<LI>Can now double-click on file/directory names to load or change
+	  directories..
+<LI>Added the ability to sort lists.  File lists and some others are
+	  now sorted alphabetically for your convienience.
+<LI>Improved the doubly-linked list add_item code.  Now takes up much
+	  less space, is easier to use and should be more reliable.
+<LI>Can now edit all of the Items and some of the NPC sections in the
+	  QBN file.  We don't understand all of the sections do yet but feel
+	  free to explore.
+</UL>
+<P>
+<STRONG>v0.20 Beta</STRONG>
+<UL>
+<LI>Released 28 March 1997
+<LI>Changed name to DFQEdit due to trademark violation...oops!
+<LI>Rewrote much of the code (such as the buttons and lists etc...) and it is much more elegant and easier to code.
+</UL>
+<P>
+<STRONG>v0.10 Beta</STRONG>
+<UL>    
+<LI>First release - ? December 1996
+</UL>
+<STRONG>Future Versions</STRONG>
+<UL>
+<LI>Change more quest parameters (monster type, item type, quest
+    location, house/dungeon type, etc...)
+</UL>
+<P><BR>
+<HR>
+
+<A NAME="program"></A>
+<H3>PROGRAMMING NOTE</H3>
+This program is considerable larger and more complicated than the
+other <EM>Daggerfall</EM> utilities I've released (DAGPIC and DAGREFL). It uses
+several source files and some old code I've used for a while (like the
+text editor base I created about a year ago).  It also uses 3rd party
+keyboard and mouse routines which have saved me much time from writing and
+debugging them myself.
+<PRE>
+	INT9 (IRQ1) keyboard handler #9 by Patch (hamell@cs.pdx.edu)
+	MOUSE Routines by  Michael Chen  (mchen@groucho.cs.psu.edu)
+</PRE>
+<P>
+Also, a number of people have contributed invaluable information concerning
+the format of quest files.  Many thanks go to the following...
+<PRE>
+	 Peggy S Hanks (df4@juno.com) - General info
+	 Lord Phoenix (gozer@esoterica.pt) - General info
+	 Michael P. Schneider (slannesh@pacbell.net) - Much information on
+		the file formats, variable names.  Has his own quest editor
+		for any 32bit Windows system (Win32s, Win95, WinNT).
+
+</PRE>
+<P><BR>
+<HR>
+
+<A NAME="legal"></A>
+<H3>LEGAL STUFF</H3>
+Although this program has not ever caused any sort of damage to my computer
+(short of the odd lock-up/reboot) in the many hours of testing and debugging,
+there is no guarentee that it won't.  I cannot be held responsible for any
+software or hardware damage incurred through the use of this program. 
+<P>
+I am in no way connect with <EM>BETHESDA</EM>, the computer gaming company who created
+<EM>TES: Daggerfall</EM>.  This is completely a third party hack of the quest files.
+<P>
+All files in the above file list are free domain software and can be copied,
+duplicated, at will.  If you wish to use the source for a project of your
+own, I would consider it a curteousy to tell me and give credit somewhere.
+<P><BR>
+<HR>
+
+<A NAME="appa"></A>
+<H3>APPENDIX A - Listing of %string Variables</H3>
+<PRE>
+		Variable        Description
+	       ===========    ==========================
+		%cn             country
+		%di             some direction
+		%g              He/She etc...
+		%g1             He/She ???
+		%g2             Him/Her etc...
+		%g2self         Himself/Herself etc...
+		%g3             His/Hers/Theirs etc...
+		%god            some god (listed in TEXT.RSC)
+		%jok            a joke
+		%kno            appears to be a guild name 
+		%mn             A person's name?
+		%n              Quest Giver's Name
+		%nam            came up empty for me
+		%nrn            seems to be a random name inserted
+		%oth            an oath (listed in TEXT.RSC)
+		%pcf            character's first name
+		%pcn            character's current name
+		%pct            character's title in guild
+		%qdt            Quest date
+		%ra             player's race
+		%reg            Current region
+		%rn             Regent's Name
+		%rt             Regent's Title
+		%t              Regent's Title ( again? )
+		%vam            Vampire Name
+		%vcn            Vampire's Clan
+
+
+
+</PRE>
+<P><BR>
+<HR>
+
+<A NAME="appb"></A>
+<H3>APPENDIX B - Listing of _string_ Variables</H3>
+<PRE>
+       ITEM Variable           ITEM Variable
+      ===============         ===================
+	_1stparton_             _2myndung_
+	_agent_                 _agentplace_
+	_agentuk_               _alchemist_
+	_alchemyshop_           _ally_
+	_amulet_                _apothecary_
+	_arena_                 _artifact_
+	_artifact2_             _artifact4_
+	_assassin_              _aurielsbow_
+	_aurielshield_          _bank_
+	_banker_                _betrothed_
+	_betrothedhome_         _book_
+	_bookstore_             _bow_
+	_bribe_                 _brother_
+	_casfort_               _castfort_
+	_castle_                _chemist_
+	_child_                 _childlocale_
+	_cleric_                _clothes_
+	_clothing_              _coastal_
+	_competitor_            _conhouse_
+	_contact_               _contact1_
+	_contact2_              _cousin_
+	_damsel_                _darkb_
+	_darkbmember_           _daughter_
+	_daughterhouse_         _db_
+	_dbgold_                _dbguild_
+	_depository_            _destination_
+	_dirtypit_              _dispatcher_
+	_drugs_                 _duelist_
+	_dummy_                 _enemy_
+	_evilfocs_              _evilitem_      
+	_fakename_              _fakeplace_
+	_father_                _finger_
+	_flowers_               _foil_
+	_friend1_               _friend2_
+	_friend3_               _friend4_
+	_gaffer_                _gem_
+	_gems_                  _giant_
+	_giver_                 _givershouse_
+	_gold_                  _gold1_
+	_gold2_                 _goldgoth_
+	_guard_                 _guard4_
+	_guardian_              _guildhall_
+	_healer_                _heist_
+	_hermit_                _hidingplace_
+	_home_                  _hooker_
+	_hookerhouse_           _house_
+	_house2_                _house3_
+	_hunter_                _informant_
+	_ingredient_            _inn_
+	_item_                  _item1_
+	_item1_                 _item2_
+	_item3_                 _itemplace_
+	_jewelry_               _key_
+	_kidnapper_             _knight_
+	_lady_                  _lessgold_
+	_local_                 _lordsmail_
+	_love_                  _lovechild_
+	_lover_                 _lovgold_
+	_mage_                  _mageguild_
+	_magesguild_            _magic_
+	_magicitem_             _magicsword_
+	_maker_                 _man_
+	_mansion_               _marknpc_
+	_master_                _meetingplace_
+	_mensclothing_          _merchant_
+	_messenger_             _metal_
+	_mfriend_               _mg_
+	_mggold_                _missingperson_
+	_mistresshome_          _mitem_
+	_mondung_               _money_
+	_monster_               _murder_
+	_necs_                  _newplace_
+	_noble_                 _noblehouse_
+	_nobleman_              _npc_
+	_npc1_                  _npc2_
+	_npc3_                  _oblivion_
+	_orsinium_              _other_
+	_painting_              _palace_
+	_patsy_                 _pawn_
+	_pickuplocal_           _pickupregion_
+	_place_                 _poison_
+	_potion_                _priest_
+	_prophet_               _prophouse_
+	_qgenemy_               _qgfriend_
+	_qgiver_                _qgiverhome_
+	_queen_                 _queenreward_
+	_questg_                _questgiver_
+	_rebel_                 _relartifact_
+	_religiousitem_         _religitem_
+	_replace_               _reward_
+	_reward2_               _ring_
+	_ripperhouse_           _rippername_
+	_rock_                  _ruler_
+	_safehouse_             _sage_
+	_scarab_                _scholar_
+	_scholarreward_         _sister_
+	_sistershouse_          _sleepingmage_
+	_soldier_               _spouse_
+	_store_                 _storehouse_
+	_target_                _targethouse_
+	_tavern_                _teacher_
+	_temple_                _thief_
+	_thiefhouse_            _thiefmember_
+	_thiefplace_            _thievesguild_
+	_townhouse_             _traitor_
+	_traitorreward_         _transporter_
+	_treasure_              _upfront_
+	_vamp_                  _vamp1_
+	_vamp2_                 _vamphouse_
+	_vampire_               _vampitem_
+	_vampname_              _vampproof_
+	_vamprelic_             _vampreward_
+	_victim_                _victimhouse_
+	_villager_              _villains_s
+	_warrior_               _weapon_
+	_weapons_               _weapons_s
+	_widow_                 _witch_
+	_withouse_              _witness_
+	_wizard_                _womensclothing_
+	_woodsman_
+
+	__agentplace_           __alchemyshop_
+	__arena_                __bank_
+	__banker_               __betrothedhome_
+	__castfort_             __castle_
+	__chemist_              __childhouse_
+	__childlocale_          __competitor_
+	__conhouse_             __contact_
+	__contact1_             __contact2_
+	__darkb_                __daughterhouse_
+	__db_                   __dbguild_
+	__depository_           __destination_
+	__dirtypit_             __dispatcher_
+	__dungeon_              __gaffer_
+	__giver_                __guard_
+	__hidingplace_          __home_
+	__hooker_               __house_
+	__house2_               __house3_
+	__informant_            __inn_
+	__itemdung_             __kidnapper_
+	__knight_               __local_
+	__lovehouse_            __lover_
+	__mageguild_            __magesguild_
+	__mansion_              __master_
+	__meetingplace_         __merchant_
+	__mg_                   __missingperson_
+	__mondung_              __newplace_
+	__noblehouse_           __npc1_
+	__npc2_                 __oblivion_
+	__oracletemple_         __palace_
+	__patsagent_            __pawn_
+	__priest_               __qgfriend_
+	__qgiver_               __questgiver_
+	__rebelhouse_           __safehouse_
+	__sage_                 __school_
+	__shop_                 __sistershouse_
+	__store_                __target_
+	__targethouse_          __tavern_
+	__temple_               __thiefplace_
+	__thievesguild_         __traitor_
+	__tranporter_           __vamp_
+	__vamp2_                __vamphouse_
+	__vampire_              __widow_
+	__witch_                __witness_
+
+	___agent_               ___alchemist_
+	___ally_                ___apothecary_
+	___bowdung_             ___casfort_
+	___chemist_             ___competitor_
+	___contact_             ___contact1_
+	___contact2_            ___contactdung_
+	___cousin_              ___crypt_
+	___darkb_               ___darkbmember_
+	___db_                  ___dispatcher_
+	___dummy_               ___dungeon_
+	___dungeon1_            ___dungeon2_
+	___dungeon3_            ___father_
+	___fatherdung_          ___gaffer_
+	___giver_               ___guard_
+	___guardian_            ___healer_
+	___hideout_             ___hintdung_
+	___hooker_              ___house2_
+	___informant_           ___itemdung_
+	___kidnapper_           ___knight_
+	___local_               ___lover_
+	___maker_               ___mapdung_
+	___merchant_            ___mfriend_
+	___mg_                  ___mondun_
+	___mondung_             ___mondung2_
+	___myndung_             ___newdung_
+	___noble_               ___npc1_
+	___npc2_                ___oblivion_
+	___orsinium_            ___other_
+	___patsagent_           ___pickuplocal_
+	___pickupregion_        ___priest_
+	___qgfriend_            ___qgiver_
+	___questg_              ___questgiver_
+	___ringdung_            ___ruler_
+	___sage_                ___scholar_
+	___scholardung_         ___sleepingmage_
+	___spouse_              ___stronghold_
+	___thief_               ___thiefmember_
+	___traitor_             ___ukcrypt_
+	___vamp_                ___vamp2_
+	___vampire_             ___villager_
+	___witch_               ___witness_
+	___woodsman_            ___wrongdung_
+
+	____dungeon_            ____newplace_
+	____tavern_             ____temple_
+
+</PRE>
+<P><BR>
+<HR>
+
+<A NAME="appc"></A>
+<H3>APPENDIX C - Listing of =string_ Variables</H3>
+<PRE>
+	  Variable                Variable
+       ===============         ===============
+	==daedra_               ==dummydaedra_
+	==other_                ==priest_
+	==qgiver_               ==questgiver_
+	==vampire_              =1stparton_
+	=2dagger_               =2dung_
+	=2mondung_              =2myndung_
+	=2ndparton_             =2palace_
+	=2ransom_               =2shedungent_
+	=2storehouse_           =acolyte_
+	=assassin_              =atronach_
+	=bloodfather_           =bodyguard_
+	=boss_                  =chemist_
+	=child_                 =cleric_
+	=competior_             =contact_
+	=contact2_              =cousin_
+	=daedra_                =daedroth_
+	=db_                    =decoy_
+	=elder_                 =enemy_
+	=executiondelay_        =fighter_
+	=finddaughter_          =firedaedra_
+	=gettraitor_            =giant_
+	=guard_                 =guardian_
+	=guards_                =hooker_
+	=huntstart_             =itemindung_
+	=keytime_               =kidnapper_
+	=knight_                =lich_
+	=lover_                 =mage_
+	=mage1_                 =mage2_
+	=mage3_                 =mage4_
+	=man_                   =merchant_
+	=mmaster_               =monster_
+	=monster_               =monster1_
+	=mummy_                 =noble_
+	=npc1_                  =npc2_
+	=orc_                   =other_
+	=pawn_                  =posse_
+	=priest_                =prophet_
+	=qgfriend_              =qgiver_
+	=qtime_                 =questgiver_
+	=queston_               =queston1_
+	=queston2_              =questtime_
+	=realmummy_             =replace_
+	=reward_                =scholar_
+	=sneaker_               =snitch_
+	=soldier_               =spy_
+	=target_                =thief_
+	=thug_                  =tiger_
+	=time1_                 =time2_
+	=timeforq_              =total_
+	=towertime_             =transporter_
+	=traveltime_            =vamp_
+	=vamp2_                 =vampire_
+	=vampleader_            =vamprival_
+	=victim_                =wereboar_
+	=widow_                 =witch_
+	=witness_
+</PRE>
+<P><BR>
+<HR>
+
+<A NAME="appd"></A>
+<H3>APPENDIX D - Included Data Files (*.DAT)</H3>
+<HR>
+When DFQEdit runs it expects to find several data files in the current
+directory.
+<PRE>
+		GUILDS.DAT	MSG.DAT
+		ITEMS.DAT	MOBS.DAT
+		SEC41.DAT	SEC42.DAT
+		SEC43.DAT	SEC71.DAT
+</PRE>
+These files contain data for the various lists used in the program such as
+guild names and monsters.  Having these values contained in files make the
+program much more flexible and it is easier to change any value(s) in these
+files.  It is possible for one to modify these files to reflect any new
+information obtained through editting quest files or by any other means.
+For instance, through many hours of quest editting you figure out that the
+Giant Rat and Giant Bat in the MOB.DAT file are switched.  You could edit
+the file (with any text editor) to swap these values.  If you do come across
+errors or any additions for these files, make sure to let me know
+(aj589@freenet.carleton.ca)
+<P><BR>
+<STRONG>DUAL LIST FILE FORMAT</STRONG><BR>
+	All data files except MSG.DAT are of the dual format.  These files
+contain a number followed by a text description on one line.
+<PRE>
+	Example:  1043 Does Wierd Stuff
+</PRE>
+The number may be of binary (1001b), octal (0174), or hexadecimal (0x5Fa) as
+well as the usual decimal values.  Each line of the data file contains
+exactly one record and the data is read until the end-of-file, there are no
+comment type characters.  If after modifying one of these files the program
+unexpectingly crashes or the list outputs strange data, you probably made a
+mistake (I guess it's too late to mention back-ups...)
+<P><BR>
+<STRONG>SINGLE LIST FILE FORMAT</STRONG><BR>
+	At the moment, only the file MSG.DAT uses this format.  In this format
+each line represents one list item.  Again, there are no comment characters
+and the entire file is read.
+<P>
+<HR>
+Document Last Modifed the 30 April 1997
+</BODY>
+</HTML>

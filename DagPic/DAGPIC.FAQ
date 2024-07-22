@@ -1,0 +1,32 @@
+DAGPIC v0.21  Copyright (c) 1996 - Dave Humphrey - aj589@freenet.carleton.ca
+=====================================================
+
+DAGPIC - FAQ (Frequently Asked Questions)
+This file will give the user some answers to questions I'm frequently  
+asked and as a quick reference guide.  For complete decription of program
+see DAGPIC.TXT
+
+1) How do I convert a IMG/CIF file into a PCX?
+        Use the command line 
+                dagpic file1.img /b:file2.pcx
+
+2) How do I convert a PCX into an IMG file?
+        Use the command line
+                dagpic file1.img /b:file2.pcx /s
+
+3) How do I convert a PCX into a CIF file?
+        Use the command line
+                dagpic file1.cif /b:file2.pcx /s:4
+        This will insert file1.pcx into image #4 in file.cif.
+
+4) The image's colors don't look right, what's wrong?
+        DAGPIC uses the palette file MAP.PAL by default.  To specify another
+  palette, use the /P: switch.
+                dagpic file1.img /p:file2.pal
+        Palette files are any of the .PAL or .COL files in the ARENA2
+  and DATA directory.
+
+5) I get an error stating it can't find the IMG/CIF/PCX/PAL file?
+        Make sure the path settings in DAGPIC.CFG are correctly set.  DAGPIC
+  looks in this file to determine where these files are.  If you installed
+  DAGPIC into \dagger\dagpic as reccommended you shouldn't have any problems.

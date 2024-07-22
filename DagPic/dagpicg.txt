@@ -1,0 +1,450 @@
+		    DAGPICG REFERENCE DOCUMENT
+=================================================
+   Written by Dave Humphrey                 28 January 1998
+   aj589@freenet.carleton.ca          www.honesty.com/jackel
+
+
+  TABLE OF CONTENTS
+=================================================
+        Introduction
+        Features
+        Requirements
+        Installing
+        Using DagPicG
+                The Main Screen
+                The File Menu
+                The Edit Menu
+                The View Menu
+                The Help Menu
+                The Buttons
+                The Palette Area
+                The Main Picture Area
+                The Text Status Area
+	Key Descriptions
+	Limitations / Known Bugs
+	Versions
+	Legal Stuff
+
+
+
+  INTRODUCTION
+=================================================
+Welcome to DagPicG, the graphical counterpart to the original
+command-line DagPic version to load, edit, and convert the
+various image formats used by TES:DAGGERFALL created by BETHESDA.
+The success of DagPic (as well as AndyPic) indicated that the
+utility was well used, but at the same time many people had
+problems using the command-line interface.  The interface could
+be confusing at times and I received many e-mails about how to
+convert or view images, even though I had tried to explain that
+process in the various documents supplied with the program.
+Because of this I decided to add a neat graphical interface to
+DagPic in order to make use of the program much more intuitive
+and easier than before.  Hence, DagPicG was born... Almost all
+the code for the interface was already created so all I had to
+do was modify the original DagPic version to use it.  Because I
+also decided to improve the base DagPic code for loading/saving
+images it took me a few days to get everything working.  Quite
+a short time if you look at the output...three cheers for
+reusable code eh...:)
+
+
+  FEATURES
+=================================================
+Here's a list with a brief description of the various features
+of DagPicG.
+
+   - Same basic features as the original DagPic. Load up most
+     IMG or CIF files, saves as PCX's or similarily load PCXs
+     and save as an IMG or CIF file.  Not all CIF files can be
+     successfully loaded and there is no support for texture
+     files...yet.
+   - Additional load/save/convert features added for managing
+     multiple image files. Add pictures, delete pictures,
+     merge in IMG/CIF/PCX files to create custom CIF files.
+   - Load and save Daggerfall Palette files.  Can load either
+     PAL or COL files and save only in the PAL format.
+   - Fancy graphic interface for intuitive and easy use.
+     Similar to many  popular software interfaces such as
+     Windows, etc...  Buttons, scroll bars, lists, menus,
+     windows, etc...
+   - Includes a simple bitmap editor so you can touch up
+     pictures.  This might save some steps if you want to do a
+     little editting, no need to convert to a PCX, edit, convert
+     back.  Choose any color in the current palette, simple fill,
+     random pixels, zoom in and out from 100 to 500%. Scroll
+     larger pictures to edit the portion you want.
+
+
+  REQUIREMENTS
+=================================================
+There aren't strick requirements...essentially if you can run
+Daggerfall, you should be able to run DagPicG.
+	- 286+ Computer
+	- VGA Color Monitor
+	- 2 Button Mouse
+	- DOS v3.0? or greater
+
+
+  INSTALLING
+=================================================
+Installation is pretty simple, much like the original DagPic
+version.
+  - Create a directory somewhere on your DAGGER drive. You
+    could install it in the ARENA2 directory or in the DAGGER
+    directory but this is rather a messy habit.  I prefer to
+    install it to the DAGPIC directory in the DAGGER dir.
+	ex:     mkdir d:\dagger\dagpic
+  - Unzip the DAGPICG.ZIP into this new directory.
+	ex:     pkunzip dagpicg.zip d:\dagger\dagpic
+  - That's it, now change to the directory and start-er-up.
+	ex:     cd \dagger\dagpic
+		dagpicg
+
+
+   USING DAGPICG
+=================================================
+DagPicG should be relatively easy and intuitive to use...
+hopefully you won't even have to look in here.  If you do,
+that's quite allright, and I hope to be able to provide you
+with the information you're looking for.
+
+    THE MAIN SCREEN
+The main screen seen as soon as DagPicG loads up contains many
+things and might be a little confusing at first, so we'll go
+through everything step by step.  At the top of the screen you'll
+see four menu options, FILE, EDIT, VIEW, and HELP.  Clicking on
+each of these with the mouse will display the possible menu
+selections.  The menu choices are described later on in detail
+in this document.  Just below the menu items is a large black area.
+This is the main picture area where the current picture will be
+displayed when you load/create one.  Below the picture area, at
+the very bottom of the screen is the current palette where you
+can choose your color of choice. On the very right of the screen
+are many buttons.  These can select various file options such as
+loading pictures or editting options such as zooming in and out
+or filling an area in the picture with a color.  Many of the
+buttons functions are duplicated in the various menus at the top
+of the screen. At the far bottom right corner can be found some
+status information about the current picture(s) in memory.
+
+    THE FILE MENU
+The file menu contains options related to file operations, such
+as saving and loading.  When you click on this menu item you are
+presented with the following list:
+
+      Load Picture
+	This allows you to load an IMG or CIF file into memory.
+	You are presented with a file dialogue window allowing
+	you to select an image file.  You can change directories,
+	scroll through the file list, change the file mask, etc...
+	To select an image to load either type its name in the
+	filename box and press enter or select the Load button,
+	or double-click on the desired filename.  If you wish to
+	not load anything, press the Cancel button or the ESC key.
+	Any picture(s) in memory will be erased even if you cancel
+	the load. If the IMG file contains a palette the current
+	palette will be updated as well.  Currently only images
+	up to 320x200 in size are supported.
+      Save All
+	Choosing this item saves all the pictures in memory to an
+	image file. If only one image is in memory, an IMG file is
+	created, while if more exist a CIF file is created.
+      Save Current
+	This option allows you to just save the current picture
+	displayed in the editting area.  The picture is automatically
+	saved as an IMG file.
+      Load Palette
+	Using this one can load any PAL or COL Daggerfall palette
+	file. This will change the entire current palette so the
+	screen will most likely not look the same after a load.
+	The colors used in DagPicG are from the default palette
+	MAP.PAL and other palettes will most likely turn
+	everything a funky color.
+      Save Palette
+	This saves the current palette in memory to a file in the
+	PAL file format.  This shouldn't have to be used much but
+	I included it for completeness.
+      Load PCX
+	Using this one can load PCX format image files into memory.
+	Only the basic 256-color PCX format is understood so anything
+	fancier will most likely causes errors or wierd output.
+	The palette found in the PCX file is ignored and the current
+	palette in memory is used. One should ensure that the loaded
+	PCX file contains the required palette or your colours will
+	get mixed up.  PCXs must be at most 320x200 pixels in size.
+	All pictures in memory will be erased when this option is
+	selected.
+      Save PCX
+	This nifty option lets one save the current displayed image
+	to a PCX file format which can be then loaded into most
+	bitmap editors.  Some people have complained that PCX files
+	saved in the original DagPic version couldn't be loaded in
+	various editors, but I've never had any problems with Corel
+	Photo-Paint or the Windows Paint programs.  It saves it as
+	a standard PCX file with 256 colors using the current
+	palette in memory.
+      Merge Picture
+	Use this option to add pictures to create a multiple image
+	CIF file.  If an IMG file is loaded, it will replace the
+	currently displayed picture.  Be warned, you aren't prompted
+	if you want to replace the current picture.  If a CIF file
+	is loaded the images are all added to the end of picture
+	list, i.e., no pictures are overwritten. Currently a maximum
+	of 100 pictures can be loaded at one time, although you may
+	run out of memory before this limit is reached.
+      Merge PCX
+	Similar to the Merge Picture option, this replaces the
+	currently displayed picture with the loaded PCX file.
+	Again, no warning is issued when the current image is
+	replaced.
+      Exit
+	Exit the DagPicG program. You are prompted before the
+	program will actually quit.
+
+
+    THE EDIT MENU
+The edit menu contains various features for editting the pictures
+such as deleting/adding pictures, changing their size, etc...
+When you click on the Edit menu the following list appears:
+
+      Clear All
+	Use this option sparingly since it will delete all the
+	current pictures in memory.  No warning/prompting occurs
+	so use this with caution.
+      Add Picture
+	This option adds a picture at the currently selected
+	position.  Other pictures are shifted so that no picture
+	will be overwritten.  You are prompted for the image width
+	and height in pixels that will be created. If you will be
+	merging an IMG or PCX file into this position any image
+	size can be entered since it will be deleted anyways when
+	the new picture file is merged.
+      Del Current
+	This deletes the currently displayed picture from memory.
+	No prompting or warning occurs so use this option carefully.
+      Change Size
+	You can modify the current size of the image using this
+	option. The current image size is limited to 320x200 pixels.
+
+
+    THE VIEW MENU
+This menu allows to change parameters related to the current view
+of the displayed image such as zoom, scrolling parameters, etc...
+When this menu item is selected the following list is seen:
+
+      Zoom 100%
+      Zoom 200%
+      Zoom 300%
+      Zoom 400%
+      Zoom 500%
+	These options change the zoom factor of the current
+	displayed image. A zoom factor of 400%, for instance, means
+	that each pixel in the image will be 4x4 pixels in size
+	when displayed on the screen.
+      Center
+	Use this to reset the scrolling center to the upper-left
+	corner of the image.  Useful if you've lost track of
+	exactly where in the current image you are and need to
+	reset.
+
+    THE HELP MENU
+The help menu contains several simple options.
+
+      DagPicG.Txt
+	This will display this file in case you need some
+	information and don't want to quit and restart.
+      About DagPicG
+	Displays some information about the program like
+	version date etc...
+      Status
+	Displays memory status information.
+
+
+    THE BUTTONS
+There are numerous buttons on the main screen that perform a
+variety of tasks from loading image files to zooming in and
+out.  Many of the buttons actually duplicate menu functions
+and are present only as a optional shortcut. The various
+buttons and their description follow:
+
+     Clear All
+       This button duplicates the menu function Edit:Clear
+       All. Selecting will delete all the pictures currently
+       in memory.
+     Add Pic
+     Delete Pic
+       Again, these buttons duplicate the similar menu functions
+       found in the Edit menu by either adding or deleting the
+       current picture.
+     Load
+       This duplicates the File:Load Picture menu option by
+       loading a IMG or CIF into memory. All pictures in
+       memory are deleted whether anything is loaded or not.
+     Save All
+       This duplicates the File:Save All menu option and saves
+       all pictures in memory to a specified IMG or CIF file,
+       depending on the number of pictures current in memory.
+     Load PCX
+       This duplicates the File:Load PCX menu option by loading
+       a specified PCX file into memory.  All pictures in memory
+       are deleted whether a PCX file is loaded or not.
+     Save PCX
+       This duplicats the File:Save PCX menu option by saving
+       the currently displayed image to a specified PCX file.
+     Exit
+       Exit the program.  A prompt is displayed before the
+       program will actually exit.
+     100%
+     200%
+     300%
+     400%
+     500%
+       Selects the zoom factor as in the View menu.
+     Cent
+       Centers the current image in the display as in the
+       View:Center menu.
+     Fill
+       This button is not duplicated by any menu option.  Selecting
+       this button and then clicking on a portion in the current
+       image will flood fill an area with the current selected
+       color.  If a point outside the image area or the ESC key
+       is pressed, nothing will occur.
+     Size
+       This button will alter the current displayed image size
+       and is duplicated by the Edit:Change Size menu item.
+     Rand
+       This button creates a number of random pixels of the
+       current color in the image.  It is not duplicated by
+       any menu item.
+     NoGap / Gap
+       This button toggles the display of a 1 pixel gap between
+       the displayed image pixels.  This might be useful at certain
+       zoom factors in order to distinguish pixels of similar
+       color.  It is not duplicated by any menu item.
+     Next Pic
+     Prev Pic
+       These two buttons allow one to scroll through the current
+       pictures in memory.  These aren't duplicated by any menu
+       item but are by the Page Up and Page Down keys.
+
+
+  THE PALETTE AREA
+The palette area can be found at the very bottom of the screen.
+To select a color simply click with the left mouse button on
+the desired color. The default palette is the Daggerfall palette
+MAP.PAL and the system colours (such as buttons, windows, and text)
+are defined from this palette.  In the advent of another palette
+being loaded from a PAL, COL or IMG file the display will most
+likely become and perhaps unusable.  In the case of a unusable
+palette (you can't see anything) you can quit the program by
+pressing ESC followed by the 'Y' key.
+
+  THE MAIN PICTURE AREA
+The picture area is the large black portion in the middle of
+the DagPicG screen.  This is where the current image will be
+displayer when one is loaded or created.  The corners of a
+displayed image will be denoted by white markers, useful if
+the picture is entirely black or a similar dark color.  To
+change a pixels color simply click on the picture area with
+the left mouse button.  To get a color from the picture click
+on the desired pixel with the right mouse button.  Pretty
+simple eh...?
+
+  THE TEXT STATUS AREA
+The status area can be found at the bottom right corner of
+the screen. Although you can't directly change anything here
+it will display various information about the current state
+of the program.  The first line is the current filename of
+the image.  The second is the current filename of the palette.
+The third shows the currently displayed image and the number
+of images currently loaded in memory.  The fourth gives the
+current color index selected from the palette, and the last
+line gives the dimensions in pixels of the currently selected
+image.
+
+
+   KEY DESCRIPTIONS
+=================================================
+Although a two-button mouse is required for the program, many
+of the various features can be activated with various keys as
+well.
+
+    ESC
+      Pressing this at most places in the program will exit
+      and cancel you  from whatever you are doing (such as
+      menus, loading/saving, etc...).  When pressed from the
+      main display you are prompted whether you wish to exit
+      or not.
+    Left/Right/Up/Down/Home/End Cursor Keys
+      Use these keys to scroll the currently displayed image
+      around.  Useful if the image is larger than the displayable
+      area or you are on a high zoom factor.  Use the Center
+      button/menu item to reset the scrolling.
+    PgUp/PgDn
+      These keys duplicate the Next Pic and Prev Pic buttons
+      to move through the various pictures in memory.
+    ALT+D
+      This combination brings up a debug window showing the
+      status of the currently available memory and the heap
+      status.  If the heap status ever reads as -1 or Corrupt
+      exit the program immediately and reboot your computer
+      to be safe.  A value of -1 from the heap check function
+      means that your computers memory has been messed up and
+      nasty things will likely happen (anything in memory might
+      be overwritten or corrupted and permanently lost).
+    Y/N
+      The 'Y' and 'N' keys can be substituted when you are
+      prompted with a Yes or No type question, such as when
+      you wish to exit.
+
+
+
+  LIMITATIONS and KNOWN BUGS
+=================================================
+  - The program is limited to a maximum of 100 images at one
+    time.
+  - Images cannot exceed 320x200 pixels in size.
+  - Filenames and path lengths have a finite size.  If you happen
+    to exceed this length program operation is not defined (I don't
+    know what will happen).  This shouldn't be a problem unless
+    you're intentionally looking to crash the program.
+  - IMPORTANT: Memory is not always freed when a picture is deleted.
+    This means that you might eventually run out of memory if you
+    are editting a large number of pictures for a while.  Use the
+    ALT+D keys to check the available memory often and quit/reload
+    if it drops too low. I've never had a problem with corrupt
+    memory so you shouldn't have to worry about it too much.
+  - You can't yet change drives when loading/saving programs.
+    I'll probably include this eventually but I hope it won't
+    inconvienence to many people.
+
+
+   VERSIONS
+=================================================
+Guess I forgot to do this for a while...
+
+v0.36g - 28 January 1998
+	- Fixed a little bug with a big different causing editting any
+	  non-square pictures to not work right (mixed up height and width
+	  in two lines of code...sigh). You should get what you edit now.
+
+v0.35g - 14 December 1997
+	- One of the first 'stable' releases
+
+
+  LEGAL STUFF
+=================================================
+This program and related source code is public domain and can be
+copied and distributed at will.  If you decide to use any of the
+source code for any commerical or non-commercial purposes, I do
+ask that you give credit where it is due.  I would also consider
+it courtesy to tell me where are for what its being used for (for
+gloating purposes only...;).
+
+I cannot be held responsible for any damage incurred through the
+use of this program.  Through-out the many hours of debugging/
+testing I've never had anything happen more severe than a mild
+freeze up (most often due to my incompetance by attempting to
+delete a NULL pointer or something). If you due notice any bug
+or crash, please let me know so I can fix it..Thanks.

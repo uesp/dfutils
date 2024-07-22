@@ -1,0 +1,528 @@
+#
+# DFPSELL.RC
+#
+# This file contains the parameters for all of the GUI objects on the main
+# window (like width, height, titles, colors, etc...).
+#
+CONTROL next_button
+	width = 60
+	height = 24
+	text = "Next"
+	user_click = next_click
+	open_in = main_window, 550, 90
+END CONTROL
+#
+CONTROL prev_button
+	width = 60
+	height = 24
+	text = "Prev"
+	user_click = prev_click
+	open_in = main_window, 550, 120
+END CONTROL
+#
+CONTROL add_button
+	width = 60
+	height = 24
+	text = "Add"
+	user_click = add_click
+	open_in = main_window, 550, 190
+END CONTROL
+#
+CONTROL del_button
+	width = 60
+	height = 24
+	text = "Del"
+	user_click = del_click
+	open_in = main_window, 550, 220
+END CONTROL
+#
+CONTROL load_button
+	width = 60
+	height = 24
+	text = "Load"
+	user_click = load_click
+	open_in = main_window, 550, 260
+END CONTROL
+#
+CONTROL save_button
+	width = 60
+	height = 24
+	text = "Save"
+	user_click = save_click
+	open_in = main_window, 550, 290
+END CONTROL
+#
+CONTROL exit_button
+	width = 60
+	height = 24
+	text = "Exit"
+	user_click = exit_click
+	open_in = main_window, 550, 390
+END CONTROL
+#
+CONTROL count_label
+	text = "Spell   0 of   0 "
+	text_color = DARKGRAY
+	bg_print = TRUE
+	open_in = main_window, 20, 460
+END CONTROL
+#
+CONTROL file_label
+	text = "<none>"
+	text_color = DARKGRAY
+	bg_print = TRUE
+	open_in = main_window, 200, 460
+END CONTROL
+#
+CONTROL spell_name
+	max_length = 24
+	title = "Spell:"
+	open_in = main_window, 80, 57
+END CONTROL
+#
+CONTROL spell_type1
+	max_length = 3
+	title = "Type:"
+	open_in = main_window, 170, 120
+END CONTROL
+#
+CONTROL spell_type2
+	max_length = 3
+	title = "Type:"
+	open_in = main_window, 170, 236
+END CONTROL
+#
+CONTROL spell_type3
+	max_length = 3
+	title = "Type:"
+	open_in = main_window, 170, 352
+END CONTROL
+#
+CONTROL spell_subtype1
+	max_length = 3
+	title = NULL
+	open_in = main_window, 225, 120
+END CONTROL
+#
+CONTROL spell_subtype2
+	max_length = 3
+	title = NULL
+	open_in = main_window, 225, 236
+END CONTROL
+#
+CONTROL spell_subtype3
+	max_length = 3
+	title = NULL
+	open_in = main_window, 225, 352
+END CONTROL
+#
+CONTROL spell_dur11
+	max_length = 3
+	title = "Duration:"
+	open_in = main_window, 170, 144
+END CONTROL
+#
+CONTROL spell_dur12
+	max_length = 3
+	title = "Duration:"
+	open_in = main_window, 170, 258
+END CONTROL
+#
+CONTROL spell_dur13
+	max_length = 3
+	title = "Duration:"
+	open_in = main_window, 170, 374
+END CONTROL
+#
+CONTROL spell_dur21
+	max_length = 3
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 144
+END CONTROL
+#
+CONTROL spell_dur22
+	max_length = 3
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 258
+END CONTROL
+#
+CONTROL spell_dur23
+	max_length = 3
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 374
+END CONTROL
+#
+CONTROL spell_dur31
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 144
+END CONTROL
+#
+
+CONTROL spell_dur32
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 258
+END CONTROL
+#
+CONTROL spell_dur33
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 374
+END CONTROL
+#
+CONTROL dur_label1
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 335, 144
+END CONTROL
+#
+CONTROL dur_label2
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 335, 258
+END CONTROL
+#
+CONTROL dur_label3
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 335, 374
+END CONTROL
+#
+CONTROL spell_chance11
+	max_length = 3
+	title = "Chance:"
+	open_in = main_window, 170, 166
+END CONTROL
+#
+CONTROL spell_chance12
+	max_length = 3
+	title = "Chance:"
+	open_in = main_window, 170, 280
+END CONTROL
+#
+CONTROL spell_chance13
+	max_length = 3
+	title = "Chance:"
+	open_in = main_window, 170, 396
+END CONTROL
+#
+CONTROL spell_chance21
+	max_length = 3
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 166
+END CONTROL
+#
+CONTROL spell_chance22
+	max_length = 3
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 280
+END CONTROL
+#
+CONTROL spell_chance23
+	max_length = 3
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 396
+END CONTROL
+#
+CONTROL spell_chance31
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 166
+END CONTROL
+#
+CONTROL spell_chance32
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 280
+END CONTROL
+#
+CONTROL spell_chance33
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 396
+END CONTROL
+#
+CONTROL chance_label1
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 335, 166
+END CONTROL
+#
+CONTROL chance_label2
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 335, 280
+END CONTROL
+#
+CONTROL chance_label3
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 335, 396
+END CONTROL
+#
+CONTROL spell_mag11
+	max_length = 3
+	width = 32
+	title = "Magnitude:"
+	open_in = main_window, 170, 188
+END CONTROL
+#
+CONTROL spell_mag12
+	max_length = 3
+	width = 32
+	title = "Magnitude:"
+	open_in = main_window, 170, 302
+END CONTROL
+#
+CONTROL spell_mag13
+	max_length = 3
+	width = 32
+	title = "Magnitude:"
+	open_in = main_window, 170, 418
+END CONTROL
+#
+CONTROL spell_mag21
+	max_length = 3
+	title = "to"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 188
+END CONTROL
+#
+CONTROL spell_mag22
+	max_length = 3
+	title = "to"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 302
+END CONTROL
+#
+CONTROL spell_mag23
+	max_length = 3
+	title = "to"
+	title_text_color = DARKGRAY
+	open_in = main_window, 225, 418
+END CONTROL
+#
+CONTROL spell_mag31
+	max_length = 3
+	width = 32
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 188
+END CONTROL
+#
+CONTROL spell_mag32
+	max_length = 3
+	width = 32
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 302
+END CONTROL
+#
+CONTROL spell_mag33
+	max_length = 3
+	width = 32
+	title = "+"
+	title_text_color = DARKGRAY
+	open_in = main_window, 280, 418
+END CONTROL
+#
+CONTROL spell_mag41
+	max_length = 3
+	title = "to"
+	title_text_color = DARKGRAY
+	open_in = main_window, 335, 188
+END CONTROL
+#
+CONTROL spell_mag42
+	max_length = 3
+	title = "to"
+	title_text_color = DARKGRAY
+	open_in = main_window, 335, 302
+END CONTROL
+#
+CONTROL spell_mag43
+	max_length = 3
+	title = "to"
+	title_text_color = DARKGRAY
+	open_in = main_window, 335, 418
+END CONTROL
+#
+CONTROL spell_mag51
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 390, 188
+END CONTROL
+#
+CONTROL spell_mag52
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 390, 302
+END CONTROL
+#
+CONTROL spell_mag53
+	max_length = 3
+	title = "/"
+	title_text_color = DARKGRAY
+	open_in = main_window, 390, 418
+END CONTROL
+#
+CONTROL mag_label1
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 445, 188
+END CONTROL
+#
+CONTROL mag_label2
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 445, 302
+END CONTROL
+#
+CONTROL mag_label3
+	text = "Lvls"
+	text_color = DARKGRAY
+	open_in = main_window, 445, 418
+END CONTROL
+#
+CONTROL frame1
+	width = 440
+	height = 100
+	title = "Effect 1"
+	open_in = main_window, 60, 110
+END CONTROL
+#
+CONTROL frame2
+	width = 440
+	height = 100
+	title = "Effect 2"
+	open_in = main_window, 60, 224
+END CONTROL
+#
+CONTROL frame3
+	width = 440
+	height = 100
+	title = "Effect 3"
+	open_in = main_window, 60, 340
+END CONTROL
+#
+CONTROL cost
+	max_length = 5
+	title = "Cost:"
+	open_in = main_window, 230, 79
+END CONTROL
+#
+CONTROL icon
+	max_length = 4
+	title = "Icon:"
+	open_in = main_window, 360, 79
+END CONTROL
+#
+CONTROL index
+	max_length = 4
+	title = "Index:"
+	open_in = main_window, 470, 79
+END CONTROL
+#
+CONTROL element_list
+	max_length = 8
+	list_height = 52
+	title = "Element:"
+	text_enabled = FALSE
+	open_in = main_window, 80, 79
+END CONTROL
+#
+CONTROL target_list
+	max_length = 16
+	list_height = 52
+	title = "Target:"
+	text_enabled = FALSE
+	open_in = main_window, 360, 57
+END CONTROL
+#
+CONTROL spell_list1
+	max_length = 20
+	list_height = 92
+	title = NULL
+	text_enabled = FALSE
+	user_event = spell1_event
+	open_in = main_window, 280, 120
+END CONTROL
+#
+CONTROL spell_list2
+	max_length = 20
+	list_height = 92
+	title = NULL
+	text_enabled = FALSE
+	user_event = spell2_event
+	open_in = main_window, 280, 236
+END CONTROL
+#
+CONTROL spell_list3
+	max_length = 20
+	list_height = 92
+	title = NULL
+	text_enabled = FALSE
+	user_event = spell3_event
+	open_in = main_window, 280, 352
+END CONTROL
+#
+CONTROL file_menu
+	title = "File"
+	width = 48
+	height = 14
+	title_back_color = LIGHTGRAY
+	title_color = BLACK
+	add_menu = "Load", load_click
+	add_menu = "Save", save_menu
+	add_menu = "Save As", save_click
+	add_menu = "-"
+	add_menu = "Exit", exit_click
+	open_in = main_window, 14, 20
+END CONTROL
+#
+CONTROL edit_menu
+	title = "Edit"
+	width = 48
+	height = 14
+	title_back_color = LIGHTGRAY
+	title_color = BLACK
+	add_menu = "Add Spell", add_click
+	add_menu = "Del Spell", del_click
+	open_in = main_window, 64, 20
+END CONTROL
+#
+CONTROL help_menu
+	title = "Help"
+	width = 48
+	height = 14
+	title_back_color = LIGHTGRAY
+	title_color = BLACK
+	add_menu = "About", about_menu
+	add_menu = "Debug", debug_menu
+	open_in = main_window, 564, 20
+END CONTROL
+#
+CONTROL main_window
+	x = 0
+	y = 0
+	width = 640
+	height = 480
+	title = "DFSpells v0.0"
+END CONTROL
+#
+

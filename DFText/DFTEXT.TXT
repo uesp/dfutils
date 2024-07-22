@@ -1,0 +1,80 @@
+			   DFTEXT - Documentation
+		  Written by Dave Humphrey - 25 March 1998
+	    aj589@freenet.carleton.ca      www.honesty.com/jackel/
+
+
+   USING DFText
+=======================================
+DFText is a simple utility for adding, modifying, or deleting text entries
+from the file TEXT.RSC in the ARENA2 directory of Daggerfall.  This is a
+program meant for those interested and familiar with hacking and probably
+shouldn't be used by your average gamer. Because of this, the documentation
+will be rather sparse since I'm assuming you probably are familiar with
+hacking and with the Daggerfall files to some degree.  You may always email
+me with any questions/comments.
+
+I developed this initially for adding texts for new artifacts, although you
+can do much more. In general, it is dangerous to delete texts unless you
+added it previously.  Deleting a text the game needs may cause the game to
+crash when it looks for it, although an error message is more likely.  To
+use this program, merely copy it into the root Daggerfall directory. The
+basic commands available are as follows:
+
+   DFText [/d] [/y] [/s] [text file] index
+
+	index : This is the text index you wish to view, change, modify
+		or delete. It can range from 0 to 65535 and be a decimal or
+		hex number (0xFF).  This is required.
+  [text file] : If adding or modifying a text entry, this specified the
+		source text to use. Make sure text lines are in general
+		shorter than 50-60 chararacters or so, so that the displayed
+		lines in Daggerfall aren't too long. At the moment no special
+		'codes' are available, but may be in the future. This is
+		required unless you are deleting an entry.
+	 [/d] : Means you wish to delete the specified index number from
+		the RSC file.
+	 [/y] : Defaults yes to all answers.  Use this if you don't want to
+		be prompted for deleting and replacing records.
+	 [/s] : Saves the specified text file to the text index. Use this to
+		replace or add text indices.
+
+   EXAMPLES
+=======================================
+
+	dftext 8720		:Delete text
+	dftext 8720 /y		:Delete text with no prompts
+	dftext /y 8720		:Delete text with no prompts
+	dftext 8720 file.txt	:Save the text index 8720 to the text file
+	dftext 8720 file.txt /s :Add/replace index 8720 with file
+
+
+
+   TEXT.RSC STRUCTURE
+=======================================
+The structure of the TEXT.RSC file is relatively simple. The first part of
+the file is a group of headers, indicating the offset and type of the texts
+contained.
+
+     Bytes[0-1] (short)
+	The length, in bytes, of the header, not counting these 2 bytes.
+
+     Header Structure
+	Bytes[0-1] (short)
+	    The index of the text record. The index is used by the program
+	    in order to tell which text is to be displayed when. IE, when it
+	    wants to display an artifact text description it will look for
+	    the index 8720 in the file.
+	Bytes[2-5] (long)
+	    Offset to the beginning of the text from the start of the file.
+     End Header
+
+There are a number of special indices used by the program.
+	0x0F00 = Last dummy record in file, must be present.
+	0xFFFF = Offset points to byte after last byte in file
+
+What follows the header is all the text data. Much like the text data
+contained in the QRC and book files, it contains special codes.
+	0xFE = End of Text Section
+	0xFC = Carriage Return
+	0xFD = Carriage Return
+

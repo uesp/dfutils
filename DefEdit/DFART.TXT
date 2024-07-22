@@ -1,0 +1,173 @@
+		      Daggerfall - Hacking New Artifacts
+		   Written by Dave Humphrey - 22 March 1998
+
+
+   INTRODUCTION
+=======================================
+This document presents an overview of what is required in order to add your
+own unique artifacts to the game of Daggerfall. I am assuming you are at
+least somewhat familiar with editing files and hexdecimal numbers. The
+information contained is by no means complete or absolutely correct. Please
+point out any errors/omissions as you find them.  I am in no way related to
+Bethesda.  Unless indicated by a 0x or a h, all numbers are decimal. This was
+rather quickly written in order to make the information known since it is
+rather exciting I feel, and adds a new direction for custom quests.
+
+
+
+   MAGIC.DEF
+=======================================
+Somewhere along my travels I came across the file MAGIC.DEF located in the
+ARENA2 directory. In contains a number of short fields describing what appear
+to be magical items, both artifacts and those random magic items you find
+in dungeons and on quests.  It appears as though this file gives what
+enchantments each item contains and little else.  This is plenty information
+for the random magic items since the actual item type can be anything. The
+magical enchantments are merely copied into the item.  For the artifacts we
+also need to know the item type, picture, etc... which doesn't appear to be
+contained within the file.  Attempts to locate this data have failed. Thus,
+for the moment, we may be limited to duplicating the known artifact item
+types, changing the 10 item enchantments to suit our needs. The actual
+structure for this file is contained later on in this document.
+
+
+
+   ADDING AN ARTIFACT
+=======================================
+Given that the structure to MAGIC.DEF is so simple, it is almost trivial to
+add another item to the end of it.  For adding an artifact the best method
+is to copy from a known one of a similar type.  For instance if you wanted
+a magical sword you might copy from the Ebony Blade, a bow from Auriels Bow
+etc... Copy this field after the last one in the file and increment the first
+byte in the file (indicating one more record in the file). You may now change
+the new item's name and enchantments as you please.
+
+
+   USING THE NEW ARTIFACT
+=======================================
+Now that you've added a new artifact to the game, how do you make use of it?
+If you are familiar with the item structure, every item in the game has a
+group and sub-group indicating what it actually is. For artifacts the group
+number is 5 with the sub-group indicating which artifact, ranging from 0 to
+22.  Since you added the artifact to the end of the MAGIC.DEF file it will
+be referenced as number 23.  Similarily, if you add more artifacts, they will
+be numbers 24, 25, and so on.  This number can be used when modifying the
+save game or editting quests.  For instance, I copied the quest B0B81Y00
+(I think) to B0B70Y02. The former quest finds the artifact Crysamere (which
+has the group/subgroup 05/15). In the new quest file I change the 15 to a
+23 for my new artifact.  I also change the QRC text file so I know when this
+quest is offered.  At this time this is the only trial I've done, but it
+has worked successfully. I did receive my new modified artifact at the end
+of the quest.
+
+
+   THE TEXT.RSC ARTIFACT ENTRY
+=======================================
+Unfortunately, now that we've got our new artifact, there is no description
+for it in the TEXT.RSC file in the ARENA2 directory.  When we get 'Info' on
+our artifact Daggerfall prints out an error message.  I won't go into any
+detail of the RSC file at the moment, but it turns out we need to add an
+entry to it with the index number of 87XX, where XX is the number of our
+artifact.  The known artifacts in the game have indices of 8700 to 8722, so
+our new artifacts would be 8723, 8724, and so on.  At this time there is
+no 'easy' way to add a record to the TEXT.RSC file...an editor will have to
+be created to do this.
+
+
+   FORSEEN PROBLEMS
+=======================================
+Heh...great, we've found a way to added user defined artifacts to the game.
+This will allow new quests to be created with unique and never before seen
+items in the game.  Here's the problem though...the position of the artifact
+in the MAGIC.DEF determines its index number.  So, if Hacker #1 creates an
+artifact and Hacker #2 also creates a artifact it won't be possible to use
+both artifacts since both have an index of 23.  If both are added at the same
+time the indices will get messed up and who knows what will happen. IE, both
+artifacts will be referenced as #23 in their quests, but in actual fact one
+will be 23 and one 24.  Similarily there would be two identical references
+in the TEXT.RSC file for artifact 23, and none for artifact 24.  There may
+be several possible solutions for this:
+
+   1. Only have one set of custom artifacts at a time. So you would install
+      hackers #1 artifact, play the game and get it.  Uninstall the #1's
+      artifact and install #2s etc... This would solve the quest problem but
+      the artifacts description would be missing from TEXT.RSC.
+
+   2. A better possibilty would be to 'assign' unique aritifact numbers to
+      user defined artifacts.  So, if you were creating a new artifact you
+      would take an index which no one had used before. If you did use a
+      used one things would again get messed up.  Since at this time there
+      are only a handful of hackers editing quests and the like, one would
+      merely post an email stating "I'm using Artifact #45 for a new one..."
+      This would mean that there would be a number of unused entries in the
+      MAGIC.DEF file.  These could contain a regular magic item entry until
+      replaced by an artifact. By the definitions of the index number there
+      would be a maximum of 256 total artifacts allowed at one time.  Any
+      more and you would have a similar problem as previously mentioned
+      (hopefully this will be enough for a while).
+
+Solution number 2 seems to be the better and more versatile, although it
+requires the hacker to notify others of their artifact number(s) before
+creating/releasing it. It solves both the problem of the artifact quests
+and the TEXT.RSC file since each artifact still has a unique number (as long
+as their are less than 256 of them).
+
+
+
+   CREATING EDITTING PROGRAMS
+=======================================
+The structure of the MAGIC.DEF file is simply enough to allow editting by
+hand.  I still intend to release a simply editor to assist in this.  Although
+the structure of the TEXT.RSC file is almost as simple, adding a record
+involves changing the offsets of all records, several hundred of them. Thus
+a simply editor here will be required to assist in this. Now comes the
+problem of releasing new artifacts to the general public.  We obviously can't
+ask them to hex-edit the files manually since this is far above the
+capabilities of the average computer user.  Instead, some sort of program
+is required that will install 'modules' automatically.  If each new artifact
+has a unique number this can be achieved rather simply.  It may still be
+some time before a suitably capable system exists to do this.
+
+
+
+   The MAGIC.DEF File Structure
+=======================================
+
+    Bytes[0-3] (long)
+	Number of records in file.
+
+    Record Structure (62 bytes long)
+	Bytes[0-31] (32 bytes)
+	    The item name. Remember that including the string '%it' within
+	    the item's name will cause the item type to appear, ie:
+	    'Leaping Shirt' or 'Leaping Longsword'
+
+	Byte[32]
+	   00 - Regular Magic Item
+	   01 - Artifact
+	   02 - Also an Artifact
+
+	Byte[33]
+	   Group number of the item, ie: 02 is weapon 03 armor, etc...
+
+	Byte[34]
+	   Subgroup of the item.
+
+	Bytes[35-54] (20 bytes)
+	   Contains the 10 item enchantments, each one being two bytes in
+	   length.  A 'FF FF' means no enchantment.  The close to complete
+	   list of enchantments is contained elsewhere.
+
+	Bytes[55-56] (short)
+	   The number of uses of the item.
+
+	Bytes[57-60] (short)
+	   Not sure what this is but possibly the cost of the item, although
+	   it isn't carried over to the savegame. Most artifacts have a value
+	   of 50,000 here while other magical items have lower values.
+
+	Bytes[61] (char)
+	   Material type of item.
+    End Structure
+
+

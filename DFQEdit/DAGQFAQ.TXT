@@ -1,0 +1,964 @@
+Daggerfall Quest File (QRC/QBN) Hacking Results - v0.20
+======================================================
+	Written/Compiled by Dave Humprey (30 April 97)
+		aj589@freenet.carleton.ca
+	Much information also obtained from Michael P. Schneider
+		slannesh@pacbell.net
+
+Contents
+	IMPORTANT Note Before Beginning
+	Quest Filename Format
+	The QRC Files
+	The QBN Files
+	Credits
+	WHY Hack the Quest Files?
+	Version Updates
+	APPENDIX A - Listing of %string Variables
+	APPENDIX B - Listing of _string_ Variables
+	APPENDIX C - Listing of =string_ Variables
+	APPENDIX D - Listing of Guild Quest Filenames
+	APPENDIX E - Description of Message Hash Values
+	APPENDIX F - Listing of Monster Numbers
+
+
+IMPORTANT Note Before Beginning
+======================================================
+This document was created assuming you know the basics of hex editing and
+programming (not much), or, for the more technically minded.  If you aren't
+one of these, you may not wish to read furthur.  The byte locations are 
+always given in decimal, while numeric bytes from the files are always in
+hexadecimal (base 16) whether indicated (0x10, 10h) or not.  Remember that
+arrays start with element 0.  So qbn_offset[6] would actually be the 7th
+offset contained in the QBN header.
+
+When I write a byte sequence from a file (ex: 76 A4) the numbers are assumed
+to be hexadecimal. The order of the bytes is unchanged from the file (ex: the
+bytes 00 01 are not a '1' but actually 0x0100 or 256).
+
+Unless a particular section or list of values have (confirmed) marker the
+information is not set in stone.  A (confirmed) mark indicates that the
+value has been tested.  In the case of NULL bytes or complete list of 
+possible values, a (confirmed) mark indicates that all quest file have been 
+looked at, including the CompUSA ones.
+
+
+
+QUEST FILENAME FORMAT
+======================================================
+Individual quests are composed of two different files found in the ARENA2
+Daggerfall directory, the QRC and the QBN file.  Each set of QRC/QBN files
+appear to contain only one quest, which may have different parts.  The name 
+of these files affects several aspects of the quest such as which guild the 
+quest belongs to etc... This format is followed by all quests except for ones
+which begin with $, _, or S.  The almost complete filename format of quest 
+files can be found below.  
+
+   Quest Filename Format
+	[Byte 0] = Represents which guild the quest belongs to. See 
+		   Appendix D for a complete list of guild filenames.
+	[Byte 1] = Always a '0'
+	[Byte 2] = The PC's status relative to guild. 
+			A       Joining Guild Quest
+			B       Member's Only Quest
+			C       Non-Member's Quest
+	[Byte 3] = A number ranging from 0 to 8. In guilds, this represents 
+		   the minimum rank the PC must be to receive the quest.  In 
+		   other quests, this seems to refer to the reputation of the 
+		   PC with the faction giving the quest.
+	[Byte 4] = Is almost always a '0' but a few quests have a '1', 'X' or 
+		   an 'A' here.
+	[Byte 5] = Method in which the quest is given to the PC. 
+			Y       Quest is Given in Person
+			L       Quest is Given by a Letter
+     [Bytes 6+7] = The quest number, used to differentiate one quest from 
+		   another.
+
+
+The QRC Files
+======================================================
+The QRC files contain all the text needed for the quest. The format of these 
+files appears to be completely understood.
+
+[Bytes 0-1] = unsigned int header_length
+	Integer Length of header information in QRC file.  Add 2 bytes offset
+	to this to get to beginning of text data (usually?)
+
+The next parts are 6 bytes section repeated until end of header.
+[Begin Section]
+  [Bytes 0-1] = unsigned int text_offset_type
+  [Bytes 2-5] = unsigned long int text_offset
+	This gives information about a certain section of text in the QRC 
+	file.  The text_offset_type gives what kind of text the text_offset     
+	is pointing to.  text_offset gives the start location of the text in
+	the QRC file in bytes from beginning of file.
+
+	text_offset_type (Hex)       Text Type
+       ========================   ===========================================
+		E8 03               Text seen when 'Get Quest' is Pressed
+		E9 03               When you turn down the quest
+		EA 03               When you accept the quest
+		EB 03               'Don't Bother Me' type questor message
+		EC 03               Guild quest complete message
+		ED 03               Information/Rumours?
+		EE 03               Rumours?
+		EF 03               Message seen when Quest monster killed
+		F0 03               Information/Rumours?
+		F1 03               Quest fail message at guild
+		F2 03               Quest Log Entry
+		F3 03               Message when Quest item found on body?
+		10 04               Message when Quest item found on ground?
+		15 04               Failure message when Quest time expires
+
+  Example: F2 03 54 01 00 00
+	This would mean the text data related to the quest log entry can be
+	found 154h bytes (thats 340 decimal bytes) from the beginning of the
+	QRC file.
+[End Section]
+
+There will be a variable number of these sections in the header of the QRC 
+file.  They end when text_offset_type = (FF FF).  The next two bytes after
+this are the ones I can't explain, but it is likely they are simply padding
+bytes and are not used (I hope). After these two bytes are two padding zero
+or null characters followed by all the text data.
+
+[Text Sections]
+As described above, the location and types of the text sections are given in
+the header information.  The text sections themselves contain many symbols
+which need to be explained.
+
+  [0xFC Character] - This represents the end of a left-justified line, like a 
+	CR (carriage return). This appears to be only used in the log entry.
+  [0xFD Character] - This represents the end of a centered line. The text line
+	is centered in the current text window. 
+  [0xFE Character] - This may also represent a CR, but more importantly it
+	signals an end of a text section.  The next byte after this one will
+	be the first text character in the next text section (see header
+	description for more information).
+  [0xFF Character] - Although only one individual quest is contained within
+	each QRC/QBN file, there can be multiple descriptions of that quest.
+	This character seperates these multiple descriptions in each text
+	section (this appears to be optional).
+  [%string] - Any string preceded with a '%' indicates some sort of variable
+	is to be inserted there.  '%pcf' indicates the characters full name,
+	'%pcn' only the first name, etc...  A much more complete listing of
+	these can be found in Appendix A at the end of this document.
+  [_string_] - Any string preceded and ended with a '_' indicates some sort
+	of location/item, probably a randomly generated one.  This can be a 
+	house, dungeon, castle, fort, or some gold, a magic item, etc...  
+	For location types, the number of _'s preceding the string determines 
+	what location type to be displayed.  A list of all known types of 
+	these can be found in Appendix B at the end of this document.
+
+			String          Location Type
+		      ============     ================
+			_string_         Name (such as name of house or
+					       name of person)
+		       __string_         City
+		       ___string_        Place (such as dungeon name or house
+						where someone is)
+		       ____string_       Province
+
+  [=string_] - Any string preceded with a '=' and ended with a '_' is another
+	sort of variable type.  Common types of these include length of 
+	quests.  The exact different between this and other variable types
+	is not understood (what is the difference between '=reward_' and  
+	'_reward_' ?)
+[End Text Sections]
+
+That basically concludes the description of the QRC files, which appears to
+be very much complete and well understood.  We still need, however, a better
+understanding of the %string and _string_ variables, including a complete
+listing of them all (see Appendix A, B and C)
+
+
+
+The QBN Files
+======================================================
+The QBN quest files are the heart and soul of the quest.  It is they which
+tell Daggerfall what kind of quest, quest rewards, location, monsters, items,
+etc...  Unfortunately, discovering the complete format of the QBN file is
+going to be very difficult, if not impossible, since this file is completely
+numeric Hex data (ugh!).  The only for-sure method I have of hacking this
+at the moment is to change a byte, run Daggerfall, get the quest, and see
+what, if any, has changed...definitly a very slow method but significant
+progress has been made.
+
+[Bytes 0-14] - These appear to always be 0 (confirmed)
+
+[Byte 15] - unsigned char section10
+	In all but seven files, this byte is 0. In those seven files this
+	byte is a 1. This signifies that there is a tenth section at the end
+	of the QBN file.
+
+[Bytes 16-35] - unsigned int qbn_section_size[10]
+	20 Bytes of section sizes. These sizes are record, not byte, sizes.
+	The record size of the 10 sections in bytes are as follows.
+
+	     Section        # bytes (base 10)
+	    =========      ===========================
+		0               19
+		1               unknown (no entries)
+		2               unknown (no entries)
+		3               20
+		4               24
+		5               unknown (no entries)
+		6               33
+		7               14
+		8               87
+		9               8
+	       10               27
+
+	Sections 1, 2, and 5 always have a size of 0 (confirmed). The 10th
+	section is contained in only 7 QBN DF files. There is no associated
+	section size with this and the section data is always at the end of
+	the QBN file.
+
+[Bytes 36-57] - unsigned int qbn_section_offset[11]
+	Another 22 Bytes of offsets to those sections. Only 7 QBN DF files
+	contain the 10th section offset which is always the last one.
+
+[Bytes 58-59] - unsigned int nothing;
+	2 Padding bytes which seem to be always 0 (confirmed).
+
+The file up to this point is always the same in structure. What follows 
+depends on the qbn_section_size[] and qbn_section_offset[] values.  
+
+
+[Offset Descriptions]
+  I have only investigated several offsets which comprise only a part of the
+  QBN files, but its progress.
+
+  [qbn_section_offset[0] - Bytes 36 to 37 - 19 Bytes Long]
+	This section contains all items which are required in the quest, from
+	gold rewards, letters, and ingrediants, etc...
+    [Bytes 0] - unsigned char section_index
+		Since there can be several occurences of the same section,
+		this represents which one we are current reading.
+    [Bytes 1-2] - unsigned int reward
+		00 00 = Artifact Reward
+		00 01 = Item Reward
+		00 02 = Gold Reward
+		00 03 = ??? Appears only in A0C01Y09
+	Definitely appears to be related to the base type of reward. These
+	values appear to be the only valid ones here (after searching through
+	all DF quests (including the CompUSA ones).
+    [Bytes 3-6] - unsigned long reward_type
+		FF FF FF FF = Random reward type?
+		00 00 FF FF = No Gold reward (like in kill the rats quest)?
+		05 00 11 00 = Artifact - Ring of Khajiit
+	People familiar with hacking the BIOG*.TXT files will probably see a
+	similarity in the artifact/item codes and this reward type. Since the
+	BIOG item codes are well documented, it 'should' be a breeze to add
+	whatever item one desires as a quest reward (although how does one
+	specify the material flag?)
+    [Bytes 7-10] - unsigned long message_type
+	This appears to be related to what reward type is used in
+	the QRC file.  If you use _item_ in the QRC or _gold_ in the QRC this
+	value will be different.
+		30 06 00 00 = _gold_
+		14 1B 00 00 = _reward_
+		FE 67 00 00 = _artifact_
+	Most of the codes in the QBN files are short int (with the last two bytes
+	being zero). There are a few files where the 3rd byte contains a number
+	although it appears all files have a 00 for the last byte.
+    [Bytes 11-14] - unsigned long null_bytes
+		00 00 00 00 (confirmed)
+	After parsing all the QBN files for DF, it appears that these 4 bytes are
+	always 0.  One should still save these bytes on a read just in case.
+    [Bytes 15-16] - unsigned int message_id1
+	Message ID #1 or 0. If message ID is not 0 the message with the given
+	ID in the QRC file will be displayed when item is given (unconfirmed).
+    [Bytes 17-18] - unsigned int message_id2
+	Message ID #2 or 0.  If this number is given the message ID is displayed
+	when the item is used/looked at.  Commonly employed for letters etc...
+	(un-confirmed).
+
+  [qbn_section_offset[1] - Bytes 38 to 39 = qbn_section_offset[5] and [6] ]
+	Always empty. These three offsets always seem to be the same...why?
+
+  [qbn_section_offset[2] - Bytes 40 to 41]
+	Always empty.
+
+  [qbn_section_offset[3] - Bytes 42 to 43]
+	This section is related to quest characters, such as those you meet
+	in dungeons or taverns, or even the quest givers.
+    [Bytes 0] (char) - Index number.
+    [Byte 1-2] (int) - Unknown, but has one of four values (confirmed).
+	Perhaps whether the gender of the person is random, male or female.
+	All these values are unconfirmed
+		00 FF = Random
+		00 8C = Unknown, only occurs once in C0B10Y07
+		00 00 = Male
+		00 01 = Female
+    [Bytes 3-7] - Unknown. Contains a wide variety of values here.
+    [Bytes 8-11] (long) - Message hash value (see Appendix E)
+    [Bytes 12-15] (long) - NULL bytes (all zeros) (confirmed)
+    [Bytes 16-17] (int) - Optional quest text index number.
+    [Bytes 18-19] (int) - Optional quest text index number.
+
+
+  [qbn_section_offset[4] - Bytes 44 to 45]
+	This section relates the locations required in the quest such as 
+	a house, taverns, dungeons, etc...
+    [Byte 0] (char) - Index number (confirmed)
+    [Bytes 1-2] (int) - Null bytes, always 00 00 (confirmed)
+    [Byte 3] (char) - General Location
+	 	  00 = Unknown?
+		  01 = Quest is in current town (kill the animal in house)
+		  02 = Quest is outside of current town (dungeon, far town)
+    [Bytes 4-5] (int) - Secondary location type
+		00 00 = Quest is inside a house (random)
+		01 00 = Quest is inside a dungeon (random)
+	        ## C3 = There are a few quests which have this form (like 58 C3, 63 C3, etc...), most of them
+	  		being the main quest files S*.QBN.  This probably gives the location of specific locations
+			such as Shedungent, Castle Daggerfall, etc... but this is unconfirmed at the moment.
+    [Bytes 6-7] (int) - Unknown value with the possible values (very close to confirmed)
+		00 00 to 14 00 = ???
+		FF FF = ???
+		01 FA = ???
+		02 FA = ???
+		04 FA = ???
+		08 FA = ???
+	 	09 FA = ???
+    [Bytes 8-9] (int) - Unknown value but takes one of three possible values (confirmed)
+		FF FF = ???
+		00 00 = ???
+		01 00 = ???
+    [Byte 10] (char) - Unknown value but takes one of three possible values (confirmed). This value appears to remain
+	constant throughout any multiple location sections in a quest file.
+		FF = ???
+		61 = ???
+		00 = ???
+    [Byte 11] (char) -  Unknown value which takes on a wide range of values.  This value appears to remain
+	constant throughout any multiple location sections in a quest file. Bytes 9 and 10 may be actually an
+	integer value rather than two characters.
+    [Bytes 12-15] (long) - Message hash value (see Appendix E)
+    [Bytes 16-19] (long) - Null bytes, always 00 00 00 00 (confirmed) 
+    [Bytes 20-21] (int) - An optional quest text index
+    [Bytes 22-23] (int) - Another optional quest text index
+
+
+  [qbn_section_offset[5] - 46 to 47 ]
+	Always empty.
+
+  [qbn_section_offset[6] - 48 to 49]
+	Somehow related to the length of the quest.
+    [Bytes 0-1] (int) - Index number
+    [Byte 2] (char) - Somehow related to quest length? Possible confirmed values are...
+		01 = 
+	  	02 =
+		09 =
+		0C =
+		11 =
+		12 =
+    [Byte 3] (char) - Related to quest length? Possible confirmed values are...
+		00 =
+		01 =
+		02 = 
+		03 = 	 
+    [Byte 4] (char) - Related to quest length? Possible Confirmed values are...
+		00 = 
+		01 = 
+		02 = 
+		03 = 
+		04 = 
+		05 = 
+	The Bytes 1-4 may actually be integer or long data.
+    [Bytes 5-8] (long) - Unknown number taking a number of possible values
+    [Bytes 9-12] (long) - Unknown number with many possible values
+    [Bytes 13-20] (long, long) - Null Bytes, always 00 00 00 00 00 00 00 00 (confirmed)
+    [Bytes 21-22] (int) - Unknown value
+    [Byte 23] (char) - Unknown with possible confirmed values...
+		00 = 
+		01 = 
+		FC = 
+    [Bytes 24-27] (long) - Message Hash Value (see Appendix E)
+    [Byte 28] (char) - Unknown value with confirmed possible values of
+		01 = 
+		C8 = 
+    [Bytes 29-32] (long) - Unknown value, possibly message hash
+
+  [qbn_section_offset[7] - 50 to 51]
+	This section relates to any mob found in the quest. This could be
+	an orc, rat, assassin, etc...
+    [Byte 0] (char) - Index number
+    [Bytes 1-2] (int) - NULL bytes, always 00 00 (confirmed)
+    [Byte 3] (char) - Mob index number, the confirmed known values are 
+		0-40    = Regular monsters like rat, orc, daedras etc...
+		128-141 = Human mobs like knights, thieves, etc...
+	See Appendix F for numerical listing of monsters.
+    [Bytes 4-5] (int) - Unknown value but is limited to (confirmed)
+		1 = Most quests take this value
+		2 =
+		3 =
+		4 =
+		6 = 
+    [Bytes 6-9] (long) - Message hash value (see Appendix E)
+    [Bytes 10-13] (long) - NULL bytes always 00 00 00 00 (confirmed)
+
+
+  [qbn_section_offset[8] - 52 to 53]
+    [Bytes 28-31] - Sometimes message ID
+    [Bytes 58-59] - Sometimes message ID
+    [Bytes 81-82] - Message ID, or 0xFFFF
+    [Bytes 85-86] - 00 00
+
+  [qbn_section_offset[9] - 54 to 55]
+	Relates to flag indices (whatever they are...)
+    [Bytes 0-1] (int) - Index number.
+    [Bytes 2-3] (int) - Null (unconfirmed but pretty sure)
+    [Bytes 4-7] (long) - Flag index. These are the numbers seen when you press
+	the ' key with cheat codes enabled under patch v2.12 or later. They 
+	appear to flag certain occurences during the quest such as killing the
+	mob or finding an item.  It is still unsure exactly how this works.
+
+  [qbn_section_offset[10] ]
+	Is only included in a few files and exists at the end of the QBN file.
+
+That basically wraps up what I know about the QBN files.  There still is 
+quite a bit we don't know about 'em.
+
+
+CREDITS
+======================================================
+I could not have done all this without much help from the many other 
+Daggerfall addicts out there (list is in no particular order).
+
+	Peggy Hanks - df4@juno.com - For donating much new information
+		for the quest file formats.
+
+	Lord Phoenix - gozer@esoterica.pt - For donating information on the
+		files formats as well.
+
+	Michael Schneider - slannesh@pacbell.net - Maintains a Quest Hacking
+		guide on Daggerweb and has also created a quest editor for
+		Windows, and of course has provided much new information. 
+
+	Glen Wright - glen@skatter.usask.ca - Provided some more very useful
+		information on the structure of the QBN files. 
+
+If I've forgotten anyone I can assure you it's not on purpose. Just 
+e-mail me and we'll clear things up in a jiffy (anyone know how long that
+is perchance?).  
+
+If you'd like to help out in some way, feel free to make it known to me
+as I'm sure I could find something you could do. Just e-mail me at
+aj589@freenet.carleton.ca   I'll take suggestions for the quest editor,
+comments on this document, and of course any data on the quest formats.  
+
+
+WHY Hack the Quest Files?
+======================================================
+Perhaps some of you are wondering why I am bothering to hack these files (and
+no, it's not because they are there).  If the QBN file structure is found,
+even if not fully complete, a Daggerfall Quest editor can be created.  This 
+means user created quests can be made and added at will, hopefully improving
+the variety of the quests currently found in the game.  Once the QBN file 
+format is sufficiently known, I will begin creating such a program, that is
+unless someone else wants to, or is planning to (please notify me).
+
+
+VERSION UPDATES
+======================================================
+Below details what information has changed from version to version. Useful
+if you only wish to read the part of this document which has changed.
+
+   v0.20 - Released 29 April 1997
+	- Major updates on most of the QBN file structure
+		- Section 3
+		- Section 4
+		- Section 6
+		- Section 7
+		- Section 9
+	- Added Appendix E on the Message Hash 
+	- Added Appendix F on Monster Index Numbers
+
+   v0.10 - Released ???...if is was ever released that is
+	- Changed the section Basic Information to Quest Filename Formats and
+	  completed section.
+	- Add complete list of guild filenames and moved this to Appendix D
+	  due to it's size.
+	- Changes 'How Can I Help' section to 'Credits' and rewrote it.
+	- Greatly expanded the list of variables in the Appendices. They 
+	  should now include all variables used in Daggerfall (or close to).  
+	
+   v0.00 - Released 5 December 1996
+	- First release of document
+	
+
+
+
+APPENDIX A - Listing of %string Variables
+======================================================
+		Variable        Description
+	       ===========    ==========================
+		%cn             country
+		%di             some direction
+		%g              He/She etc...
+		%g1             He/She ???
+		%g2             Him/Her etc...
+		%g2self         Himself/Herself etc...
+		%g3             His/Hers/Theirs etc...
+		%god            some god (listed in TEXT.RSC)
+		%jok            a joke
+		%kno            appears to be a guild name 
+		%mn             A person's name?
+		%n              Quest Giver's Name
+		%nam            came up empty for me
+		%nrn            seems to be a random name inserted
+		%oth            an oath (listed in TEXT.RSC)
+		%pcf            character's first name
+		%pcn            character's current name
+		%pct            character's title in guild
+		%qdt            Quest date
+		%ra             player's race
+		%reg            Current region
+		%rn             Regent's Name
+		%rt             Regent's Title
+		%t              Regent's Title ( again? )
+		%vam            Vampire Name
+		%vcn            Vampire's Clan
+
+
+
+APPENDIX B - Listing of _string_ Variables
+======================================================
+These variables are the largest part of the different variable types. The 
+variable is usually descriptive enough but many of these variables don't
+yet have a known function (simply due to lack of time and the sheer number
+of them).
+
+       ITEM Variable           ITEM Variable          
+      ===============         ===================
+	_1stparton_             _2myndung_
+	_agent_                 _agentplace_
+	_agentuk_               _alchemist_
+	_alchemyshop_           _ally_
+	_amulet_                _apothecary_
+	_arena_                 _artifact_
+	_artifact2_             _artifact4_
+	_assassin_              _aurielsbow_
+	_aurielshield_          _bank_
+	_banker_                _betrothed_
+	_betrothedhome_         _book_
+	_bookstore_             _bow_
+	_bribe_                 _brother_
+	_casfort_               _castfort_
+	_castle_                _chemist_
+	_child_                 _childlocale_
+	_cleric_                _clothes_
+	_clothing_              _coastal_
+	_competitor_            _conhouse_
+	_contact_               _contact1_
+	_contact2_              _cousin_
+	_damsel_                _darkb_
+	_darkbmember_           _daughter_
+	_daughterhouse_         _db_
+	_dbgold_                _dbguild_
+	_depository_            _destination_
+	_dirtypit_              _dispatcher_
+	_drugs_                 _duelist_
+	_dummy_                 _enemy_
+	_evilfocs_              _evilitem_      
+	_fakename_              _fakeplace_
+	_father_                _finger_
+	_flowers_               _foil_
+	_friend1_               _friend2_
+	_friend3_               _friend4_
+	_gaffer_                _gem_
+	_gems_                  _giant_
+	_giver_                 _givershouse_
+	_gold_                  _gold1_
+	_gold2_                 _goldgoth_
+	_guard_                 _guard4_
+	_guardian_              _guildhall_
+	_healer_                _heist_
+	_hermit_                _hidingplace_
+	_home_                  _hooker_
+	_hookerhouse_           _house_
+	_house2_                _house3_
+	_hunter_                _informant_
+	_ingredient_            _inn_
+	_item_                  _item1_
+	_item1_                 _item2_
+	_item3_                 _itemplace_
+	_jewelry_               _key_
+	_kidnapper_             _knight_
+	_lady_                  _lessgold_
+	_local_                 _lordsmail_
+	_love_                  _lovechild_
+	_lover_                 _lovgold_
+	_mage_                  _mageguild_
+	_magesguild_            _magic_
+	_magicitem_             _magicsword_
+	_maker_                 _man_
+	_mansion_               _marknpc_
+	_master_                _meetingplace_
+	_mensclothing_          _merchant_
+	_messenger_             _metal_
+	_mfriend_               _mg_
+	_mggold_                _missingperson_
+	_mistresshome_          _mitem_
+	_mondung_               _money_
+	_monster_               _murder_
+	_necs_                  _newplace_
+	_noble_                 _noblehouse_
+	_nobleman_              _npc_
+	_npc1_                  _npc2_
+	_npc3_                  _oblivion_
+	_orsinium_              _other_
+	_painting_              _palace_
+	_patsy_                 _pawn_
+	_pickuplocal_           _pickupregion_
+	_place_                 _poison_
+	_potion_                _priest_
+	_prophet_               _prophouse_
+	_qgenemy_               _qgfriend_
+	_qgiver_                _qgiverhome_
+	_queen_                 _queenreward_
+	_questg_                _questgiver_
+	_rebel_                 _relartifact_
+	_religiousitem_         _religitem_
+	_replace_               _reward_
+	_reward2_               _ring_
+	_ripperhouse_           _rippername_
+	_rock_                  _ruler_
+	_safehouse_             _sage_
+	_scarab_                _scholar_
+	_scholarreward_         _sister_
+	_sistershouse_          _sleepingmage_
+	_soldier_               _spouse_
+	_store_                 _storehouse_
+	_target_                _targethouse_
+	_tavern_                _teacher_
+	_temple_                _thief_
+	_thiefhouse_            _thiefmember_
+	_thiefplace_            _thievesguild_
+	_townhouse_             _traitor_
+	_traitorreward_         _transporter_
+	_treasure_              _upfront_
+	_vamp_                  _vamp1_
+	_vamp2_                 _vamphouse_
+	_vampire_               _vampitem_
+	_vampname_              _vampproof_
+	_vamprelic_             _vampreward_
+	_victim_                _victimhouse_
+	_villager_              _villains_s
+	_warrior_               _weapon_
+	_weapons_               _weapons_s
+	_widow_                 _witch_
+	_withouse_              _witness_
+	_wizard_                _womensclothing_
+	_woodsman_
+
+	__agentplace_           __alchemyshop_
+	__arena_                __bank_
+	__banker_               __betrothedhome_
+	__castfort_             __castle_
+	__chemist_              __childhouse_
+	__childlocale_          __competitor_
+	__conhouse_             __contact_
+	__contact1_             __contact2_
+	__darkb_                __daughterhouse_
+	__db_                   __dbguild_
+	__depository_           __destination_
+	__dirtypit_             __dispatcher_
+	__dungeon_              __gaffer_
+	__giver_                __guard_
+	__hidingplace_          __home_
+	__hooker_               __house_
+	__house2_               __house3_
+	__informant_            __inn_
+	__itemdung_             __kidnapper_
+	__knight_               __local_
+	__lovehouse_            __lover_
+	__mageguild_            __magesguild_
+	__mansion_              __master_
+	__meetingplace_         __merchant_
+	__mg_                   __missingperson_
+	__mondung_              __newplace_
+	__noblehouse_           __npc1_
+	__npc2_                 __oblivion_
+	__oracletemple_         __palace_
+	__patsagent_            __pawn_
+	__priest_               __qgfriend_
+	__qgiver_               __questgiver_
+	__rebelhouse_           __safehouse_
+	__sage_                 __school_
+	__shop_                 __sistershouse_
+	__store_                __target_
+	__targethouse_          __tavern_
+	__temple_               __thiefplace_
+	__thievesguild_         __traitor_
+	__tranporter_           __vamp_
+	__vamp2_                __vamphouse_
+	__vampire_              __widow_
+	__witch_                __witness_
+
+	___agent_               ___alchemist_
+	___ally_                ___apothecary_
+	___bowdung_             ___casfort_
+	___chemist_             ___competitor_
+	___contact_             ___contact1_
+	___contact2_            ___contactdung_
+	___cousin_              ___crypt_
+	___darkb_               ___darkbmember_
+	___db_                  ___dispatcher_
+	___dummy_               ___dungeon_
+	___dungeon1_            ___dungeon2_
+	___dungeon3_            ___father_
+	___fatherdung_          ___gaffer_
+	___giver_               ___guard_
+	___guardian_            ___healer_
+	___hideout_             ___hintdung_
+	___hooker_              ___house2_
+	___informant_           ___itemdung_
+	___kidnapper_           ___knight_
+	___local_               ___lover_
+	___maker_               ___mapdung_
+	___merchant_            ___mfriend_
+	___mg_                  ___mondun_
+	___mondung_             ___mondung2_
+	___myndung_             ___newdung_
+	___noble_               ___npc1_
+	___npc2_                ___oblivion_
+	___orsinium_            ___other_
+	___patsagent_           ___pickuplocal_
+	___pickupregion_        ___priest_
+	___qgfriend_            ___qgiver_
+	___questg_              ___questgiver_
+	___ringdung_            ___ruler_
+	___sage_                ___scholar_
+	___scholardung_         ___sleepingmage_
+	___spouse_              ___stronghold_
+	___thief_               ___thiefmember_
+	___traitor_             ___ukcrypt_
+	___vamp_                ___vamp2_
+	___vampire_             ___villager_
+	___witch_               ___witness_
+	___woodsman_            ___wrongdung_   
+
+	____dungeon_            ____newplace_   
+	____tavern_             ____temple_
+	  
+
+APPENDIX C - Listing of =string_ Variables
+======================================================
+These variables have yet to be examined, although most of them have
+descriptive enough names to determine what they represent. It's still
+not sure exactly what use the =string_ variables have.
+
+	  Variable                Variable            
+       ===============         ===============        
+	==daedra_               ==dummydaedra_
+	==other_                ==priest_
+	==qgiver_               ==questgiver_
+	==vampire_              =1stparton_             
+	=2dagger_               =2dung_
+	=2mondung_              =2myndung_
+	=2ndparton_             =2palace_
+	=2ransom_               =2shedungent_
+	=2storehouse_           =acolyte_
+	=assassin_              =atronach_
+	=bloodfather_           =bodyguard_
+	=boss_                  =chemist_
+	=child_                 =cleric_
+	=competior_             =contact_
+	=contact2_              =cousin_
+	=daedra_                =daedroth_
+	=db_                    =decoy_
+	=elder_                 =enemy_
+	=executiondelay_        =fighter_
+	=finddaughter_          =firedaedra_
+	=gettraitor_            =giant_
+	=guard_                 =guardian_
+	=guards_                =hooker_
+	=huntstart_             =itemindung_
+	=keytime_               =kidnapper_
+	=knight_                =lich_
+	=lover_                 =mage_
+	=mage1_                 =mage2_
+	=mage3_                 =mage4_
+	=man_                   =merchant_
+	=mmaster_               =monster_
+	=monster_               =monster1_
+	=mummy_                 =noble_
+	=npc1_                  =npc2_
+	=orc_                   =other_
+	=pawn_                  =posse_
+	=priest_                =prophet_
+	=qgfriend_              =qgiver_
+	=qtime_                 =questgiver_
+	=queston_               =queston1_
+	=queston2_              =questtime_
+	=realmummy_             =replace_
+	=reward_                =scholar_
+	=sneaker_               =snitch_
+	=soldier_               =spy_
+	=target_                =thief_
+	=thug_                  =tiger_
+	=time1_                 =time2_
+	=timeforq_              =total_
+	=towertime_             =transporter_
+	=traveltime_            =vamp_
+	=vamp2_                 =vampire_
+	=vampleader_            =vamprival_
+	=victim_                =wereboar_
+	=widow_                 =witch_
+	=witness_
+
+
+APPENDIX D - Listing of Guild Quest Filenames
+======================================================
+Below is a complete list of all types of quest file names contributed 
+by several people. The character under the Filename heading represents
+the first character of a QRC or QBN file.
+
+		Filename         Guild / Group
+	       ==========   =======================
+		   _         Starting quests (Tutor and Initial)                
+		   $         Vampire/Lycanthropy Cure Quests
+		   0         School of Julianos
+		   1         Meridia
+		   2         Molag Bal
+		   3         Namira
+		   4         Nocturnal
+		   5         Peryite
+		   6         Sheogorath
+		   7         Sanguine
+		   8         Malacath
+		   A         Commoner's Quests ???
+		   B         Knightly Order
+		   C         Temple quests
+		   D         The Akatosh Chantry
+		   E         The Temple of Arkay
+		   F         The House of Dibella
+		   G         The Kynaran Order
+		   H         The Benevolence of Mara
+		   I         The Temple of Stendarr
+		   J         Merchant Quests
+		   K         Merchant Quests
+		   L         Dark Brotherhood
+		   M         Fighter's Guild
+		   N         Mage Guild
+		   O         Thieve's Guild
+		   P         Vampire's Quests
+		   Q         Coven Quests
+		   R         Royalty Quests
+		   S         Main Quests
+		   T         Lady Azura, Crimson Gate (Daedra Lady)
+		   U         Prince Boethiah's Quest (Daedra Prince)
+		   V         Clavicus Vile's Quest (Daedra Lord)
+		   W         Hermaeus Mora's quest (Daedra Lord)
+		   X         Hircine's Quest (Daedra Lord)
+		   Y         Mehrune Dagon's Quest (Daedra Lord)
+		   Z         Mephala's Quest (Daedra Lord)
+
+
+
+APPENDIX E - Description of Message Hash Values
+======================================================
+The message type values in the QBN fields were early identified with the 
+different variable types used in the QRC texts, but a direct relationship
+was undetermined.  It is now known that the values are related by the hash
+value of the variable name as described below.
+
+Pseudo-Code:
+	Set Total = 0
+	Current Character = 1st Character in variable name
+
+	Begin Loop until End of Variable Name
+		Shift Total left by 1 bit
+		Take value of current character and add it to Total
+		Move Current Character to next one
+	End Loop 
+
+	Total = Hash value of the Variable Name
+
+
+In 'C' this program would be:
+	( Code written by Michael P. Schneider - slannesh@pacbell.net )
+
+	void hash(char *ptr) {
+	  long int val = 0;
+	  while(*ptr)
+	    val = (val<<1) + *ptr++;
+	  return (val);
+	 }
+
+Please note that while this works for most message types occasionally the 
+message type value is related to something else.  This usually occurs when
+the object has a message id related to it but not much other than this is
+known at the current time.
+
+
+
+APPENDIX F - Listing of Monster Numbers
+======================================================
+Each monster has a particular number associated with it in the QBN file and
+in other locations.  These are all the known values used in the QBN files.
+There may be other values not yet discovered.  Any value with a ? is not
+yet confirmed (ie, I guessed).
+
+		      Index       Monster
+		     =======   ===================
+			0       Giant Rat
+			1       Imp ?
+			2       Spriggan
+			3       Giant Bat
+			4       Grizzley Bear
+			5       Sabretooth Tiger
+			6       Spider
+			7       Orc
+			8       Centaur ?
+			9       Werewolf
+			10      Nymph
+			11      Giant Eel ?
+			12      Orc Sergeant
+			13      Harpy
+			14      Wereboar
+			15      Skeletal Warrior?
+			16      Giant 
+			17      Zombie
+			18      Ghost
+			19      Mummy
+			20      Giant Scorpion
+			21      Orc Shaman
+			23      Wraith
+			24      Orc Warlord
+			25      Frost Daedra
+			26      Fire Daedra
+			27      Lesser Daedra
+			28      Vampire
+			29      Daedra Seducer ?
+			30      Ancient Vampire ?
+			31      Daedra Lord
+			32      Lich
+			33      Ancient Lich ?
+			34      Lamia ?
+			35      Fire Atronach
+			36      Iron Atronach
+			37      Flesh Atronach
+			38      Ice Atronach
+			39      Dreugh ?
+			40      Dragonling
+			128     Human 128 
+			129     Human 129 
+			130     Human 130 
+			131     Human 131 
+			132     Human 132 
+			133     Human 133
+			134     Human 134 
+			135     Human 135 
+			136     Human 136
+			137     Human 137
+			138     Human 138 
+			139     Assassin ? 
+			140     Human 140 
+			141     Human 141
+			142     Human 143 
+			143     Barbarian
+			144     Human 144 
+			145     Human 145
+
+

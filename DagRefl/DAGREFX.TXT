@@ -1,0 +1,127 @@
+DAGREFX - Program to change the Monster's Reflex's in Daggerfall
+Copyright (c) 1996 Dave Humphrey - aj589@freenet.carleton.ca
+
+
+INTRODUCTION
+======================================
+DAGREFX is a program I created for the great demand to be able to change the
+monster reflex value selected during character creation in DAGGERFALL. The
+reflex value affects how quickly monsters attack and affects how quickly your
+character increases his/her skills percentages (the character will get better
+in skills more quickly with the monster reflex's set at Highest to compensate
+for the increased playing difficulty). Likewise, it may also affects how long
+your character survives, especially if playing a potentially weak character.
+Many have complained that they could not change this value after creating the
+character, finding the monsters either too easy, or too diificult, and do not
+wish to start a new character.  This program can display and change this value
+with little difficulty (no HEX-editting nessecary).
+
+
+INSTALLATION
+======================================
+Simply unzip or copy DAGREFX.EXE into the main DAGGERFALL directory (such
+as C:\DAGGER) and execute.
+
+
+GENERAL NOTES
+======================================
+- It's always a good idea to backup the SAVETREE.DAT files in the save game
+  slots you wish to edit.
+- Valid save game numbers are from 0 to 5.  When in the save/load screen
+  in Daggerfall, the slots are numbered as follows...
+
+			Save 0  Save 3
+			Save 1  Save 4
+			Save 2  Save 5
+
+- The character name is needed as the position of the reflex value in the
+  file is not fixed relative to the file beginning.  It is fixed, however,
+  relative to the beginning of the character's name.
+- The name is not case sensitive (Fiet is equivilant to fIeT).
+- The name can be shortened (in case you forget the full name of a character)
+  but should be as much as possible.
+- Although I have tested this program, I cannot be held responsible to any
+  damage incurred through its use.
+- It may be possible that this isn't the monster reflex byte, although it's 
+  highly likely that it is.  On a test character I compared a rats attacks  
+  on Lowest and Highest reflex settings based on my findings. On highest, 
+  the rat attacked pretty much every 2 seconds or quicker.  On the lowest 
+  reflex setting, it varied widely, but was typically 2-3 seconds apart.  
+  Not a big difference, but I did notice I died much more quickly on the 
+  higher setting.
+
+
+TECHNICAL+PROGRAM NOTES
+======================================
+This program is based on the fact that the monster reflex chosen at character
+creation is 130 bytes (82h) from the beginning of the character's name in the
+SAVETREE.DAT file in each save game slot.  The character in this position
+gives the value chosen by the following
+
+	Highest - 0
+	High    - 1
+	Average - 2
+	Low     - 3
+	Lowest  - 4
+
+This was determined by creating several as exact as possible characters with 
+different monster reflex settings and then comparing the files. Eventually, 
+by eliminating byte difference locations one can determine this (it took over 
+an hour or so to determine this, including the actual character creation in 
+DF).  Since I only had a few files to work with, I cannot be 100% sure that 
+this will work with every savegame.  There should be enough safeties built 
+into the program to catch this and prevent writing to a savegame file that 
+doesn't match the known case, but it is possible that it won't.  In any
+case, backing up the SAVETREE.DAT file is a good idea.  I can't be held 
+responsible for any file mangling this program does (even though it shouldn't)
+
+This program may be freely modified/copied/distributed.  Although I've tried
+to use good programming practices and well commented code, the code is there
+to use/view at your own risk.
+
+The string searching algorithm used can probably be improved quite a bit as
+it is probably quite slow.  A better way might be load a large chunk of the
+file into memory and scan it instead of reading one character at a time was 
+much easier to program.
+
+
+FORMAT
+======================================
+DAGREFX v0.10  Copyright (c) 1996 - Dave Humphrey
+Edits the ES:DAGGERFALL file savetree.dat in the specified savegame directory
+and displays/changes the monster reflex value chosen during character creation
+
+	DAGREFX savegame character [/R:new reflex]
+
+	     savegame - The savegame number, 0-5, you wish to change.
+	    character - The name of the character in the savegame.
+      [/R:new reflex] - Change the monster reflex value to this. The acceptable
+			values are as follows...
+				  Highest - 0
+				     High - 1
+				  Average - 2
+				      Low - 3
+				   Lowest - 4
+
+If a new reflex value is not given, the current value will simply
+be displayed. Comments can be E-Mailed to: aj589@freenet.carleton.ca
+
+
+EXAMPLES
+======================================
+
+	DAGREFX 0 Mordalis Lonfallew
+		Displays the current reflex setting in savegame slot #1 for
+		the character named 'Mordalis Lonfallew'.
+
+	DAGREFX 0 mordal
+		Same as above but with shortened name.
+
+	DAGREFX 3 Fiet Falhorn /R:highest
+		Display and change the reflex value in savegame slot 3
+		to the highest value.
+
+	DAGREFX 3 Fiet Falhorn /R:0
+		Same as above with numeric reflex value used.
+
+

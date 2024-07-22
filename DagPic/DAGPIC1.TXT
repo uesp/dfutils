@@ -1,0 +1,38 @@
+New DAGPIC version release (v0.21).  You can now save PCX's as IMG/CIF files.  
+This means you can update your character portrait... It can be downloaded from
+
+	http://www.newforce.ca/~jackel/esp/files/
+
+VERSION UPDATES
+=====================================================
+   v0.21 (Released 3 December 1996)
+	- Added the ability to save PCX to end of CIF file (/S:e)
+	- Restructured and rewrote some of DAGPIC.TXT to better explain
+	  things...hopefully.
+	- Rewrote the DAGPIC help screen better showing syntax and examples
+
+   v0.20 (Released 28 November 1996)
+	- Displays Image Size and Position in CIF files
+	- Changed from importing/exporting BMP's to using PCX's
+	- Displays multiple image files (CIF)
+	- Will not overwrite files unless specified
+	- Ability to convert PCX to IMG/CIF files
+	- Create optional backup of files overwritten by program
+	- Added the Config file 
+
+
+INSTALLATION WALK-THROUGH
+
+
+The best way to install is to create a DAGPIC directory in
+your main DAGGER directory.  By using the the DAGPIC.CFG you
+don't have to have all your files in the ARENA2 directory
+(there's enough files in there already).  I have successfully
+changed my character potrait so I know it works although I
+haven't fully tested it.  Please report any bugs/problems
+ASAP.  Read the included text file for more info and examples
+on use. Enjoy...
+
+
+
+

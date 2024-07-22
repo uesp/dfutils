@@ -1,0 +1,36 @@
+			 DFSpell v0.1b Documentation
+
+			Dave Humphrey - 8 August 1998
+			  aj589@freenet.carleton.ca
+
+
+DFSpell is a program which edits the SPELLS.STD file found in the ARENA2
+directory of Daggerfall.  This allows the default spells sold in the mages
+guild to be editted, removed or even new spells added.
+
+This version is solely a developers release of the program.  This means that
+there is no help accompaning the program and bugs may still exist.  It is
+meant for those well familiar with hacking and editting Daggerfall files.
+Most likely there will be a fuller release later on with proper documentation
+and any bug fixes that were found.
+
+To install, merely unzip or copy the program into the Daggerfall directory.
+The files DFSPELL.RC must accompany the EXE file.
+
+Developers Notes:
+  - The program contains a lot of new code and as such probably has lots of
+    bugs hidden somewhere.  Let me know if you find any.  The following
+    areas contain the new code.
+	- VGA GUI. Extended from the old text GUI code so there shouldn't
+	  be too much problems here.
+	- The menu system is new but appears to work quite well.
+	- The RC parsing system.  This allows all the GUI objects to be
+	  described in a text file rather than in the code itself.  This
+	  makes the code much neater, easier to read, and you don't need to
+	  recompile to move objects around.
+  - The program has been tested several times and appears to be able to
+    load and save the STD file with no problems.  Adding spells also works
+    although there may be a limit within the game as to how many one can
+    add.
+  - The program attempts to load SPELLS.STD and ARENA2\SPELLS.STD when it
+    starts.

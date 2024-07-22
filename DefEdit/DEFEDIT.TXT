@@ -1,0 +1,28 @@
+			   DEFEDIT Documentation
+		 Written by Dave Humphrey - 22 March 1998
+	  aj589@freenet.carleton.ca        www.honesty.com/jackel/
+
+
+   USING DEFEDIT
+=======================================
+DEFEdit is a utility allowing one to edit the file MAGIC.DEF in the ARENA2
+directory of Daggerfall.  This isn't meant for the average gamer, but those
+familiar and interested in hacking magical items and artifacts in Daggerfall.
+As such the documentation will be rather brief...feel free to email me any
+questions, comments, bugs, etc...
+
+The use of DEFEdit should be relatively easy. Make sure the program is in the
+main Daggerfall directory since that is where it assumes it will be (it
+automatically loads MAGIC.DEF on startup).  Things are not saved
+automatically so make sure you saved before exiting (save via ALT-S or the
+button, exit via ALT-X or the button). As usual, you should make a backup
+of the DEF file before you edit in case you editted version crashes the
+game later on.
+
+One can edit all fields as you please but understand it is very easy to make
+something that doesn't work.  Enchanting an ingrediant with a 'Cast when
+Held' makes no sense since it can never be held.  Also, one shouldn't touch
+the Magic Type field for the existing items from 0 to 59. If you change a
+regular item to an artifact or vice-versa the indices for the existing
+artifacts will be messed up.
+
